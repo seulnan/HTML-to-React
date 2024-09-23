@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Omelette Recipe</title>
+    <style>
+        .container {
+        display: flex;
+        width: 100%;
+        padding: var(--spacing-1600, 128px) var(--spacing-600, 48px);
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-100, 8px);
+        background: var(--color-stone-100, #F3E5D7);
+        }
+
+        .white-back {
+            display: flex;
+            width: 736px;
+            padding: var(--spacing-500, 40px);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-500, 40px);
+            flex-shrink: 0;
+            border-radius: var(--spacing-300, 24px);
+            background: var(--color-white, #FFF);
+        }
+
+        .main-image{
+            height: 300px;
+            align-self: stretch;
+            border-radius: var(--spacing-150, 12px);
+            background: url(image-omelette.jpeg) lightgray 50% / cover no-repeat;
+        }
+        .title-text {
+            align-self: stretch;
+            color: var(--color-stone-900, #312E2C);
+            font-family: "YoungSerif-Regular.ttf";
+            font-size: var(--font-size-desktop-text-preset-1, 40px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+        }
+        .content{
+            align-self: stretch;
+            color: var(--color-stone-600, #5F564D);
+            font-family: Outfit;
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+        }
+        .pink-box {
+            display: flex;
+            padding: var(--spacing-300, 24px);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-200, 16px);
+            align-self: stretch;
+            border-radius: var(--spacing-150, 12px);
+            background: var(--color-rose-50, #FFF7FB);
+        }
+        .pink-title {
+            align-self: stretch;
+            color: var(--color-rose-800, #7A284E);
+            font-family: Outfit;
+            font-size: var(--font-size-desktop-text-preset-3, 20px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%;
+        }
+        .pink-text {
+            flex: 1 0 0;
+            color: var(--color-stone-600, #5F564D);
+            font-family: Outfit;
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%;
+            color: var(--color-stone-600, #5F564D);
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class = "container">
+
+        <div class = "white-back">
+
+            <div class = "main-image"></div>
+            <div class = "title-text">Simple Omelette Recipe</div>
+            <div class = "content">An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.</div>
+            <div class = "pink-box">
+                <div class = "pink-title">Preparation time</div>
+                <div class = "pink-text">Total: Approximately 10 minutes</div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

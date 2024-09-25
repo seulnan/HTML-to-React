@@ -1,0 +1,29 @@
+img {
+    margin-bottom: 20px;
+  }
+  
+  /* 제목 및 텍스트 스타일 */
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  /* dl 스타일 */
+  dl, dt, dd {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 항목 간 간격 */
+  dt {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  dd {
+    margin-left: 0; /* 들여쓰기 제거 */
+    margin-bottom: 10px; /* 항목 간 간격 */
+  }

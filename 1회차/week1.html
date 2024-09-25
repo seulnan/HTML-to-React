@@ -11,7 +11,43 @@
       background-image: url('bg-pattern-top-desktop.svg'), url('bg-pattern-bottom-desktop.svg');
       background-position: top left, bottom right;
       background-repeat: no-repeat;
-      background-size: auto; /* Adjust to fit the actual image dimensions if necessary */
+      background-size: auto;
+      width: 1440px; /* Set page width */
+      height: 800px; /* Set page height */
+      margin: 0 auto; /* Center the page horizontally */
+    }
+    
+    /* Adjust left and top margins for title and description */
+    .title-container {
+      margin-left: 90px; /* Left margin for both title and description */
+      margin-top: 48px;  /* Top margin for title */
+    }
+    
+    /* Adjust title font size */
+    .title {
+      font-size: 56px; /* Font size for title */
+    }
+    
+    /* Adjust description font size and top spacing */
+    .description {
+      font-size: 19px; /* Font size for description */
+      margin-bottom: 71px; /* Space between description and critic section */
+    }
+    
+    /* Adjust bottom margin for the critics section */
+    .critics-section {
+      margin-bottom: 132px; /* Bottom spacing between critics section and page end */
+    }
+    
+    /* Custom spacing for the star boxes */
+    .star-box-1 {
+      margin-top: 145px; /* Top margin for the first box */
+    }
+    .star-box-2 {
+      margin-top: 16px; /* Spacing between the first and second box */
+    }
+    .star-box-3 {
+      margin-top: 16px; /* Spacing between the second and third box */
     }
   </style>
 </head>
@@ -22,37 +58,38 @@
     
     <!-- 상단 왼쪽: 제목과 설명 -->
     <header class="flex justify-between items-start mb-8">
-        <div>
-            <h1 class="text-4xl font-bold" style="color: #512051; text-align: left;">
+        <div class="title-container">
+            <h1 class="font-bold title" style="color: #512051; text-align: left; line-height: 1.0;">
                 10,000+ of our<br>
                 users love our<br>
                 products.
-              </h1>
+            </h1>
+            
               
-          <p class="text-xl mt-2" style="color: #927B91;">
+          <p class="mt-2 description" style="color: #927B91;">
             We only provide great products combined with excellent<br>
             customer service. See what our satisfied customers are<br>
             saying about our services.</p>
         </div>
   
       <!-- 상단 오른쪽: 세로로 별과 설명이 들어간 박스 3개 -->
-      <div class="space-y-4" style="gap: 16px;">
+      <div class="space-y-4">
         <!-- 박스 1 -->
-        <div class="bg-[#F7F2F7] p-4 flex items-center rounded-lg" style="padding-top: 20px; padding-bottom: 20px; padding-left: 32px; padding-right: 79px;">
+        <div class="bg-[#F7F2F7] p-4 flex items-center rounded-lg star-box-1" style="padding-top: 20px; padding-bottom: 20px; padding-left: 32px; padding-right: 79px;">
           <div class="flex" style="color: #EF9546; margin-right: 32.5px;">
             ★ ★ ★ ★ ★
           </div>
           <p class="ml-4" style="color: #512051;">Rated 5 Stars in Reviews</p>
         </div>
         <!-- 박스 2 -->
-        <div class="bg-[#F7F2F7] p-4 flex items-center rounded-lg" style="padding-top: 20px; padding-bottom: 20px; padding-left: 32px; padding-right: 47px;">
+        <div class="bg-[#F7F2F7] p-4 flex items-center rounded-lg star-box-2" style="padding-top: 20px; padding-bottom: 20px; padding-left: 32px; padding-right: 47px;">
           <div class="flex" style="color: #EF9546; margin-right: 32.5px;">
             ★ ★ ★ ★ ★
           </div>
           <p class="ml-4" style="color: #512051;">Rated 5 Stars in Report Guru</p>
         </div>
         <!-- 박스 3 -->
-        <div class="bg-[#F7F2F7] p-4 flex items-center rounded-lg" style="padding-top: 20px; padding-bottom: 20px; padding-left: 32px; padding-right: 76px;">
+        <div class="bg-[#F7F2F7] p-4 flex items-center rounded-lg star-box-3" style="padding-top: 20px; padding-bottom: 20px; padding-left: 32px; padding-right: 76px;">
           <div class="flex" style="color: #EF9546; margin-right: 32.5px;">
             ★ ★ ★ ★ ★
           </div>
@@ -62,7 +99,7 @@
     </header>
 
     <!-- 하단: 평론가 정보가 담긴 박스 3개 -->
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-8" style="gap: 30px;">
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 critics-section" style="gap: 30px;">
         <!-- 평론가 1 -->
         <div class="bg-custom-purple p-6 rounded-lg">
           <div class="flex items-center mb-4" style="gap: 23px;">

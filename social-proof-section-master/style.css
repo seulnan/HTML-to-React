@@ -65,16 +65,15 @@ body {
   }
   
   .review-box {
-    position: absolute;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
     width: 350px;
     height: 234px;
     background-color: #512051;
     border-radius: 8px;
   }
   
-  .review-box:nth-child(1) { top: 434px; left: 165px; }
-  .review-box:nth-child(2) { top: 434px; left: 545px; }
-  .review-box:nth-child(3) { top: 434px; left: 925px; }
   
   .review-img {
     position: absolute;

@@ -1,0 +1,114 @@
+body {
+    width: 1440px;
+    height: 800px;
+    margin: 0;
+    background-color: #FFF;
+    font-family: 'League Spartan', sans-serif;
+  }
+
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+  
+  .Title {
+    position: absolute;
+    width: 445px;
+    height: 154px;
+    top: 118px;
+    left: 165px;
+    color: #512051;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 48px;
+  }
+  
+  .subTitle {
+    position: absolute;
+    width: 445px;
+    top: 288px;
+    left: 165px;
+    color: #927B91;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 25px;
+  }
+  
+  .rated-box {
+    position: absolute;
+    width: 445px;
+    height: 56px;
+    background-color: #F7F2F7;
+    border-radius: 8px;
+  }
+  
+  .rated-box:nth-child(1) { top: 118px; left: 645px; }
+  .rated-box:nth-child(2) { top: 190px; left: 645px; }
+  .rated-box:nth-child(3) { top: 262px; left: 645px; }
+  
+  .star {
+    position: absolute;
+    top: 20px;
+    left: 32px;
+  }
+  
+  .rated-text {
+    position: absolute;
+    top: 20px;
+    left: 181px;
+    color: #512051;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  
+  .review-box {
+    position: absolute;
+    width: 350px;
+    height: 234px;
+    background-color: #512051;
+    border-radius: 8px;
+  }
+  
+  .review-box:nth-child(1) { top: 434px; left: 165px; }
+  .review-box:nth-child(2) { top: 434px; left: 545px; }
+  .review-box:nth-child(3) { top: 434px; left: 925px; }
+  
+  .review-img {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .review-name {
+    position: absolute;
+    top: 43px;
+    left: 95px;
+    color: #FFF;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  
+  .review-role {
+    position: absolute;
+    top: 63px;
+    left: 95px;
+    color: #EE69A4;
+    font-size: 17px;
+    font-weight: 400;
+  }
+  
+  .review-comment {
+    position: absolute;
+    top: 111px;
+    left: 32px;
+    color: #FFF;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 22px;
+  }

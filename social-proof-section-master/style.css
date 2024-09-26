@@ -64,9 +64,16 @@ body {
     font-weight: 700;
   }
   
+.review-container{
+  display: flex;
+  padding-top: 430px;
+  padding-left: 100px;
+}
+
   .review-box {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 350px;
     height: 234px;

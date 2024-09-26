@@ -1,153 +1,141 @@
 .background {
     width: 1440px;
     height: 800px;
-    background: #da90203a;
+    background: #fff;
     position: relative;
     justify-content: center;
     align-items: center;
 }
+body {
+    font-family: 'League Spartan', sans-serif;
+}
 .path {
-    position: absolute;
-    right :0px;
-    bottom: 0px;
-    width: 100vh;    
-    height: 100vh;   
-}
-.container {
-    position: absolute;
-    left: 165px;
-    bottom : 132px;
-    display: grid;
-    place-items: center;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    
-}
-
-.box_B {
-    position: relative;
-    width: 350px;
-    height: 234px;
-
-    border-radius: 8px;
-    background: #512051;
-
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    color: white; 
-    font-size: 24px; 
-}
-.oval {
         position: absolute; /* 절대 위치 설정 */
-        top: 40px; /* 박스의 상단에서의 거리 */
-        left: 32px; /* 박스의 왼쪽에서의 거리 */
-        width: 50px; /* 이미지 너비 (원하는 크기로 조절) */
-        height: auto; /* 비율에 맞춰 자동 높이 조절 */
+        right: 0px; /* 오른쪽 끝에 위치 */
+        bottom: 20px; /* 하단에 위치 */
+
     }
-    
-    
-    
-    .titles {
-        color: #FFF;
-        font-family: "League Spartan";
-        font-size: 17px;
-        font-weight: 700;
-        position: relative;
-        top: 20px;
-        left: 95px;
-    }
-    
-    .subtitles {
-        color: #EE69A4;
-        font-family: "League Spartan";
-        font-size: 17px;
-        font-weight: 400;
-    }
-    
-    .contents {
-        color: #FFF;
-        font-family: "League Spartan";
-        font-size: 17px;
-        font-weight: 500;
-        line-height: 22px; /* 129.412% */
-        letter-spacing: -0.304px;
-    }
-.container2 {
-    position: absolute;
-    top:145px;
-    right : 260px;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);               
-    gap: 8px;
-    
-    color: #512051;
-    font-family: "League Spartan";
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    align-items: center;
-
-
-}
-.box_s {
-    
-    border-radius: 8px;
-    background: #F7F2F7;
-    width: 445px;
-    height: 56px;
-    justify-content: flex-start;
-    display: flex;
-    align-items: center; 
-    padding-right: 79px;
-    
-    
-
-}
-
-.star {
-    padding-left: 32px;
-    margin-right: 32.45px;
-    height: auto;
-}
-
 .title-container {
     position: absolute;
-    top: 0px; /* SVG 위쪽 여백 조정 */
-    left: 0px; /* SVG 왼쪽 여백 조정 */
-    color: white; /* 텍스트 색상 */
-    z-index: 1; /* 텍스트가 SVG 위에 나타나도록 설정 */
+    top: 118px;
+    left: 165px;
+    width: 445px;
+    color: #512051;
+    font-family: 'League Spartan', sans-serif;
 }
 
 .title {
     position: absolute;
-    top: 118px;
-    left: 165px;
-    
-    color: #512051;
-    font-family: "League Spartan";
-    font-size: 56px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 48px; /* 85.714% */
+    top: -76px;
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 48px;
+    font-weight: bold;
     letter-spacing: -2px;
-    width: 445px;
-    height: 154px;
-    flex-shrink: 0;
-    }
+    line-height: 60px;
+}
 
 .subtitle {
-    position:absolute;
-    top: 228px;
-    left: 165px;
-    
+    position: absolute;
+    top: 145px; 
+    left: 0;
     width: 445px;
     color: #927B91;
-    font-family: "League Spartan";
     font-size: 19px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 25px; /* 131.579% */
-    letter-spacing: -0.633px;
+    line-height: 25px;
+}
+
+.container2 {
+    position: absolute;
+    top: 118px;
+    left: 700px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    width: 445px;
+}
+
+.box_s {
+    background: #F7F2F7;
+    border-radius: 8px;
+    width: 445px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 32.45px;
+}
+
+.star {
+    margin-left: 32px;
+    height: auto;
+}
+
+.box_s div {
+    margin-left: 20px;
+    color: #512051;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.container {
+    position: absolute;
+    top: 434px;
+    left: 165px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.box_B {
+    width: 350px;
+    height: 225px;
+    background: #512051;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    color: white;
+}
+
+.oval {
+    position: absolute;
+    top: 37px;
+    left: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.titles {
+    position: absolute;
+    top: 50px;
+    left: 110px;
+    flex-shrink: 0;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+}
+.bolder {
+    font-weight: bold; /* 굵게 설정 */
+}
+.subtitles {
+    position: absolute;
+    top: 70px;
+    left: 110px;
+    font-size: 17px;
+    color: #EE69A4;
+    font-weight: 400;
+}
+
+.contents {
+    position: absolute;
+    align-items: center; 
+    top: 120px; /* 기존 111px에서 40px 아래로 이동 (111px + 40px) */
+    left: 32px;
+    width: 290px;
+    font-size: 16.5px;
+    font-weight: 500;
+    line-height: 22px;
 }

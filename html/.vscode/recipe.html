@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>recipe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
-
         .container {
             display: flex;
             width: 1440px;
@@ -40,75 +39,109 @@
             gap: var(--spacing-200, 16px);
             border-radius: var(--spacing-150, 12px);
             background: var(--color-rose-50, #FFF7FB);
-            width: 95%; 
-
-
+            width: 92%; 
         }
-
         .headtitle {
             color: var(--color-stone-900, #312E2C);
             font-family: 'Roboto Slab', serif;
             font-size: var(--font-size-desktop-text-preset-1, 40px);
-            font-style: normal;
             font-weight: bold;
-            line-height: 100%; /* 40px */
+            line-height: 100%;
             align-self: stretch;
             padding-top: 40px;
             padding-bottom: 20px;
         }
         .subtitle {
             color: var(--color-stone-600, #5F564D);
-            font-family: Outfit;
+            font-family: 'Outfit', sans-serif;
             font-size: var(--font-size-desktop-text-preset-4, 16px);
-            font-style: normal;
             font-weight: 400;
-            line-height: 150%; /* 24px */
-            align-self: stretch;
-            
+            line-height: 150%;
+            align-self: stretch;  
             padding-bottom: 30px;
         }
         .title_pink {
             align-self: stretch;
             color: var(--color-rose-800, #7A284E);
             font-family: Outfit;
+            font-family: 'Outfit', sans-serif;
             font-size: var(--font-size-desktop-text-preset-3, 20px);
-            font-style: normal;
             font-weight: 600;
-            line-height: 100%; /* 20px */
+            line-height: 100%;
         }
         .title {
             align-self: stretch;
             color: var(--color-brown-800, #854632);
             font-family: 'Roboto Slab', serif;
             font-size: var(--font-size-desktop-text-preset-2, 28px);
-            font-style: normal;
             font-weight: bold;
-            line-height: 100%; /* 28px */
+            line-height: 100%;
             padding-top: 30px;
             padding-bottom: 20px;
         }
         .content {
-            
             font-size: 16px;
-            color: #000; /* 내용 색상 설정 */
+            color: var(--color-stone-600, #5F564D);
             margin-bottom: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: normal;
+
         }
         .nutrition-info {
-            display: flex;
-            justify-content: space-between; /* 양쪽 정렬 */
-            width: 100%; /* 부모 박스에 맞춤 */
-            
+        display: flex; /* Flexbox를 사용하여 아이템을 수평으로 배치 */
+        justify-content: space-between; /* 양 끝에 배치하여 가운데 정렬 효과 */
+        align-items: center; /* 수직 가운데 정렬 */
+        color: var(--color-stone-600, #5F564D);
+        font-family: Outfit;
+        font-size: var(--font-size-desktop-text-preset-4, 16px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 24px */
         }
+
+        .nutrition-item {
+            color: var(--color-brown-800, #854632);
+            font-family: Outfit;
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%; /* 24px */
+            flex-shrink: 0; /* 줄어들지 않도록 설정 */
+            }
         .bolder {
-            font-weight: bold; /* 굵은 글씨 */
+            font-weight: bolder; /* bold 처리 없앰 */
+            color: var(--color-stone-600, #5F564D);
+
         }
         .line {
-            width: 100%; /* 선의 폭을 부모 요소에 맞춤 */
-            width: 656px;
+            width: 720px;
             height: 1px;
             background: var(--color-stone-150, #E3DDD7);
+            gap: 32px;
         }
-        .
+        
+
+        
+        .bullet {
+            display: flex;
+            align-items: center;
+            gap: 16px; /* 아이콘과 텍스트 사이 간격 */
+        }
+        ol li {
+            
+            margin-left: 0; /* 기본 여백 초기화 */
+            padding-left: 20px; /* 번호와 내용 사이의 간격 조정 */
+        }
+
+        ol li::marker {
+            
+            font-size: 1em; /* 번호의 크기 조정 (선택 사항) */
+            padding-right: 10px; /* 번호와 내용 사이의 간격 조정 */
+        }
+
+        li {
+            margin: 12px;
+        }
     </style>
 </head>
 <body>
@@ -119,45 +152,92 @@
             <div class="subtitle">An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.</div>
             <div class="pinkbox">
                 <div class="title_pink">Preparation time</div>
-                <div class="content"><span class="bolder">Total</span>: Approximately 10 minutes</div>
-                <div class="content"><span class="bolder">Preparation</span>: 5 minutes</div>
-                <div class="content"><span class="bolder">Cooking</span>: 5 minutes</div>
+                <div class="bullet">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                    </svg>
+                    <div class="content"><span class="bolder">Total</span>: Approximately 10 minutes</div>
+                </div>
+                <div class="bullet">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                    </svg>
+                    <div class="content"><span class="bolder">Preparation</span>: 5 minutes</div>
+                </div>
+                <div class="bullet">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                    </svg>
+                    <div class="content"><span class="bolder">Cooking</span>: 5 minutes</div>
+                </div>
             </div>
             <div class="title">Ingredients</div>
-            <div class="content">2-3 large eggs </div>
-            <div class="content">Salt, to taste</div>
-            <div class="content">Pepper, to taste</div>
-            <div class="content">1 tablespoon of butter or oil</div>
-            <div class="content">Optional fillings: cheese, diced vegetables, cooked meats, herbs</div>
+            <div class="bullet">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                    <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                </svg>
+                <div class="content">2-3 large eggs</div>
+            </div>
+            <div class="bullet">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                    <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                </svg>
+                <div class="content">Salt, to taste</div>
+            </div>
+            <div class="bullet">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                    <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                </svg>
+                <div class="content">Pepper, to taste</div>
+            </div>
+            <div class="bullet">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                    <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                </svg>
+                <div class="content">1 tablespoon of butter or oil</div>
+            </div>
+            <div class="bullet">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                    <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                </svg>
+                <div class="content">Optional fillings: cheese, diced vegetables, cooked meats, herbs</div>
+            </div>
+            <div class="line"></div>
             <div class="title">Instructions</div>
-            <div class="content"><span class="bolder">1. Beat the eggs</span>: In a bowl, beat the eggs with a pinch of salt and pepper until they are well mixed. You can add a tablespoon of water or milk for a fluffier texture.</div>
-            <div class="content"><span class="bolder">2. Heat the pan</span>: Place a non-stick frying pan over medium heat and add butter or oil.</div>
-            <div class="content"><span class="bolder">3. Cook the omelette</span>: Once the butter is melted and bubbling, pour in the eggs. Tilt the pan to ensure the eggs evenly coat the surface.</div>
-            <div class="content"><span class="bolder">4. Add fillings (optional)</span>: When the eggs begin to set at the edges but are still slightly runny in the middle, sprinkle your chosen fillings over one half of the omelette.</div>
-            <div class="content"><span class="bolder">5. Fold and serve</span>: As the omelette continues to cook, carefully lift one edge and fold it over the fillings. Let it cook for another minute, then slide it onto a plate.</div>
-            <div class="content"><span class="bolder">6. Enjoy</span>: Serve hot, with additional salt and pepper if needed.</div>
+            <div class="content">
+            <ol>
+                <li><span class="bolder"> Beat the eggs: </span>In a bowl, beat the eggs with a pinch of salt and pepper until they are well mixed. You can add a tablespoon of water or milk for a fluffier texture.</li>
+                <li><span class="bolder"> Heat the pan: </span>Place a non-stick frying pan over medium heat and add butter or oil.</li>
+                <li><span class="bolder"> Cook the omelette: </span>Once the butter is melted and bubbling, pour in the eggs. Tilt the pan to ensure the eggs evenly coat the surface.</li>
+                <li><span class="bolder"> Add fillings (optional): </span>When the eggs begin to set at the edges but are still slightly runny in the middle, sprinkle your chosen fillings over one half of the omelette.</li>
+                <li><span class="bolder"> Fold and serve:</span> As the omelette continues to cook, carefully lift one edge and fold it over the fillings. Let it cook for another minute, then slide it onto a plate.</li>
+                <li><span class="bolder">Enjoy: </span>Serve hot, with additional salt and pepper if needed.</li>
+            </ol>
+            </div>
+            <div class="line"></div>
             <div class="title">Nutrition</div>
             <div class="subtitle">The table below shows nutritional values per serving without the additional fillings.</div>
-            <div class="nutrition-info">Calories
-            <span class="bolder">277kcal</span>
-            </div>
+            
+            <span class="nutrition-info">
+                Calories<span class="nutrition-item">277kcal</span>
+            </span>
             <div class="line"></div>
-            <div class="nutrition-info">
+            <span class="nutrition-info">
                 Carbs
-                <span class="bolder">0g</span>
-            </div>
+                <span class="nutrition-item">0g</span>
+            </span>
             <div class="line"></div>
-            <div class="nutrition-info">Protein
-                <span class="bolder">20g</span>
-                
-            </div>
+            <span class="nutrition-info">
+                Protein
+                <span class="nutrition-item">20g</span>
+            </span>
             <div class="line"></div>
-            <div class="nutrition-info">Fat
-                <span class="bolder">22g</span>
-                
-            </div>
+            <span class="nutrition-info">
+                Fat
+                <span class="nutrition-item">22g</span>
+            </span>
             <div class="line"></div>
-
+            
         </div>
     </div>
 </body>

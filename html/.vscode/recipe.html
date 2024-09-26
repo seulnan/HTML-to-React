@@ -15,7 +15,7 @@
             gap: 8px;
             background: #F3E5D7;
         }
-        .box {
+        .white_box {
             display: flex;
             width: 736px;
             padding: 40px;
@@ -30,16 +30,6 @@
             height: 300px;
             align-self: stretch;
             border-radius: 12px;
-        }
-        .pinkbox {
-            display: flex;
-            padding: var(--spacing-300, 24px);
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--spacing-200, 16px);
-            border-radius: var(--spacing-150, 12px);
-            background: var(--color-rose-50, #FFF7FB);
-            width: 92%; 
         }
         .headtitle {
             color: var(--color-stone-900, #312E2C);
@@ -60,16 +50,27 @@
             align-self: stretch;  
             padding-bottom: 30px;
         }
+        .pink_box {
+            display: flex;
+            padding: var(--spacing-300, 24px);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-200, 16px);
+            border-radius: var(--spacing-150, 12px);
+            background: var(--color-rose-50, #FFF7FB);
+            width: 92%; 
+        }
         .title_pink {
             align-self: stretch;
             color: var(--color-rose-800, #7A284E);
-            font-family: Outfit;
             font-family: 'Outfit', sans-serif;
             font-size: var(--font-size-desktop-text-preset-3, 20px);
             font-weight: 600;
             line-height: 100%;
         }
-        .title {
+        
+
+        .Red_title {
             align-self: stretch;
             color: var(--color-brown-800, #854632);
             font-family: 'Roboto Slab', serif;
@@ -85,29 +86,33 @@
             margin-bottom: 8px;
             font-family: 'Outfit', sans-serif;
             font-weight: normal;
-
         }
-        .nutrition-info {
+        .nutrition {
         display: flex; /* Flexbox를 사용하여 아이템을 수평으로 배치 */
-        justify-content: space-between; /* 양 끝에 배치하여 가운데 정렬 효과 */
+        justify-content: space-around; /* 양 끝에 배치하여 가운데 정렬 효과 */
         align-items: center; /* 수직 가운데 정렬 */
         color: var(--color-stone-600, #5F564D);
-        font-family: Outfit;
+        font-family: 'Outfit', sans-serif;
         font-size: var(--font-size-desktop-text-preset-4, 16px);
         font-style: normal;
         font-weight: 400;
         line-height: 150%; /* 24px */
         }
 
+        .nutrition-info {
+            flex: 1; /* 왼쪽부터 정렬을 위해 flex-grow 설정 */
+        }
+
         .nutrition-item {
             color: var(--color-brown-800, #854632);
-            font-family: Outfit;
+            font-family: 'Outfit', sans-serif;
             font-size: var(--font-size-desktop-text-preset-4, 16px);
             font-style: normal;
             font-weight: 700;
             line-height: 150%; /* 24px */
-            flex-shrink: 0; /* 줄어들지 않도록 설정 */
-            }
+            text-align: right; /* 오른쪽 정렬 */
+        }
+
         .bolder {
             font-weight: bolder; /* bold 처리 없앰 */
             color: var(--color-stone-600, #5F564D);
@@ -119,8 +124,6 @@
             background: var(--color-stone-150, #E3DDD7);
             gap: 32px;
         }
-        
-
         
         .bullet {
             display: flex;
@@ -146,11 +149,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="box">
+        <div class="white_box">
             <img src="top-image.png" alt="Top Image"/>
             <div class="headtitle">Simple Omelette Recipe</div>
             <div class="subtitle">An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.</div>
-            <div class="pinkbox">
+            <div class="pink_box">
                 <div class="title_pink">Preparation time</div>
                 <div class="bullet">
                     <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
@@ -171,7 +174,7 @@
                     <div class="content"><span class="bolder">Cooking</span>: 5 minutes</div>
                 </div>
             </div>
-            <div class="title">Ingredients</div>
+            <div class="Red_title">Ingredients</div>
             <div class="bullet">
                 <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
                     <circle cx="2" cy="2" r="2" fill="#7A284E"/>
@@ -203,7 +206,7 @@
                 <div class="content">Optional fillings: cheese, diced vegetables, cooked meats, herbs</div>
             </div>
             <div class="line"></div>
-            <div class="title">Instructions</div>
+            <div class="Red_title">Instructions</div>
             <div class="content">
             <ol>
                 <li><span class="bolder"> Beat the eggs: </span>In a bowl, beat the eggs with a pinch of salt and pepper until they are well mixed. You can add a tablespoon of water or milk for a fluffier texture.</li>
@@ -215,27 +218,36 @@
             </ol>
             </div>
             <div class="line"></div>
-            <div class="title">Nutrition</div>
+            <div class="Red_title">Nutrition</div>
             <div class="subtitle">The table below shows nutritional values per serving without the additional fillings.</div>
             
-            <span class="nutrition-info">
-                Calories<span class="nutrition-item">277kcal</span>
-            </span>
+            <div class="nutrition">
+                <div class="nutrition-info">
+                    Calories
+                </div>
+                <div class="nutrition-item">277kcal</div>
+            </div>
             <div class="line"></div>
-            <span class="nutrition-info">
-                Carbs
-                <span class="nutrition-item">0g</span>
-            </span>
+            <div class="nutrition">
+                <div class="nutrition-info">
+                    Carbs
+                </div>
+                <div class="nutrition-item">0g</div>
+            </div>
             <div class="line"></div>
-            <span class="nutrition-info">
-                Protein
-                <span class="nutrition-item">20g</span>
-            </span>
+            <div class="nutrition">
+                <div class="nutrition-info">
+                    Protein
+                </div>
+                <div class="nutrition-item">20g</div>
+            </div>
             <div class="line"></div>
-            <span class="nutrition-info">
-                Fat
-                <span class="nutrition-item">22g</span>
-            </span>
+            <div class="nutrition">
+                <div class="nutrition-info">
+                    Fat
+                </div>
+                <div class="nutrition-item">22g</div>
+            </div>
             <div class="line"></div>
             
         </div>

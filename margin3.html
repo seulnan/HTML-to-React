@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #empty {
+        margin-top: 50px;
+        margin-bottom: 100px;
+        border: 1px solid black;
+      }
+      #normal {
+        background-color: powderblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="empty"></div>
+    <div id="normal">normal</div>
+  </body>
+</html>
+
+<!-- 시각적 요소가 없을 때의 margin은 
+위아래 마진 값중 가장 큰 마진 하나만 먹인다.
+여기선 아래 100만 먹인 것 
+-> 선을 살리니 위에 마진 50이 추가로 적용되며 보이는 화면이 움직인다. -->

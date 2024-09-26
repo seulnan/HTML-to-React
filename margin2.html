@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #parent {
+        border: 1px solid black;
+        margin-top: 100px;
+      }
+
+      #child {
+        background-color: lightblue;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="child">hello</div>
+    </div>
+  </body>
+</html>
+
+<!-- 부모자식태그간에도 성립이 됨. 다만, 부모태그가 시각적요소가 없을때(container), 즉
+투명할때만 마진겹침이 일어남 자식태그가 마진이 더 크다면, 자식태그의 속성이
+적용이 됨 But 자식마진이 더 작으면, 부모태그의 속성이 적용이 되고 자식마진은
+적용이 안됨 -->

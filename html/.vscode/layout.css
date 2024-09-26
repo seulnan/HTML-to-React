@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
 }
+
 body {
     font-family: 'League Spartan', sans-serif;
 }
@@ -71,12 +72,6 @@ body {
     height: auto;
 }
 
-.box_s div {
-    margin-left: 20px;
-    color: #512051;
-    font-size: 17px;
-    font-weight: 700;
-}
 
 .container {
     position: absolute;
@@ -99,7 +94,7 @@ body {
     color: white;
 }
 
-.oval {
+.img {
     position: absolute;
     top: 37px;
     left: 32px;
@@ -108,7 +103,7 @@ body {
     border-radius: 50%;
 }
 
-.titles {
+.b_title {
     position: absolute;
     top: 50px;
     left: 110px;
@@ -120,7 +115,7 @@ body {
 .bolder {
     font-weight: bold; /* 굵게 설정 */
 }
-.subtitles {
+.b_subtitle {
     position: absolute;
     top: 70px;
     left: 110px;
@@ -129,7 +124,7 @@ body {
     font-weight: 400;
 }
 
-.contents {
+.b_text {
     position: absolute;
     align-items: center; 
     top: 120px; /* 기존 111px에서 40px 아래로 이동 (111px + 40px) */

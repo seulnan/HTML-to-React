@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>recipe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap" rel="stylesheet">
     <style>
+
         .container {
             display: flex;
             width: 1440px;
-            padding: 128px 48px;
+            padding: var(--spacing-1600, 128px) var(--spacing-600, 48px);
             justify-content: center;
             align-items: center;
             gap: 8px;
@@ -20,7 +22,7 @@
             padding: 40px;
             flex-direction: column;
             align-items: flex-start;
-            gap: 40px;
+            gap: 10px;
             flex-shrink: 0;
             border-radius: 24px;
             background: #FFF;
@@ -31,46 +33,43 @@
             border-radius: 12px;
         }
         .pinkbox {
-        
-        display: flex;
-        padding: 24px;
-        flex-direction: column;
-        align-items: flex-start; 
-        justify-self: center;
-        align-self: stretch;
-        gap: 16px;
-        border-radius: 12px;
-        background: #FFF7FB;
-        width: 100%; /* 부모 박스에 맞춤 */
+            display: flex;
+            padding: var(--spacing-300, 24px);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-200, 16px);
+            border-radius: var(--spacing-150, 12px);
+            background: var(--color-rose-50, #FFF7FB);
+            width: 95%; 
+
+
         }
 
         .headtitle {
-            align-self: stretch;
             color: var(--color-stone-900, #312E2C);
-
-            /* Desktop/text-preset-1 */
-            font-family: "Young Serif";
+            font-family: 'Roboto Slab', serif;
             font-size: var(--font-size-desktop-text-preset-1, 40px);
             font-style: normal;
-            font-weight: 400;
+            font-weight: bold;
             line-height: 100%; /* 40px */
+            align-self: stretch;
+            padding-top: 40px;
+            padding-bottom: 20px;
         }
         .subtitle {
-            align-self: stretch;
             color: var(--color-stone-600, #5F564D);
-
-            /* Desktop/text-preset-4 */
             font-family: Outfit;
             font-size: var(--font-size-desktop-text-preset-4, 16px);
             font-style: normal;
             font-weight: 400;
             line-height: 150%; /* 24px */
+            align-self: stretch;
+            
+            padding-bottom: 30px;
         }
         .title_pink {
             align-self: stretch;
             color: var(--color-rose-800, #7A284E);
-
-            /* Desktop/text-preset-3 */
             font-family: Outfit;
             font-size: var(--font-size-desktop-text-preset-3, 20px);
             font-style: normal;
@@ -80,31 +79,36 @@
         .title {
             align-self: stretch;
             color: var(--color-brown-800, #854632);
-
-            /* Desktop/text-preset-2 */
-            font-family: "Young Serif";
+            font-family: 'Roboto Slab', serif;
             font-size: var(--font-size-desktop-text-preset-2, 28px);
             font-style: normal;
-            font-weight: 400;
+            font-weight: bold;
             line-height: 100%; /* 28px */
+            padding-top: 30px;
+            padding-bottom: 20px;
         }
         .content {
+            
             font-size: 16px;
             color: #000; /* 내용 색상 설정 */
+            margin-bottom: 8px;
         }
         .nutrition-info {
-        display: flex;
-        justify-content: space-between; /* 양쪽 정렬 */
-        width: 100%; /* 부모 박스에 맞춤 */
-        font-weight: bold; /* 굵은 글씨 */
+            display: flex;
+            justify-content: space-between; /* 양쪽 정렬 */
+            width: 100%; /* 부모 박스에 맞춤 */
+            
+        }
+        .bolder {
+            font-weight: bold; /* 굵은 글씨 */
         }
         .line {
-        width: 100%; /* 선의 폭을 부모 요소에 맞춤 */
-        width: 656px;
-        height: 1px;
-        background: var(--color-stone-150, #E3DDD7);
-        
+            width: 100%; /* 선의 폭을 부모 요소에 맞춤 */
+            width: 656px;
+            height: 1px;
+            background: var(--color-stone-150, #E3DDD7);
         }
+        .
     </style>
 </head>
 <body>
@@ -115,47 +119,45 @@
             <div class="subtitle">An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.</div>
             <div class="pinkbox">
                 <div class="title_pink">Preparation time</div>
-                <div class="content">Total: Approximately 10 minutes</div>
-                <div class="content">Preparation: 5 minutes</div>
-                <div class="content">Cooking: 5 minutes</div>
+                <div class="content"><span class="bolder">Total</span>: Approximately 10 minutes</div>
+                <div class="content"><span class="bolder">Preparation</span>: 5 minutes</div>
+                <div class="content"><span class="bolder">Cooking</span>: 5 minutes</div>
             </div>
-                <div class="title">Ingredients</div>
-                <div class="content">2-3 large eggs </div>
-                <div class="content">Salt, to taste</div>
-                <div class="content">Pepper, to taste</div>
-                <div class="content">1 tablespoon of butter or oil</div>
-                <div class="content">Optional fillings: cheese, diced vegetables, cooked meats, herbs</div>
-                <div class="title">Instructions</div>
-                <div class="content">Beat the eggs: In a bowl, beat the eggs with a pinch of salt and pepper until they are well mixed. You can add a tablespoon of water or milk for a fluffier texture.</div>
-                <div class="content">Heat the pan: Place a non-stick frying pan over medium heat and add butter or oil.</div>
-                <div class="content">Cook the omelette: Once the butter is melted and bubbling, pour in the eggs. Tilt the pan to ensure the eggs evenly coat the surface.</div>
-                <div class="content">Add fillings (optional): When the eggs begin to set at the edges but are still slightly runny in the middle, sprinkle your chosen fillings over one half of the omelette.</div>
-                <div class="content">Fold and serve: As the omelette continues to cook, carefully lift one edge and fold it over the fillings. Let it cook for another minute, then slide it onto a plate.</div>
-                <div class="content">Enjoy: Serve hot, with additional salt and pepper if needed.</div>
-                <div class="title">Nutrition</div>
-                <div class="subtitle">The table below shows nutritional values per serving without the additional fillings.</div>
-                <div class="nutrition-info">
-                    <span>Calories</span>
-                    <span>277kcal</span>
-                </div>
-                <div class="line"></div>
-                <div class="nutrition-info">
-                    <span>Carbs</span>
-                    <span>0g</span>
-                </div>
-                <div class="line"></div>
-                <div class="nutrition-info">
-                    <span>Protein</span>
-                    <span>20g</span>
-                </div>
-                <div class="line"></div>
-                <div class="nutrition-info">
-                    <span>Fat</span>
-                    <span>22g</span>
-                </div>
-                <div class="line"></div>
+            <div class="title">Ingredients</div>
+            <div class="content">2-3 large eggs </div>
+            <div class="content">Salt, to taste</div>
+            <div class="content">Pepper, to taste</div>
+            <div class="content">1 tablespoon of butter or oil</div>
+            <div class="content">Optional fillings: cheese, diced vegetables, cooked meats, herbs</div>
+            <div class="title">Instructions</div>
+            <div class="content"><span class="bolder">1. Beat the eggs</span>: In a bowl, beat the eggs with a pinch of salt and pepper until they are well mixed. You can add a tablespoon of water or milk for a fluffier texture.</div>
+            <div class="content"><span class="bolder">2. Heat the pan</span>: Place a non-stick frying pan over medium heat and add butter or oil.</div>
+            <div class="content"><span class="bolder">3. Cook the omelette</span>: Once the butter is melted and bubbling, pour in the eggs. Tilt the pan to ensure the eggs evenly coat the surface.</div>
+            <div class="content"><span class="bolder">4. Add fillings (optional)</span>: When the eggs begin to set at the edges but are still slightly runny in the middle, sprinkle your chosen fillings over one half of the omelette.</div>
+            <div class="content"><span class="bolder">5. Fold and serve</span>: As the omelette continues to cook, carefully lift one edge and fold it over the fillings. Let it cook for another minute, then slide it onto a plate.</div>
+            <div class="content"><span class="bolder">6. Enjoy</span>: Serve hot, with additional salt and pepper if needed.</div>
+            <div class="title">Nutrition</div>
+            <div class="subtitle">The table below shows nutritional values per serving without the additional fillings.</div>
+            <div class="nutrition-info">Calories
+            <span class="bolder">277kcal</span>
+            </div>
+            <div class="line"></div>
+            <div class="nutrition-info">
+                Carbs
+                <span class="bolder">0g</span>
+            </div>
+            <div class="line"></div>
+            <div class="nutrition-info">Protein
+                <span class="bolder">20g</span>
                 
             </div>
+            <div class="line"></div>
+            <div class="nutrition-info">Fat
+                <span class="bolder">22g</span>
+                
+            </div>
+            <div class="line"></div>
+
         </div>
     </div>
 </body>

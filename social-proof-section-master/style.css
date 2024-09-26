@@ -39,20 +39,27 @@ body {
   
   .rated-box {
     position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 445px;
     height: 56px;
     background-color: #F7F2F7;
     border-radius: 8px;
   }
   
+.star-container{
+  display: flex;
+  gap: 5px;
+}
+
   .rated-box:nth-child(1) { top: 118px; left: 645px; }
   .rated-box:nth-child(2) { top: 190px; left: 645px; }
   .rated-box:nth-child(3) { top: 262px; left: 645px; }
   
   .star {
-    position: absolute;
-    top: 20px;
-    left: 32px;
+    position: relative;
+    left: 32px;;
   }
   
   .rated-text {
@@ -62,6 +69,7 @@ body {
     color: #512051;
     font-size: 17px;
     font-weight: 700;
+    
   }
   
 .review-container{
@@ -76,6 +84,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     width: 350px;
+    margin: 0 10px;
     height: 234px;
     background-color: #512051;
     border-radius: 8px;
@@ -91,6 +100,8 @@ body {
     border-radius: 50%;
   }
   
+  
+
   .review-name {
     position: absolute;
     top: 43px;

@@ -5,83 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omelette Recipe</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
     <style>
         @font-face {
             font-family: 'YoungSerif-Regular';
             src: url('path-to/YoungSerif-Regular.ttf') format('truetype');
         }
         @font-face {
-            font-family: 'Outfit-Regular';
-            src: url('path-to/Outfit-Regular.ttf') format('truetype');
+            font-family: 'Outfit';
+            src: url('path-to/Outfit-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        h1 {
+            font-family: 'YoungSerif-Regular';
+            font-size: 40px;
+        }
+        p {
+            font-family: 'Outfit';
+            font-size: 16px;
+        }
+        .preparation-time {
+            background-color: #FFF7FB;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .preparation-time h2 {
+            font-family: 'Outfit';
+            font-weight: 600; /* Outfit-SemiBold equivalent */
+            font-size: 20px;
+            color: #7A284E;
+        }
+        .section-title {
+            font-family: 'YoungSerif-Regular';
+            font-size: 28px;
+            color: #7A284E;
         }
     </style>
 </head>
 <body class="bg-stone-100 flex items-center justify-center" style="height: 1956px;">
+    
+    <class="main_background">
+        <style>
+            .main_background {
+                background-color: #F3E5D7;
+                width: 100%;
+                height: 100vh;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1; /* To ensure it's behind the content */
+            }
+        </style>
+        
+    
 
-    <div class="bg-white w-[736px] h-[1700px] rounded-lg relative">
-        <!-- Omelette Image -->
-        <img src="image-omelette.jpeg" alt="Omelette" class="w-[656px] h-[300px] mx-auto mt-12 rounded" style="margin-left: 50px; margin-right: 50px;"/>
+        <div class="bg-white w-[736px] h-[1700px] rounded-lg relative">
+            <!-- Omelette Image -->
+            <img src="image-omelette.jpeg" alt="Omelette" class="w-[656px] h-[300px] mx-auto mt-12 rounded" style="margin-left: 50px; margin-right: 50px;"/>
 
-        <!-- Simple Omelette Recipe Title -->
-        <h1 class="mt-4 ml-12 text-4xl font-semibold" style="font-family: 'YoungSerif-Regular'; font-size: 40px;">
-            Simple Omelette Recipe
-        </h1>
+            <!-- Simple Omelette Recipe Title -->
+            <h1 class="mt-4 ml-12 text-4xl font-semibold">
+                Simple Omelette Recipe
+            </h1>
 
-        <!-- Recipe Description -->
-        <p class="mt-10 ml-12 text-base" style="font-family: 'Outfit-Regular'; font-size: 16px;">
-            An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.
-        </p>
+            <!-- Recipe Description -->
+            <p class="mt-10 ml-12 text-base">
+                An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.
+            </p>
 
-        <!-- Preparation Time Card -->
-        <div class="bg-rose-50 w-[636px] h-auto ml-12 mr-12 mt-10 p-6 rounded-lg">
-            <h2 class="text-xl font-semibold mb-4" style="font-family: 'Outfit-Regular';">Preparation time</h2>
-            <p class="mb-6" style="font-family: 'Outfit-Regular';">This is a simple and fast recipe, with a preparation time of around 10 minutes.</p>
+            <!-- Preparation Time Card -->
+            <div class="preparation-time w-[636px] h-auto ml-12 mr-12 mt-10 rounded-lg">
+                <h2>Preparation time</h2>
+                <p>- Total: Approximately 10 minutes<br>
+                    - Preparation: 5 minutes<br>
+                    - Cooking: 5 minutes
+                </p>
+            </div>
+
+            <!-- Ingredients Section -->
+            <h2 class="mt-10 ml-12 section-title">Ingredients</h2>
+            <p class="mt-6 ml-12 text-base">
+                - 2-3 large eggs<br>
+                - Salt, to taste<br>
+                - Pepper, to taste<br>
+                - 1 tablespoon of butter or oil<br>
+                - Optional fillings: cheese, diced vegetables, cooked meats, herbs
+            </p>
+
+            <!-- Divider -->
+            <hr class="my-10 ml-12 mr-12 border-gray-300">
+
+            <!-- Instructions Section -->
+            <h2 class="ml-12 section-title">Instructions</h2>
+            <p class="mt-6 ml-12 text-base">
+                <p class="receipt1"></p>
+                1. Beat the eggs: In a bowl, beat the eggs with a pinch of salt and pepper<br>
+                until they are well mixed. You can add a tablespoon of water or milk<br>
+                for a fluffier texture.<br>
+                <p class="receipt2"></p>
+                2. Heat the pan: Place a non-stick frying pan over medium heat and add<br>
+                butter or oil.<br>
+                <p class="receipt3"></p>
+                3. Cook the omelette: Once the butter is melted and bubbling, pour in<br>
+                the eggs. Tilt the pan to ensure the eggs evenly coat the surface.<br>
+                <p class="receipt4"></p>
+                4. Add fillings (optional): When the eggs begin to set at the edges but<br>
+                are still slightly runny in the middle, sprinkle your chosen fillings over<br>
+                one half of the omelette.<br>
+                <p class="receipt5"></p>
+                5. Fold and serve: As the omelette continues to cook, carefully lift one<br>
+                edge and fold it over the fillings. Let it cook for another minute, then<br>
+                slide it onto a plate.<br>
+                <p class="receipt6"></p>
+                6. Enjoy: Serve hot, with additional salt and pepper if needed.
+            </p>
+
+            <!-- Divider -->
+            <hr class="my-10 ml-12 mr-12 border-gray-300">
+
+            <!-- Nutrition Section -->
+            <h2 class="ml-12 section-title">Nutrition</h2>
+            <p class="mt-6 ml-12 text-base">
+                The table below shows nutritional values per serving without the additional fillings.
+            </p>
+
+            <!-- Nutrition Details -->
+            <p class="ml-12 mt-6 text-base">Calories<in-line>277kcal</in-line></p>
+            <hr class="my-3 ml-12 mr-12 border-gray-300">
+            <p class="ml-12 text-base">Carbs<in-line>0g</in-line></p>
+            <hr class="my-3 ml-12 mr-12 border-gray-300">
+            <p class="ml-12 text-base">Protein<in-line>20g</in-line></p>
+            <hr class="my-3 ml-12 mr-12 border-gray-300">
+            <p class="ml-12 text-base">Fat<in-line>22g</in-line></p>
+
+            <!-- Bottom Padding -->
+            <div class="pb-12"></div>
         </div>
-
-        <!-- Ingredients Section -->
-        <h2 class="mt-10 ml-12 text-2xl font-semibold" style="font-family: 'Outfit-Regular';">Ingredients</h2>
-        <p class="mt-6 ml-12 text-base" style="font-family: 'Outfit-Regular';">
-            - 2 large eggs<br>
-            - Salt and pepper<br>
-            - 1 tablespoon of butter<br>
-            - Optional fillings: cheese, vegetables, or meat<br>
-            - Fresh herbs for garnish
-        </p>
-
-        <!-- Divider -->
-        <hr class="my-10 ml-12 mr-12 border-gray-300">
-
-        <!-- Instructions Section -->
-        <h2 class="ml-12 text-2xl font-semibold" style="font-family: 'Outfit-Regular';">Instructions</h2>
-        <p class="mt-6 ml-12 text-base" style="font-family: 'Outfit-Regular';">
-            1. Beat the eggs with salt and pepper.<br>
-            2. Heat butter in a nonstick pan.<br>
-            3. Pour the eggs into the pan and cook on low heat.<br>
-            4. Add your choice of fillings before folding the omelette.<br>
-            5. Cook until thse eggs are set.<br>
-            6. Serve hot with garnish.
-        </p>√
-
-        <!-- Divider -->
-        <hr class="my-10 ml-12 mr-12 border-gray-300">
-
-        <!-- Nutrition Section -->
-        <h2 class="ml-12 text-2xl font-semibold" style="font-family: 'Outfit-Regular';">Nutrition</h2>
-        <p class="mt-6 ml-12 text-base" style="font-family: 'Outfit-Regular';">
-            The table below shows nutritional values per serving without the additional fillings.
-        </p>
-
-        <!-- Nutrition Details -->
-        <p class="ml-12 mt-6 text-base" style="font-family: 'Outfit-Regular';">Calories</p>
-        <hr class="my-3 ml-12 mr-12 border-gray-300">
-        <p class="ml-12 text-base" style="font-family: 'Outfit-Regular';">Carbs</p>
-        <hr class="my-3 ml-12 mr-12 border-gray-300">
-        <p class="ml-12 text-base" style="font-family: 'Outfit-Regular';">Protein</p>
-        <hr class="my-3 ml-12 mr-12 border-gray-300">
-        <p class="ml-12 text-base" style="font-family: 'Outfit-Regular';">Fat</p>
-
-        <!-- Bottom Padding -->
-        <div class="pb-12"></div>
     </div>
 
 </body>

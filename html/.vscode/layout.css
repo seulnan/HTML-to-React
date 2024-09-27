@@ -1,0 +1,136 @@
+.background {
+    width: 1440px;
+    height: 800px;
+    background: #fff;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+}
+.path {
+        position: absolute; /* 절대 위치 설정 */
+        right: 0px; /* 오른쪽 끝에 위치 */
+        bottom: 20px; /* 하단에 위치 */
+
+    }
+.title-container {
+    position: absolute;
+    top: 118px;
+    left: 165px;
+    width: 445px;
+    color: #512051;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.title {
+    position: absolute;
+    top: -76px;
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 48px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    line-height: 60px;
+}
+
+.subtitle {
+    position: absolute;
+    top: 145px; 
+    left: 0;
+    width: 445px;
+    color: #927B91;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 25px;
+}
+
+.container2 {
+    position: absolute;
+    top: 118px;
+    left: 700px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    width: 445px;
+}
+
+.box_s {
+    background: #F7F2F7;
+    border-radius: 8px;
+    width: 445px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 32.45px;
+}
+
+.star {
+    margin-left: 32px;
+    height: auto;
+}
+
+
+.container {
+    position: absolute;
+    top: 434px;
+    left: 165px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.box_B {
+    width: 350px;
+    height: 225px;
+    background: #512051;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    color: white;
+}
+
+.img {
+    position: absolute;
+    top: 37px;
+    left: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.b_title {
+    position: absolute;
+    top: 50px;
+    left: 110px;
+    flex-shrink: 0;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+}
+.bolder {
+    font-weight: bold; /* 굵게 설정 */
+}
+.b_subtitle {
+    position: absolute;
+    top: 70px;
+    left: 110px;
+    font-size: 17px;
+    color: #EE69A4;
+    font-weight: 400;
+}
+
+.b_text {
+    position: absolute;
+    align-items: center; 
+    top: 120px; /* 기존 111px에서 40px 아래로 이동 (111px + 40px) */
+    left: 32px;
+    width: 290px;
+    font-size: 16.5px;
+    font-weight: 500;
+    line-height: 22px;
+}

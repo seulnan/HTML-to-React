@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Omelette Recipe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Young+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .container {
+        display: flex;
+        width: 100%;
+        padding: var(--spacing-1600, 128px) var(--spacing-600, 48px);
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-100, 8px);
+        background: var(--color-stone-100, #F3E5D7);
+        }
+
+        .white-back {
+            display: flex;
+            width: 736px;
+            padding: var(--spacing-500, 40px);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+            flex-shrink: 0;
+            border-radius: var(--spacing-300, 24px);
+            background: var(--color-white, #FFF);
+        }
+
+        .main-image{
+            height: 300px;
+            align-self: stretch;
+            border-radius: var(--spacing-150, 12px);
+            background: url(image-omelette.jpeg) lightgray 50% / cover no-repeat;
+        }
+
+        .title-text {
+            align-self: stretch;
+            color: var(--color-stone-900, #312E2C);
+            font-family: 'Young Serif', Regular;
+            font-size: var(--font-size-desktop-text-preset-1, 40px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+        }
+
+        .content{
+            align-self: stretch;
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+        }
+
+        .pink-box {
+            display: flex;
+            padding: var(--spacing-300, 24px);
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-200, 16px);
+            align-self: stretch;
+            border-radius: var(--spacing-150, 12px);
+            background: var(--color-rose-50, #FFF7FB);
+        }
+
+        .pink-title {
+            align-self: stretch;
+            color: var(--color-rose-800, #7A284E);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-3, 20px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: 100%;
+        }
+
+        .pink-text {
+            flex: 1 0 0;
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+            display: flex;
+            padding-left: var(--spacing-100, 8px);
+            align-items: center;
+            gap: var(--spacing-200, 16px);
+            align-self: start;
+        }
+
+        .pink-tt{
+            flex: 1 0 0;
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%;
+        }
+        .p-ellipse {
+            width: 4px;
+            height: 4px;
+            flex-shrink: 0;
+            display: flex;
+            padding-left: var(--spacing-100, 8px);
+            align-items: center;
+            gap: var(--spacing-200, 16px);
+            align-self: center;
+            fill: var(--color-rose-800, #7A284E);
+        }
+        .p-ellipse-lo {
+            display: flex;
+            width: var(--spacing-200, 16px);
+            align-items: center;
+            gap: var(--spacing-100, 8px);
+            align-self: center;
+        }
+        .C_title {
+            color: var(--color-brown-800, #854632);
+            font-family: 'Young Serif', Regular;
+            font-size: var(--font-size-desktop-text-preset-2, 28px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+        }
+        .spacing {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-300, 24px);
+            align-self: stretch;
+        }
+        .i-ellipse{
+            fill: var(--color-brown-800, #854632);
+        }
+        .i-ellipse-lo {
+            display: flex;
+            width: var(--spacing-200, 16px);
+            align-items: center;
+            gap: var(--spacing-100, 8px);
+            align-self: center;
+        }
+        .Ingre-text {
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+            display: flex;
+            padding-left: var(--spacing-100, 8px);
+            align-items: center;
+            gap: var(--spacing-200, 16px);
+            align-self: start;
+        }
+        .bar {
+            width: 730px;
+            height: 1px;
+            background: var(--color-stone-150, #E3DDD7);
+        }
+        .ins-spacing {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--spacing-300, 24px);
+            align-self: stretch;
+        }
+        .ins-text {
+            flex: 1 0 0;
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+        }
+        .ins-title {
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%;
+        }
+        .N-intro {
+            align-self: stretch;
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+        }
+        .text-box {
+            display: flex;
+            padding: 0px var(--spacing-400, 32px);
+            align-items: center;
+            gap: var(--spacing-200, 16px);
+            align-self: stretch;
+        }
+        .N-title {
+            flex: 1 0 0;
+            color: var(--color-brown-800, #854632);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 150%;
+        }
+        .N-text {
+            flex: 1 0 0;
+            color: var(--color-stone-600, #5F564D);
+            font-family: 'Outfit';
+            font-size: var(--font-size-desktop-text-preset-4, 16px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            align-self: stretch;
+        }
+
+        ol li {
+            margin-left: 0; /* 기본 여백 초기화 */
+            padding-left: 20px; /* 번호와 내용 사이의 간격 조정 */
+        }
+
+        ol li::marker {
+            font-size: 1em; /* 번호의 크기 조정 (선택 사항) */
+            padding-right: 10px; /* 번호와 내용 사이의 간격 조정 */
+        }
+
+        li {
+            margin: 12px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class = "container">
+
+        <div class = "white-back">
+
+            <div class = "main-image"></div>
+            <div class = "title-text">Simple Omelette Recipe</div>
+            <div class = "content">An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.</div>
+        
+            <div class = "pink-box">
+                <div class = "pink-title">Preparation time</div>
+                
+                <div class = "pink-text">
+                    <svg class="p-ellipse p-ellipse-lo" xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                    </svg>
+                    <span class = "pink-tt">Total:</span> Approximately 10 minutes
+                </div>
+
+                <div class = "pink-text">
+                    <svg class="p-ellipse p-ellipse-lo" xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                    </svg>
+                    <span class = "pink-tt">Preparation:</span> 5 minutes
+                </div>
+
+                <div class = "pink-text">
+                    <svg class="p-ellipse p-ellipse-lo" xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#7A284E"/>
+                    </svg>
+                    <span class = "pink-tt">Cooking:</span> 5 minutes
+                </div>
+            </div>
+
+            <div class = "spacing">
+                <div class = "C_title">Ingredients</div>
+
+                <div class = "Ingre-text">
+                    <svg class = "i-ellipse i-ellipse-lo"xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#854632"/>
+                    </svg>
+                    2-3 large eggs
+                </div>
+                <div class = "Ingre-text">
+                    <svg class = "i-ellipse i-ellipse-lo"xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#854632"/>
+                    </svg>
+                    Salt, to taste
+                </div>
+                <div class = "Ingre-text">
+                    <svg class = "i-ellipse i-ellipse-lo"xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#854632"/>
+                    </svg>
+                    Pepper, to taste
+                </div>
+                <div class = "Ingre-text">
+                    <svg class = "i-ellipse i-ellipse-lo"xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#854632"/>
+                    </svg>
+                    1 tablespoon of butter or oil
+                </div>
+                <div class = "Ingre-text">
+                    <svg class = "i-ellipse i-ellipse-lo"xmlns="Ellipse 1.svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#854632"/>
+                    </svg>
+                    Optional fillings: cheese, diced vegetables, cooked meats, herbs
+                </div>
+            </div>
+
+            <div class = "spacing"></div>
+            <div class = "bar"></div>
+            <div class = "spacing"></div>
+
+            <div class = "C_title">Instructions</div>
+
+            <div class = "ins-text">
+                <ol>
+                    <li><span class = "ins-title">Beat the eggs: </span>In a bowl, beat the eggs with a pinch of salt and pepper until they are well mixed. You can add a tablespoon of water or milk for a fluffier texture.</li>
+                    <li><span class = "ins-title">Heat the pan: </span>Place a non-stick frying pan over medium heat and add butter or oil.</li>
+                    <li><span class = "ins-title">Cook the omelette: </span>Once the butter is melted and bubbling, pour in the eggs. Tilt the pan to ensure the eggs evenly coat the surface.</li>
+                    <li><span class = "ins-title">Add fillings (optional): </span>When the eggs begin to set at the edges but are still slightly runny in the middle, sprinkle your chosen fillings over one half of the omelette.</li>
+                    <li><span class = "ins-title">Fold and serve: </span>As the omelette continues to cook, carefully lift one edge and fold it over the fillings. Let it cook for another minute, then slide it onto a plate.</li>
+                    <li><span class = "ins-title">Enjoy: </span>Serve hot, with additional salt and pepper if needed.</li>
+                </ol>
+            </div>
+
+            <div class = "spacing"></div>
+            <div class = "bar"></div>
+            <div class = "spacing"></div>
+
+            <div class = "C_title">Nutrition</div>
+            <div class = "N-intro">The table below shows nutritional values per serving without the additional fillings.</div>
+
+            <div class = "text-box">
+                <span class = "N-text">calories</span><span class = "N-title">277kcal</span>
+            </div>
+            <div class = "bar"></div>
+            <div class = "text-box">
+                <span class = "N-text">Carbs</span><span class = "N-title">0g</span>
+            </div>
+            <div class = "bar"></div>
+            <div class = "text-box">
+                <span class = "N-text">Protein</span><span class = "N-title">20g</span>
+            </div>
+            <div class = "bar"></div>
+            <div class = "text-box">
+                <span class = "N-text">Fat</span><span class = "N-title">22g</span>
+            </div>
+
+        </div>   
+    </div>
+</body>
+</html>

@@ -1,5 +1,8 @@
 body{
     width: 1440px;
+    height: auto;
+    max-height: 1956px;
+    margin: 0 auto;
     padding: var(--spacing-1600, 128px) var(--spacing-600, 48px);
     display: flex;
     justify-content: center;
@@ -11,6 +14,8 @@ body{
 
 .container{
     width: 736px;
+    height: 1700px;
+    margin: 0 auto;
     padding: var(--spacing-500, 40px);
     display: flex;
     flex-direction: column;
@@ -32,12 +37,13 @@ body{
     background: var(--color-rose-50, #FFF7FB);
 }
 
-.image{
-    width: 656px;
+img{
+    width: auto;
     height: 300px;
     align-self: stretch;
     border-radius: var(--spacing-150, 12px);
     background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+    margin:auto;
 }
 
 .text-content {

@@ -128,4 +128,18 @@ body {
     font-size: 17px;
     font-weight: 500;
     line-height: 22px;
+    margin: 0 20px 0 0;
+  }
+
+  .background1{
+    position: absolute;
+    fill: linear-gradient(317deg, rgba(138, 67, 137, 0.00) 0%, #512051 93.57%, #512051 93.57%, #512051 93.57%);
+  }
+
+  .background2{
+    position: absolute;
+    width: 1085px;
+height: 673px;
+fill: linear-gradient(317deg, rgba(138, 67, 137, 0.00) 0%, #512051 93.57%, #512051 93.57%, #512051 93.57%);
+opacity: 0.05;
   }

@@ -80,75 +80,85 @@ body {
 
 /* Mobile 디자인을 위한 미디어 쿼리 */
 @media (max-width: 738px) {
-    /* title-container 중앙 정렬 */
-    .title-container {
-      text-align: center;
-      margin-left: 0;
-      margin-top: 0;
-    }
-  
-    /* title과 description을 세로로 정렬 */
-    .title-container h1,
-    .description {
-      text-align: center;
-    }
-  
-    .description {
-      margin: 17px auto 0;
-      margin-left: 24px;
-      margin-right: 24px;
-    }
-  
-    /* 박스 1이 description 아래로 배치 */
-    .space-y-4 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-    }
-  
-    .star-box-1, .star-box-2, .star-box-3 {
-      margin-left: 0;
-      margin-right: 0;
-      margin-top: 16px;
-      width: calc(100% - 48px); /* 좌우 마진 24px씩 */
-      text-align: center;
-    }
-  
-    .star-box-1 {
-      margin-top: 32px; /* description과의 간격 */
-    }
-  
-    /* 별과 텍스트를 세로로 정렬 */
-    .star-box-1 div, .star-box-2 div, .star-box-3 div {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .star-box-1 .flex,
-    .star-box-2 .flex,
-    .star-box-3 .flex {
-      margin-right: 0;
-    }
-  
-    /* 별과 텍스트 사이 간격 */
-    .star-box-1 p, .star-box-2 p, .star-box-3 p {
-      margin-top: 15.23px;
-    }
-  
-    /* 평론가 섹션 세로 배열 및 중앙 정렬 */
-    .critics-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 49px; /* 박스 3과의 간격 */
-      gap: 16px;
-    }
-  
-    .critic-box {
-      margin: 0;
-      width: 350px; /* 고정된 너비 */
-      height: 234px; /* 고정된 높이 */
-    }
+  /* title-container 중앙 정렬 */
+  .title-container {
+    text-align: center;
+    margin-left: 0;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
+  /* title과 description을 세로로 정렬 */
+  .title-container h1,
+  .description {
+    text-align: center;
+    width: 100%; /* 항상 가운데 정렬되도록 설정 */
+  }
+
+  /* description 텍스트 줄 바꿈 */
+  .description {
+    margin: 17px auto 0;
+    margin-left: 24px;
+    margin-right: 24px;
+    white-space: normal; /* 자연스러운 줄 바꿈 */
+  }
+
+  /* 박스 1이 description 아래로 배치 */
+  .space-y-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    margin-top: 32px; /* description과의 간격 */
+  }
+
+  .star-box-1, .star-box-2, .star-box-3 {
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-top: 16px;
+    width: calc(100% - 48px); /* 좌우 마진 24px씩 */
+    text-align: center;
+  }
+
+  /* 별과 텍스트를 세로로 정렬 */
+  .star-box-1 div, .star-box-2 div, .star-box-3 div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .star-box-1 .flex,
+  .star-box-2 .flex,
+  .star-box-3 .flex {
+    margin-right: 0;
+  }
+
+  /* 별과 텍스트 사이 간격 */
+  .star-box-1 p, .star-box-2 p, .star-box-3 p {
+    margin-top: 15.23px;
+  }
+
+  /* 평론가 섹션 세로 배열 및 중앙 정렬 */
+  .critics-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 49px;
+    gap: 16px;
+  }
+
+  .critic-box {
+    margin: 0;
+    width: 350px;
+    height: 234px;
+  }
+
+  /* 제목 중앙 정렬 */
+  .title {
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}

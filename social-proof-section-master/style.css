@@ -285,7 +285,12 @@ flex-shrink: 0;
     width: 263px;
   }
 
+  .background1{
+    width: 100%;
+  }
+
   .background2{
+    position: relative;
     bottom: 0px;
   }
 }

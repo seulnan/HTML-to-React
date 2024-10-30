@@ -11,56 +11,65 @@
 
 body {
     font-family: 'League Spartan', sans-serif;
+    margin: 0; /* 기본 여백 제거 */
 }
-.path {
-        position: absolute; /* 절대 위치 설정 */
-        right: 0px; /* 오른쪽 끝에 위치 */
-        bottom: 20px; /* 하단에 위치 */
 
-    }
+.path {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 80vw;  /* 최대 너비를 화면의 80%로 제한 */
+    max-height: 80vh; /* 최대 높이를 화면의 80%로 제한 */
+    width: auto;      /* 자동 너비 조정 */
+    height: auto;     /* 자동 높이 조정 */
+}
+
+.path2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 80vw;  /* 최대 너비를 화면의 80%로 제한 */
+    max-height: 80vh; /* 최대 높이를 화면의 80%로 제한 */
+    width: auto;      /* 자동 너비 조정 */
+    height: auto;     /* 자동 높이 조정 */
+}
+
 .title-container {
     display: flex;
+    flex-direction: column; 
     position: absolute;
-    top: 118px;
+    top: 50px; 
     left: 165px;
-    width: 445px;
+    width: 445px; 
     color: #512051;
     margin-bottom: 20px;
-    font-family: 'League Spartan', sans-serif;
 }
 
 .title {
-    position: absolute;
-    top: -76px;
-    font-size: 68px;
+    font-size: 56px; 
     font-weight: 800;
-    line-height: 48px;
-    font-weight: bold;
+    line-height: 48px; 
     letter-spacing: -2px;
-    line-height: 60px;
+    margin-bottom: 15px; 
 }
 
 .subtitle {
-    position: absolute;
-    top: 145px; 
-    left: 0;
-    width: 445px;
     color: #927B91;
-    font-size: 19px;
+    font-size: 19px; 
     font-weight: 500;
-    line-height: 25px;
+    margin-bottom: 30px; 
+    line-height: 25px; 
 }
 
 .container2 {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     position: absolute;
-    top: 118px;
-    left: 700px;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 20px;
-    width: 445px;
+    top: 118px; 
+    left: 700px; 
+    width: 445px; 
+    gap: 20px; 
+    color: #512051;
 }
 
 .box_s {
@@ -68,10 +77,9 @@ body {
     align-items: center;
     background: #F7F2F7;
     border-radius: 8px;
-    width: 445px;
-    height: 56px;
-    align-items: center;
-    gap: 32.45px;
+    width: 100%; 
+    height: 56px; 
+    gap: 32.45px; 
 }
 
 .star {
@@ -79,68 +87,63 @@ body {
     height: auto;
 }
 
-
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     position: absolute;
     top: 434px;
-    left: 165px;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    left: 165px; 
+    width: calc(100% - 330px); 
+    gap: 20px; 
 }
 
 .box_B {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     width: 350px;
     height: 225px;
     background: #512051;
     border-radius: 8px;
-    flex-direction: column;
     padding: 20px;
-    position: relative;
     color: white;
+}
+.box_B_content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
 }
 
 .img {
-    position: absolute;
-    top: 37px;
-    left: 32px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-right: 10px; 
 }
 
+.b_title_subtitle {
+    display: flex;
+    flex-direction: column;
+}
 .b_title {
-    position: absolute;
-    top: 50px;
-    left: 110px;
-    flex-shrink: 0;
     font-size: 17px;
-    font-style: normal;
     font-weight: 700;
 }
+
 .bolder {
-    font-weight: bold; /* 굵게 설정 */
+    font-weight: bold;
 }
+
 .b_subtitle {
-    position: absolute;
-    top: 70px;
-    left: 110px;
     font-size: 17px;
     color: #EE69A4;
     font-weight: 400;
 }
 
 .b_text {
-    position: absolute;
-    align-items: center; 
-    top: 120px; /* 기존 111px에서 40px 아래로 이동 (111px + 40px) */
-    left: 51%;
-    transform : translateX(-50%);
-    width: 290px;
+    margin-top: 10px;
+    width: 100%;
     font-size: 16.5px;
     font-weight: 500;
     line-height: 22px;
 }
+

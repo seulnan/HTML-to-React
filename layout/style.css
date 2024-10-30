@@ -7,9 +7,7 @@
 
 body {
     font-family: 'League Spartan', sans-serif;
-    min-height: 100vh;
     position: relative;
-    overflow: hidden;
 }
 
 .background {
@@ -27,7 +25,14 @@ body {
     left: 0;
 }
 
-.bg-pattern-bottom {
+.bg-pattern-bottom1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.bg-pattern-bottom2 {
+    display: none;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -37,11 +42,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 70px;
-    padding-top: 118px;
     padding-left: 165px;
 }
 
 .top-section {
+    padding-top: 118px;
     display: flex;
     align-items: flex-start;
     gap: 150px;
@@ -139,4 +144,79 @@ body {
 .review-text {
     font-size: 14px;
     line-height: 1.5;
+}
+
+@media(max-width: 375px){
+    body {
+        width: 375px;
+        height: 1530px;
+    }
+    .bg-pattern-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .bg-pattern-bottom1 {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .bg-pattern-bottom2 {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .content {
+        display: flex;
+        gap: 70px;
+        padding-left: 132px;
+    }
+    .top-section {
+        display: block;
+        flex-direction: column;
+        align-items:center;
+        gap: 0px;
+    }
+    .text-group {
+        display: flex;
+        flex-wrap: block;
+        gap: 17px;
+        width: 327px;
+    }
+    .main-heading {
+        font-size: 40px;
+        text-align: center;
+    }
+    .sub-heading {
+        font-size: 19px;
+        text-align: center;
+        margin-bottom: 39px;
+    }
+    .star {
+        align-items: center;
+        padding-bottom: 15px;
+        margin-left: 90px;
+    }
+    .box {
+        padding: 16px;
+        display: block;
+        align-items: center;
+        width: 327px;
+        height: 78px;
+    }
+    .rating-text {
+        font-size: 17px;
+        font-weight: 700;
+        color: #512051;
+        align-items: center;
+        text-align: center;
+    }
+    .horizontal-boxes {
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+    }
 }

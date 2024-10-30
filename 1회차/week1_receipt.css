@@ -1,0 +1,90 @@
+/* Custom fonts */
+@font-face {
+    font-family: 'YoungSerif-Regular';
+    src: url('path-to/YoungSerif-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Outfit-Regular';
+    src: url('path-to/Outfit-Regular.ttf') format('truetype');
+}
+
+/* General body style */
+body {
+    background-color: #e7e5e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1956px;
+    margin: 0;
+    padding: 128px 352px; /* Top & Bottom padding of 128px, Left & Right padding of 352px */
+    font-family: 'Outfit-Regular';
+}
+
+/* Main container */
+div {
+    background-color: white;
+    width: 736px;
+    height: 1700px;
+    border-radius: 1rem;
+    position: relative;
+}
+
+/* Image styling */
+img {
+    width: 656px;
+    height: 300px;
+    margin: 3rem auto;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+/* Titles */
+h1 {
+    margin-top: 1rem;
+    margin-left: 3rem;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'YoungSerif-Regular';
+}
+
+h2 {
+    margin-left: 3rem;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Outfit-Regular';
+}
+
+/* Paragraphs */
+p {
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    font-size: 16px;
+    font-family: 'Outfit-Regular';
+}
+
+/* Preparation time card */
+.bg-rose-50 {
+    background-color: #fff1f2;
+    width: 636px;
+    margin: 2.5rem 3rem 0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Horizontal Divider */
+hr {
+    margin: 2.5rem 3rem;
+    border-color: #d1d5db;
+}
+
+/* Nutrition section */
+.nutrition-section p {
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    font-size: 16px;
+}
+
+/* Padding for the bottom */
+.pb-12 {
+    padding-bottom: 3rem;
+}

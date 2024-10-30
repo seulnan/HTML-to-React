@@ -1,10 +1,12 @@
 .background {
-    width: 1440px;
-    height: 800px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
     background: #fff;
     position: relative;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 body {
@@ -17,11 +19,13 @@ body {
 
     }
 .title-container {
+    display: flex;
     position: absolute;
     top: 118px;
     left: 165px;
     width: 445px;
     color: #512051;
+    margin-bottom: 20px;
     font-family: 'League Spartan', sans-serif;
 }
 
@@ -48,6 +52,8 @@ body {
 }
 
 .container2 {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 118px;
     left: 700px;
@@ -58,11 +64,12 @@ body {
 }
 
 .box_s {
+    display: flex;
+    align-items: center;
     background: #F7F2F7;
     border-radius: 8px;
     width: 445px;
     height: 56px;
-    display: flex;
     align-items: center;
     gap: 32.45px;
 }
@@ -74,20 +81,22 @@ body {
 
 
 .container {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     top: 434px;
     left: 165px;
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
 .box_B {
+    display: flex;
+    align-items: center;
     width: 350px;
     height: 225px;
     background: #512051;
     border-radius: 8px;
-    display: flex;
     flex-direction: column;
     padding: 20px;
     position: relative;
@@ -128,7 +137,8 @@ body {
     position: absolute;
     align-items: center; 
     top: 120px; /* 기존 111px에서 40px 아래로 이동 (111px + 40px) */
-    left: 32px;
+    left: 51%;
+    transform : translateX(-50%);
     width: 290px;
     font-size: 16.5px;
     font-weight: 500;

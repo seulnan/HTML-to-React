@@ -118,7 +118,6 @@ body {
     margin-left: 24px;
     margin-right: 24px;
     margin-top: 16px;
-    width: calc(100% - 48px); /* 좌우 마진 24px씩 */
     text-align: center;
   }
 

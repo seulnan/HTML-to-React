@@ -24,9 +24,10 @@ body {
 }
 
 .background1 {
-    width: 1085px;
-    height: 673px;
+    max-width: 70vw; /* 너비를 뷰포트 너비 기준으로 설정 */
+    max-height: 40vh;
     flex-shrink: 0;
+    top : 30px;
     bottom: 0;
     right: 0;
     opacity: 0.05;

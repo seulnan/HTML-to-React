@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>웹사이트 레이아웃</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFF;
+            font-family: "League Spartan", sans-serif;
+        }
+    
+        .desktop {
+            width: 1440px;
+            height: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        .background1 {
+            width: 1085px;
+            height: 673px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            opacity: 0.05;
+        }
+        .background2 {
+            width: 584px;
+            height: 362px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.05;
+        }
+        .main-text {
+            width: 445px;
+            height: 154px;
+            position: absolute;
+            top: 118px;
+            left: 165px;
+            color: #512051;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 48px;
+        }
+        .sub-text {
+            width: 445px;
+            position: absolute;
+            top: 288px;
+            left: 165px;
+            color: #927B91;
+            font-size: 19px;
+            font-weight: 500;
+            line-height: 25px;
+        }
+        .box {
+            width: 445px;
+            height: 56px;
+            border-radius: 8px;
+            background-color: #F7F2F7;
+            display: flex;
+            align-items: center;
+            position: absolute;
+        }
+        .box img {
+            position: absolute;
+            top: 20px;
+            left: 32px;
+        }
+        .box-text {
+            color: #512051;
+            font-size: 17px;
+            font-weight: 700;
+            position: absolute;
+            top: 20px;
+            left: 181px;
+        }
+        .group {
+            position: absolute;
+            top: 434px;
+            left: 165px;
+            display: flex;
+            gap: 30px; /* 박스 간격 */
+        }
+        .group-box {
+            width: 350px;
+            height: 234px;
+            border-radius: 8px;
+            background-color: #512051;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 32px; /* 양옆 32px 간격 추가 */
+            box-sizing: border-box; /* padding이 크기에 포함되도록 설정 */
+        }
+        .group-box img {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px; /* 원형 */
+            position: absolute;
+            top: 32px;
+            left: 32px;
+        }
+        .review-name {
+            color: #FFF;
+            font-size: 17px;
+            font-weight: 700;
+            position: absolute;
+            top: 33px;
+            left: 95px;
+        }
+        .review-verifier {
+            color: #EE69A4;
+            font-size: 17px;
+            font-weight: 400;
+            position: absolute;
+            top: 53px;
+            left: 95px;
+        }
+        .review-text {
+            color: #FFF;
+            font-family: "League Spartan";
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 22px; /* 129.412% */
+            letter-spacing: -0.304px;
+            padding-left: 2px;  /* 양옆 32px 간격 추가 */
+            padding-right: 2px; /* 양옆 32px 간격 추가 */
+            word-wrap: break-word; /* 텍스트 줄바꿈 설정 */
+            margin-top: 48px; /* 위치 조정 */
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop">
+        <!-- 배경 1 -->
+        <svg class="background1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1085 673" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 673C0 673 111.534 442.099 422 381C732.466 319.901 614.94 258.276 767.47 135.975C920 13.6747 1085 0 1085 0V673H0Z" fill="url(#paint0_linear_0_64)"/>
+            <defs>
+                <linearGradient id="paint0_linear_0_64" x1="1607.81" y1="368.129" x2="1076.12" y2="-543.631" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8A4389" stop-opacity="0.01"/>
+                    <stop offset="1" stop-color="#512051"/>
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <!-- 배경 2 -->
+        <svg class="background2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 584 362" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M584 0C584 0 523.967 124.2 356.859 157.064C189.751 189.928 253.009 223.076 170.91 288.86C88.8111 354.645 0 362 0 362V0H584Z" fill="url(#paint0_linear_0_65)"/>
+            <defs>
+                <linearGradient id="paint0_linear_0_65" x1="-281.401" y1="163.987" x2="4.4935" y2="654.58" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8A4389" stop-opacity="0.01"/>
+                    <stop offset="1" stop-color="#512051"/>
+                </linearGradient>
+            </defs>
+        </svg>
+        <!-- 메인 텍스트 -->
+        <div class="main-text">10,000+ of our users love our products.</div>
+        
+        <!-- 서브 텍스트 -->
+        <div class="sub-text">We only provide great products combined with excellent customer service. See what our satisfied customers are saying about our services.</div>
+        
+        <!-- 박스들 -->
+        <div class="box" style="top: 150px; right: 230px;">
+            <img src="Group 4.png" alt="Star">
+            <div class="box-text">Rated 5 Stars in Reviews</div>
+        </div>
+        <div class="box" style="top: 220px; right: 230px;">
+            <img src="Group 4.png" alt="Star">
+            <div class="box-text">Rated 5 Stars in Report Guru</div>
+        </div>
+        <div class="box" style="top: 290px; right: 230px;">
+            <img src="Group 4.png" alt="Star">
+            <div class="box-text">Rated 5 Stars in BestTech</div>
+        </div>
+        
+        <!-- 그룹 박스 -->
+        <div class="group">
+            <div class="group-box">
+                <img src="Oval.png" alt="Colton Smith">
+                <div class="review-name">Colton Smith</div>
+                <div class="review-verifier">Verified Buyer</div>
+                <div class="review-text">"We needed the same printed design as the one we had ordered a week prior. Not only did they find the original order, but we also received it in time. Excellent!"</div>
+            </div>
+            <div class="group-box">
+                <img src="Oval2.png" alt="Irene">
+                <div class="review-name">Irene</div>
+                <div class="review-verifier">Verified Buyer</div>
+                <div class="review-text">“ Customer service is always excellent and very quick turn around. Completely delighted with the simplicity of the purchase and the speed of delivery.”</div>
+            </div>
+            <div class="group-box">
+                <img src="Oval3.png" alt="Anne">
+                <div class="review-name">Anne</div>
+                <div class="review-verifier">Verified Buyer</div>
+                <div class="review-text">“ Put an order with this company and can only praise them for the very high standard. Will definitely use them again and recommend them to everyone! ”</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

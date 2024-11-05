@@ -149,16 +149,6 @@ hr{
 
 .nutrition-label {
     flex: 1 0 0;
-    color: var(--color-brown-800, #854632);
-    font-family: 'Outfit';
-    font-size: var(--font-size-desktop-text-preset-4, 16px);
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-}
-
-.nutrition-value {
-    flex: 1 0 0;
     color: var(--color-stone-600, #5F564D);
     font-family: 'Outfit';
     font-size: var(--font-size-desktop-text-preset-4, 16px);
@@ -172,6 +162,16 @@ hr{
     align-self: stretch;
 }
 
+.nutrition-value {
+    flex: 1 0 0;
+    color: var(--color-brown-800, #854632);
+    font-family: 'Outfit';
+    font-size: var(--font-size-desktop-text-preset-4, 16px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
 .iin_title1{
     color: var(--color-brown-800, #854632);
     /* Desktop/text-preset-4-bold */
@@ -181,3 +181,6 @@ hr{
     font-weight: 700;
 }
 
+.text_color_instruction{
+    color: var(--color-stone-600, #5F564D);
+}

@@ -119,12 +119,12 @@ body {
     white-space: normal; /* 자연스러운 줄 바꿈 */
   }
 
-  /* space-y-4도 세로 정렬 */
   .space-y-4 {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  
 
   .star-box-1, .star-box-2, .star-box-3 {
     margin-left: 24px;

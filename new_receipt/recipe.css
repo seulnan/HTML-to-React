@@ -122,11 +122,30 @@ body {
 }
 
 .instructions-box ol {
-    padding-left: 20px;
+    list-style-type: none;
+    counter-reset: list-counter;
+    padding: 0;
 }
 
-.instructions-box li {
+.instructions-box ol li {
+    position: relative;
     margin-bottom: 12px;
+    padding-left: 29px; /* 번호 너비와 간격을 위한 패딩 */
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    color: #312E2C;
+}
+
+.instructions-box ol li::before {
+    counter-increment: list-counter;
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #854632; /* 번호 색상 */
+    font-family: 'Outfit', sans-serif; /* 번호 폰트 */
+    font-size: 24px; /* 번호 폰트 크기 */
+    line-height: 1;
 }
 
 .nutrition-box {

@@ -1,3 +1,10 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 body {
     background-image: url('bg-pattern-top-desktop.svg'), url('bg-pattern-bottom-desktop.svg');
     background-position: top left, bottom right;
@@ -80,7 +87,12 @@ body {
 
 /* Mobile 디자인을 위한 미디어 쿼리 */
 @media (max-width: 738px) {
-  /* title-container 중앙 정렬 */
+  header {
+    flex-direction: column; /* 세로로 정렬 */
+    align-items: center;
+    gap: 32px; /* title-container와 space-y-4 사이의 간격 */
+  }
+  /* title-container를 중앙에 배치 */
   .title-container {
     text-align: center;
     margin-left: 0;
@@ -105,13 +117,11 @@ body {
     white-space: normal; /* 자연스러운 줄 바꿈 */
   }
 
-  /* 박스 1이 description 아래로 배치 */
+  /* space-y-4도 세로 정렬 */
   .space-y-4 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0;
-    margin-top: 32px; /* description과의 간격 */
   }
 
   .star-box-1, .star-box-2, .star-box-3 {
@@ -139,6 +149,7 @@ body {
   }
 
   /* 평론가 섹션 세로 배열 및 중앙 정렬 */
+  /* Critics section을 그 아래에 배치 */
   .critics-section {
     display: flex;
     flex-direction: column;

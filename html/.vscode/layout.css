@@ -92,7 +92,7 @@ body {
     flex-direction: row; 
     position: absolute;
     top: 434px;
-    left: 165px; 
+    align-items: center;
     width: calc(100% - 330px); 
     gap: 20px; 
 }
@@ -116,17 +116,22 @@ body {
 .img {
     width: 50px;
     height: 50px;
+    margin-left: 32PX;
     border-radius: 50%;
-    margin-right: 10px; 
+    margin-top: 30px;
+    margin-right: 23px; 
 }
 
 .b_title_subtitle {
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
+    
 }
 .b_title {
     font-size: 17px;
     font-weight: 700;
+    margin-bottom: 4px;
 }
 
 .bolder {
@@ -140,14 +145,16 @@ body {
 }
 
 .b_text {
-    margin-top: 10px;
-    width: 100%;
+    margin : 22px;
+    width: 85%;
     font-size: 16.5px;
     font-weight: 500;
     line-height: 22px;
+    
 }
 
-@media (max-width: 738px) {
+/* 미디어 쿼리 추가로 반응형 디자인 설정 */
+@media (max-width: 375px) {
     body {
         
         margin: 0; /* 기본 여백 제거 */
@@ -169,8 +176,10 @@ body {
         position: relative;
         top: 10px;
         left: auto;
-        width: 73%;
+        width: 85%;
+        height :  25%;
         
+        margin-top: 237px; 
         margin-bottom: 237px; 
         gap: 20px;
         align-items: center;
@@ -182,27 +191,37 @@ body {
 
     .star {
         margin-top : 16px;
-        gap: 32px;
+        margin-right : 16px;
+        
     }
 
     .container {
         flex-direction: column;
-        align-items: center;
+        align-content: center;
         margin-top: 260px;
+        width: 78%;
+        height : 25%;
+    
     }
     .box_s{
         display : flex;
         flex-direction: column;
         align-items: center;
-        height : 78px;
+        height : 95px;
     }
 
     .box_B {
-        width: 100%;
+        height: 23vh;
+        width: 77vw;
         margin-bottom: 0px;
+        align-content: center;
+        padding-left: 12px;
+        padding-right: 12px;
+
     }
     .img{
         margin-top : 15px; 
+        margin-left : 10px;
     }
     .b_title_subtitle{
         margin-top : 15px;
@@ -212,8 +231,10 @@ body {
     }
     .b_text{
         margin-top : 10px;
-        font-size: 17px;
+        font-size: 16px;
+        width : 93%;
         align-items: center;
+        margin-left : 10px;
     }
 }
 

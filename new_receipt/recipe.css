@@ -146,8 +146,44 @@ body {
     margin-bottom: 24px;
 }
 
-.cal-box {
-    width: 656px;
-    height: 168px;
-    background-color: #FFFFFF;
+.spacing {
+    height: 16px;
+}
+
+.bar {
+    width: 100%;
+    height: 1px;
+    background-color: #CCC; /* 필요한 경우 색상 조정 */
+    margin: 8px 0;
+}
+
+.C_title {
+    font-family: 'Young Serif', serif;
+    color: #854632;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.N-intro {
+    font-size: 14px;
+    color: #312E2C;
+    margin-bottom: 16px;
+}
+
+.text-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.N-text {
+    font-size: 16px;
+    color: #312E2C;
+}
+
+.N-title {
+    font-size: 16px;
+    color: #312E2C;
+    font-weight: bold;
 }

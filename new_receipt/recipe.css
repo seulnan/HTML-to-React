@@ -20,12 +20,13 @@ body {
 .recipe-box {
     background-color: #FFFFFF;
     width: 736px;
-    height: 1700px;
     margin-top: 128px;
     margin-left: 352px;
     position: relative;
     border-radius: var(--spacing300);
+    /* height: 1700px; 이 부분을 제거합니다. */
 }
+
 
 .recipe-image {
     width: 656px;
@@ -133,6 +134,7 @@ body {
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .nutrition-box h2 {
@@ -183,3 +185,8 @@ body {
     color: #312E2C;
     font-weight: bold;
 }
+/* 마지막 텍스트 박스에 마진 추가 */
+.cal-box .text-box:last-child {
+    margin-bottom: 20px;
+}
+

@@ -114,7 +114,7 @@ body {
   /* description 텍스트 줄 바꿈 */
   .description {
     margin: 17px auto 0;
-    margin-left: 24px;
+    margin-left: 0px;
     margin-right: 24px;
     white-space: normal; /* 자연스러운 줄 바꿈 */
   }

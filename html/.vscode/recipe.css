@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    max-width: 1440px;
+    padding: var(--spacing-1600, 128px) var(--spacing-600, 48px);
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: #F3E5D7;
+    margin: auto;
+}
+.white_box {
+    display: flex;
+    width: 736px;
+    padding: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 24px;
+    background: #FFF;
+}
+img {
+    height: 300px;
+    align-self: stretch;
+    border-radius: 12px;
+}
+.headtitle {
+    color: #312E2C;
+    font-family: 'Young Serif', serif;
+    font-size: 40px;
+    line-height: 100%;
+    align-self: stretch;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+.subtitle {
+    color: #5F564D;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    align-self: stretch;
+    padding-bottom: 30px;
+}
+.pink_box {
+    font-family: 'Young Serif', serif;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 12px;
+    background: #FFF7FB;
+    width: 92%;
+    height: 150px;
+}
+.title_pink {
+    align-self: stretch;
+    color: #7A284E;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 100%;
+}
+.Red_title {
+    align-self: stretch;
+    color: #854632;
+    font-family: 'Young Serif', serif;
+    font-size: 28px;
+    line-height: 100%;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+.content {
+    line-height: 150%;
+    font-size: var(--font-size-desktop-text-preset-4, 18px);
+    color: #5F564D;
+    margin-bottom: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: normal;
+}
+.nutrition {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #5F564D;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+    line-height: 150%;
+}
+.nutrition-info {
+    flex: 1;
+    text-align: left;
+    margin-left: 5%;
+    padding-right: 20px;
+}
+.nutrition-item {
+    color: #854632;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    margin-left: auto;
+    margin-right: 45%;
+    min-width: 60px;
+}
+.bolder {
+    font-weight: bolder;
+    color: #5F564D;
+    margin-bottom: 10px;
+}
+.line {
+    width: 720px;
+    height: 1px;
+    align-self: stretch;
+    background: #D8D3CD;
+    margin: 8px 0px;
+}
+.bullet {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 150%;
+}
+.bullet-icon {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #854632;
+    margin-top: -14px;
+}

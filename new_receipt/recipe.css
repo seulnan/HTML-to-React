@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F3E5D7;
+    width: 1440px;
+    height: 1959px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.recipe-container {
+    width: 1440px;
+    height: 1959px;
+}
+
+.recipe-box {
+    background-color: #FFFFFF;
+    width: 736px;
+    height: 1700px;
+    margin-top: 128px;
+    margin-left: 352px;
+    position: relative;
+}
+
+.recipe-image {
+    width: 656px;
+    height: 300px;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.simple-omelette-recipe {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.simple-omelette-recipe h1 {
+    font-family: 'Young Serif', serif;
+    color: #312E2C;
+    line-height: 40px;
+    margin-bottom: 24px;
+}
+
+.simple-omelette-recipe p {
+    color: #312E2C;
+    line-height: 1.5em;
+}
+
+.preparation-time-box {
+    margin-top: 32px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: #FFF7FB;
+    padding: 16px;
+}
+
+.preparation-time-box h2 {
+    font-family: 'Outfit', sans-serif;
+    color: #7A284E;
+    margin-bottom: 8px;
+}
+
+.preparation-time-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.preparation-time-box li {
+    margin-bottom: 4px;
+}
+
+.ingredients-box {
+    margin-top: 32px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.ingredients-box h2 {
+    font-family: 'Young Serif', serif;
+    color: #312E2C;
+    line-height: 40px;
+    margin-bottom: 16px;
+}
+
+.ingredients-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ingredients-box li {
+    margin-bottom: 4px;
+}
+
+.line {
+    width: 656px;
+    margin-top: 32px;
+    margin-left: 40px;
+    border: none;
+    border-top: 1px solid #312E2C;
+}
+
+.instructions-box {
+    margin-top: 32px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.instructions-box h2 {
+    font-family: 'Young Serif', serif;
+    color: #312E2C;
+    line-height: 40px;
+    margin-bottom: 16px;
+}
+
+.instructions-box ol {
+    padding-left: 20px;
+}
+
+.instructions-box li {
+    margin-bottom: 12px;
+}
+
+.nutrition-box {
+    margin-top: 32px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.nutrition-box h2 {
+    font-family: 'Young Serif', serif;
+    color: #312E2C;
+    line-height: 40px;
+    margin-bottom: 24px;
+}
+
+.nutrition-box p {
+    margin-bottom: 24px;
+}
+
+.cal-box {
+    /* Placeholder for the cal box */
+    height: 100px; /* Adjust the height as needed */
+    background-color: #F3E5D7; /* Adjust the background color if necessary */
+}

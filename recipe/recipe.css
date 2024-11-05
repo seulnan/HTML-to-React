@@ -45,7 +45,7 @@ body{
 .main_title{
     color: var(--color-stone-900, #312E2C);
 
-    font-family: "Young Serif";
+    font-family: Young Serif;
     font-size: var(--font-size-desktop-text-preset-1, 40px);
     font-style: normal;
     font-weight: 400;
@@ -91,7 +91,7 @@ body{
     color: var(--color-brown-800, #854632);
 
     /* Desktop/text-preset-2 */
-    font-family: "Young Serif";
+    font-family: Young Serif;
     font-size: var(--font-size-desktop-text-preset-2, 28px);
     font-style: normal;
     font-weight: 400;

@@ -54,7 +54,7 @@ body {
 
    /* Custom spacing for the star boxes */
    .star-box-1, .star-box-2, .star-box-3 {
-    margin-left: 260px !important; /* 각 박스의 왼쪽 마진을 260px로 설정 */
+    margin-left: 0px !important; /* 각 박스의 왼쪽 마진을 260px로 설정 */
   }
 
   /* Custom spacing for the star boxes */
@@ -86,12 +86,14 @@ body {
     }
 
 /* Mobile 디자인을 위한 미디어 쿼리 */
+/* Mobile 디자인을 위한 미디어 쿼리 */
 @media (max-width: 738px) {
   header {
     flex-direction: column; /* 세로로 정렬 */
     align-items: center;
     gap: 32px; /* title-container와 space-y-4 사이의 간격 */
   }
+  
   /* title-container를 중앙에 배치 */
   .title-container {
     text-align: center;
@@ -132,24 +134,19 @@ body {
   }
 
   /* 별과 텍스트를 세로로 정렬 */
-  .star-box-1 div, .star-box-2 div, .star-box-3 div {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .star-box-1 .flex,
-  .star-box-2 .flex,
-  .star-box-3 .flex {
-    margin-right: 0;
+  .star-box-1, .star-box-2, .star-box-3 {
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
   }
 
   /* 별과 텍스트 사이 간격 */
   .star-box-1 p, .star-box-2 p, .star-box-3 p {
-    margin-top: 15.23px;
+    margin-top: 8px; /* 별과 텍스트 사이의 간격 조정 */
   }
 
+
   /* 평론가 섹션 세로 배열 및 중앙 정렬 */
-  /* Critics section을 그 아래에 배치 */
   .critics-section {
     display: flex;
     flex-direction: column;

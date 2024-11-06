@@ -121,10 +121,11 @@ img {
     align-items: center;
     gap: 8px;
     line-height: 150%;
+    margin-left: -30px;
 }
 .bullet-icon {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
     flex-shrink: 0;
     border-radius: 50%;
     background: #854632;

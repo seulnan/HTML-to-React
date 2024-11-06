@@ -192,7 +192,7 @@ body {
     }
 
     .review {
-        width: 100%;
+        padding: 0 55px;
         height: auto;
     }
 
@@ -211,16 +211,19 @@ body {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .box1 {
         left: 0;
         max-width: 100%;
+        height: auto;
     }
     .titles {
         max-width: 88%;
     }
     .review_box {
-        row-gap: 32px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
     }
     .review {
         max-width: 100%;
@@ -228,18 +231,26 @@ body {
         flex-direction: column;
         padding: 16px 0 15px;
         row-gap: 15px;
-        margin-bottom: 16px;
     }
     .review_text {
+        margin: 0 55px;
         text-align: center;
         font-size: 17px;
-        margin: 0;
+        margin: 0 55px;
     }
 
-    /*
     .box2 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        left: 0%;
+        top: 159px;
+        align-items: center;
+    }
+
+    .people_boxes {
+        top: 0;
         width: 88%;
-        padding: 49px 24px 0;
     }
     .people_box {
         width: 88%;
@@ -247,5 +258,4 @@ body {
         padding: 0 24px 32px;
         row-gap: 16px;
     }
-        */
 }

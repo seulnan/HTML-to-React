@@ -80,7 +80,7 @@ body {
 
 
 .box {
-    width: 327px;
+    width: 445px;
     height: 56px;
     border-radius: 8px;
     background-color: #F7F2F7;
@@ -108,8 +108,8 @@ body {
 }
 
 .group-box {
-    width: 320px; /* 그룹 박스 크기 조정 */
-    padding: 24px;
+    width: 350px; /* 그룹 박스 크기 조정 */
+    padding: 30px;
     border-radius: 8px;
     background-color: #512051;
     box-sizing: border-box;
@@ -150,7 +150,7 @@ body {
 }
 
 .review-text {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 22px;
     letter-spacing: -0.304px;

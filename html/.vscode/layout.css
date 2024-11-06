@@ -170,6 +170,11 @@ body {
     }
     .subtitle {
         margin-bottom: 39px; 
+        font-size: 19px;
+        width : 335px;
+    }
+    .path {
+        top: 1401.396;
     }
 
     .container2 {
@@ -178,8 +183,7 @@ body {
         left: auto;
         width: 85%;
         height :  25%;
-        
-        margin-top: 237px; 
+        margin-top: 337px;
         margin-bottom: 237px; 
         gap: 20px;
         align-items: center;

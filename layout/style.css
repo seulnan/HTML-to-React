@@ -21,24 +21,24 @@ body {
 .background2 {
     opacity: 0.05;
     position: absolute;
-    background-size: cover; /* Ensures background covers the viewport */
-    background-repeat: no-repeat;
 }
 
 .background1 {
-    width: 100vw;
-    height: 100vh;
-    top: 30px;
+    position: absolute;
     bottom: 0;
     right: 0;
+    width: 50vw; /* 화면 너비에 맞추기 */
+    height: auto; /* 비율 유지 */
+    max-width: none; /* 기본 제한 해제 */
 }
 
+
 .background2 {
-    width: 100vw;
-    height: 100vh;
-    max-height: 362px;
+    position: absolute;
+    width: 30vw; /* 화면 너비에 맞추기 */
+    height: auto; /* 비율 유지 */
     top: 0;
-    left: 10;
+    left: 0;
 }
 
 .top-container {
@@ -164,9 +164,18 @@ body {
         height: 1530px;
     }
     .background1 {
-        display: block; /* background1을 보이게 설정 */
-        width: 100vw; /* 뷰포트 너비에 맞춤 */
-        height: auto; /* 높이 자동 조정 */
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 150vw; /* 화면 너비에 맞추기 */
+        height: auto; /* 비율 유지 */
+        max-width: none; /* 기본 제한 해제 */
+    }
+    .background2 {
+        position: absolute;
+        width: 130vw; /* 화면 너비에 맞추기 */
+        top: 0;
+        left: 0;
     }
 
     .top-container {

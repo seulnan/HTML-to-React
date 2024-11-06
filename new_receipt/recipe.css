@@ -24,9 +24,7 @@ body {
     margin-left: 352px;
     position: relative;
     border-radius: var(--spacing300);
-    /* height: 1700px; 이 부분을 제거합니다. */
 }
-
 
 .recipe-image {
     width: 656px;
@@ -44,27 +42,33 @@ body {
 
 .simple-omelette-recipe h1 {
     font-family: 'Young Serif', serif;
+    font-size: font-size/desktop/text-preset-1;
     color: #312E2C;
     line-height: 40px;
     margin-bottom: 24px;
 }
 
 .simple-omelette-recipe p {
-    color: #312E2C;
-    line-height: 1.5em;
+    color: color/stone-600;
+    font-size: font-size/desktop/text-preset-4;
+    line-height: 24px;
 }
 
 .preparation-time-box {
-    margin-top: 32px;
+    margin-top: 28px;
     margin-left: 40px;
     margin-right: 40px;
     background-color: #FFF7FB;
-    padding: 16px;
+    padding-left: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     border-radius: var(--spacing300);
 }
 
 .preparation-time-box h2 {
     font-family: 'Outfit', sans-serif;
+    font-size: font-size/desktop/text-preset-3;
+    line-height: 20px;
     color: #7A284E;
     margin-bottom: 8px;
 }
@@ -75,7 +79,16 @@ body {
 }
 
 .preparation-time-box li {
+    color: color/stone-600;
     margin-bottom: 4px;
+    font-size: font-size/desktop/text-preset-4;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.preparation-time-box li svg {
+    margin-right: 40px;
 }
 
 .ingredients-box {
@@ -97,7 +110,15 @@ body {
 }
 
 .ingredients-box li {
+    font-size: font-size/desktop/text-preset-4;
+    line-height: 24px;
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.ingredients-box li svg {
+    margin-right: 40px;
 }
 
 .line {
@@ -130,7 +151,7 @@ body {
 .instructions-box ol li {
     position: relative;
     margin-bottom: 12px;
-    padding-left: 29px; /* 번호 너비와 간격을 위한 패딩 */
+    padding-left: 40px;
     font-family: 'Outfit', sans-serif;
     font-size: 16px;
     color: #312E2C;
@@ -142,10 +163,14 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    color: #854632; /* 번호 색상 */
-    font-family: 'Outfit', sans-serif; /* 번호 폰트 */
-    font-size: 24px; /* 번호 폰트 크기 */
+    color: #854632;
+    font-family: 'Outfit', sans-serif;
+    font-size: font-size/desktop/text-preset-4;
     line-height: 1;
+}
+
+.instructions-box ol li strong {
+    font-weight: bold;
 }
 
 .nutrition-box {
@@ -170,7 +195,7 @@ body {
 .bar {
     width: 100%;
     height: 1px;
-    background-color: #CCC; /* 필요한 경우 색상 조정 */
+    background-color: #CCC;
     margin: 8px 0;
 }
 
@@ -189,7 +214,6 @@ body {
 
 .text-box {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 8px 0;
 }
@@ -197,15 +221,18 @@ body {
 .N-text {
     font-size: 16px;
     color: #312E2C;
+    padding-left: 35px;
+    flex: 1;
 }
 
 .N-title {
     font-size: 16px;
-    color: #312E2C;
+    color: #854632;
     font-weight: bold;
+    flex: 1;
 }
-/* 마지막 텍스트 박스에 마진 추가 */
+
+/* Last text-box margin adjustment */
 .cal-box .text-box:last-child {
     margin-bottom: 20px;
 }
-

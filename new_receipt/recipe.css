@@ -49,7 +49,7 @@ body {
 }
 
 .simple-omelette-recipe p {
-    color: color/stone-600;
+    color: #5F564D;
     font-size: font-size/desktop/text-preset-4;
     line-height: 24px;
 }
@@ -79,7 +79,7 @@ body {
 }
 
 .preparation-time-box li {
-    color: color/stone-600;
+    color: #5F564D;
     margin-bottom: 4px;
     font-size: font-size/desktop/text-preset-4;
     line-height: 24px;
@@ -89,6 +89,10 @@ body {
 
 .preparation-time-box li svg {
     margin-right: 40px;
+}
+
+.preparation-time-box li strong {
+    font-weight: 700;
 }
 
 .ingredients-box {
@@ -115,6 +119,7 @@ body {
     margin-bottom: 4px;
     display: flex;
     align-items: center;
+    color: #5F564D;
 }
 
 .ingredients-box li svg {
@@ -154,7 +159,7 @@ body {
     padding-left: 40px;
     font-family: 'Outfit', sans-serif;
     font-size: 16px;
-    color: #312E2C;
+    color: #5F564D;
 }
 
 .instructions-box ol li::before {
@@ -167,10 +172,11 @@ body {
     font-family: 'Outfit', sans-serif;
     font-size: font-size/desktop/text-preset-4;
     line-height: 1;
+    font-weight: 700;
 }
 
 .instructions-box ol li strong {
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .nutrition-box {
@@ -208,7 +214,7 @@ body {
 
 .N-intro {
     font-size: 14px;
-    color: #312E2C;
+    color: #5F564D;
     margin-bottom: 16px;
 }
 
@@ -220,7 +226,7 @@ body {
 
 .N-text {
     font-size: 16px;
-    color: #312E2C;
+    color: #5F564D;
     padding-left: 35px;
     flex: 1;
 }
@@ -228,7 +234,7 @@ body {
 .N-title {
     font-size: 16px;
     color: #854632;
-    font-weight: bold;
+    font-weight: 700;
     flex: 1;
 }
 

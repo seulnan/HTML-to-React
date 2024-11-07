@@ -6,13 +6,13 @@ const todoBox = document.querySelector('.todo-box');
 const itemsLeft = document.getElementById('items-left');
 const clearCompletedButton = document.getElementById('clear-completed');
 const filterButtons = document.querySelectorAll('.filter-btn');
-const addTodoOval = document.querySelector('.add-todo .oval');
+const addTodoOval = document.querySelector('.oval');
 let todos = [];
 
 // Oval 상태를 로컬 스토리지에서 가져오기
 let ovalState = localStorage.getItem('ovalState') || 'light';
 
-// SVG strings for both themes
+// oval SVG
 const lightOvalSVG = `
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="11.5" fill="white" stroke="#E3E4F1"/>
@@ -69,6 +69,8 @@ const toggleTheme = () => {
 // 초기 로딩 시 테마 설정
 document.addEventListener('DOMContentLoaded', function () {
     const savedTheme = localStorage.getItem('theme');
+
+    // 테마 설정
     if (savedTheme === 'dark') {
         document.body.classList.add('dark');
         themeIcon.src = 'images/icon-sun.svg';
@@ -154,20 +156,28 @@ function updateTodoList() {
                 </svg>
             </div>
             <span class="todo-text" data-index="${index}">${todo.text}</span>
+            <div class="cancel" data-index="${index}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6777 0.707107L16.9706 0L8.83883 8.13173L0.707107 0L0 0.707107L8.13173 8.83883L0 16.9706L0.707106 17.6777L8.83883 9.54594L16.9706 17.6777L17.6777 16.9706L9.54594 8.83883L17.6777 0.707107Z" fill="#494C6B"/>
+                </svg>
+            </div>
         `;
         
         const oval = todoItem.querySelector('.oval');
         const todoText = todoItem.querySelector('.todo-text');
         const lightOval = oval.querySelector('.light-oval');
         const darkOval = oval.querySelector('.dark-oval');
+        const cancelButton = todoItem.querySelector('.cancel');
 
         // dark 모드에 따라 oval SVG 변경
         if (document.body.classList.contains('dark')) {
-            lightOval.style.display = 'none';  // light 모드 SVG 숨김
-            darkOval.style.display = 'block';  // dark 모드 SVG 보임
+            oval.querySelector('.light-oval').style.display = 'none';  // light 모드 SVG 숨김
+            oval.querySelector('.dark-oval').style.display = 'block';  // dark 모드 SVG 보임
+            cancelButton.querySelector('path').setAttribute('fill', '#5B5E7E'); // dark 모드 색상
         } else {
-            lightOval.style.display = 'block';  // light 모드 SVG 보임
-            darkOval.style.display = 'none';  // dark 모드 SVG 숨김
+            oval.querySelector('.light-oval').style.display = 'block';  // light 모드 SVG 보임
+            oval.querySelector('.dark-oval').style.display = 'none';  // dark 모드 SVG 숨김
+            cancelButton.querySelector('path').setAttribute('fill', '#494C6B'); // light 모드 색상
         }
 
         // 완료된 todo 스타일링
@@ -195,6 +205,12 @@ function updateTodoList() {
         // 텍스트 클릭 시에도 완료/미완료 상태 변경
         todoText.addEventListener('click', () => toggleComplete(index));
         
+        // Cancel 버튼 클릭 시 TODO 삭제
+        cancelButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // 클릭 이벤트 전파 방지
+            deleteTodo(index); // 해당 TODO 삭제
+        });
+
         // TODO 리스트에 추가
         todoBox.appendChild(todoItem);
 
@@ -203,9 +219,16 @@ function updateTodoList() {
         line.className = 'line';
         todoBox.appendChild(line);
     });
+    
     updateItemsLeft();
 }
 
+// TODO 삭제 함수
+function deleteTodo(index) {
+    todos.splice(index, 1); // 해당 인덱스의 TODO 삭제
+    updateTodoList(); // TODO 리스트 업데이트
+    saveTodosToLocalStorage(); // 로컬 스토리지에 저장
+}
 
 // 완료/미완료 상태 토글
 function toggleComplete(index) {

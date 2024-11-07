@@ -25,13 +25,16 @@ body.dark {
 }
 
 .container {
-    top: 183px;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    top: 183px;
     width: 90%;
     max-width: 600px;
     position: absolute;
     z-index: 2; /* 배경 위에 오도록 설정 */
+    height: 100vh; /* 전체 화면 높이 */
+    overflow-y: auto; /* 스크롤 가능 */
 }
 
 /* 기본 Light 배경 */
@@ -99,8 +102,12 @@ input{
     color: #494C6B;
 }
 
-.oval {
+.add-todo .oval {
     margin-left: 24px;
+    margin-right: 24px;
+}
+
+.oval {
     margin-right: 24px;
 }
 
@@ -129,7 +136,15 @@ input{
     background: #FFF; /* Light 모드 */
     border-radius: 5px;
     flex-shrink: 0;
-    /*margin-bottom: 16px;*/
+    padding: 0 24px; /* 좌우 패딩 추가 */
+    /*position: relative;*/
+}
+
+.cancel {
+    margin-left: auto;
+    display: flex; /* 기본적으로 숨김 */
+    cursor: pointer; /* 포인터 커서 */
+    stroke: #FFF;
 }
 
 .line {
@@ -172,7 +187,6 @@ body.dark .todo span {
     border-radius: 5px;
     background: #FFF;
     box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
-
 }
 
 #items-left {
@@ -208,6 +222,19 @@ body.dark .todo span {
     stroke: #5DF; /* oval hover 시 테두리 색상 */
 }
 
+/* 텍스트에 hover했을 때 Cancel 버튼 색상 변경 */
+.todo-text:hover + .cancel path {
+    stroke: #494C6B; /* hover 시 색상 변경 */
+}
+
+.cancel:hover {
+    color: #494C6B;
+}
+
+body.dark .cancel:hover {
+    stroke: #5B5E7E; /* Dark 모드 */
+}
+
 /* 기존 hover 효과 제거 */
 .add-todo .oval:hover {
     stroke: none; /* hover 시 변경되는 스타일 제거 */
@@ -225,6 +252,10 @@ body.dark .menu{
 
 body.dark .line {
     background: #393A4B;
+}
+
+body.dark .cancel {
+    stroke: #25273D;
 }
 
 body.dark #theme-toggle:hover, body.dark .filter-btn:hover, body.dark #clear-completed:hover {

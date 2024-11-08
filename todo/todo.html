@@ -9,27 +9,35 @@
 <body>
     <div class="app">
         <header class="header">
+            <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
             <h1>TODO</h1>
-            <button id="theme-toggle" class="theme-toggle">🌙</button> <!-- 다크모드 전환 버튼 -->
+            <button id="theme-toggle" class="theme-toggle">
+                <img id="theme-icon" src="moon-icon.png" alt="Toggle Theme" />
+            </button>
         </header>
-        
+    
         <div class="input-container">
-            <input type="text" id="todo-input" placeholder="Create a new todo...">
-            <button id="add-todo" class="add-todo">추가</button> <!-- 추가 버튼 -->
-        </div>
-        
-        <ul id="todo-list" class="todo-list"></ul>
-        
-        <footer class="footer">
-            <span id="remaining-count">0 items left</span>
-            <div class="filters">
-                <button id="filter-all" class="filter active">All</button>
-                <button id="filter-active" class="filter">Active</button>
-                <button id="filter-completed" class="filter">Completed</button>
+            <div class="todo-checkbox">
+                <input type="checkbox" id="new-todo-checkbox">
+                <label for="new-todo-checkbox"></label>
             </div>
-            <button id="clear-completed" class="clear-completed">Clear Completed</button>
-        </footer>
+            <input type="text" id="todo-input" placeholder="Create a new todo...">
+        </div>
+    
+        <div class="todo-container">
+            <ul id="todo-list" class="todo-list"></ul>
+            <footer class="footer">
+                <span id="remaining-count">0 items left</span>
+                <div class="filters">
+                    <button id="filter-all" class="filter active">All</button>
+                    <button id="filter-active" class="filter">Active</button>
+                    <button id="filter-completed" class="filter">Completed</button>
+                </div>
+                <button id="clear-completed" class="clear-completed">Clear Completed</button>
+            </footer>
+        </div>
     </div>
+    
     
     <script src="script.js"></script>
 </body>

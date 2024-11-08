@@ -1,39 +1,37 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO App</title>
     <link rel="stylesheet" href="todo.css">
+    <script defer src="todo.js"></script>
 </head>
+
 <body>
     <div class="container">
-        <header>
-            <img src="./asset/decktop-dark.jpg" class="header-image" alt="Background">
-            <h1 class="title">TODO</h1>
-            <img src="./asset/moon.svg" class="theme-toggle" alt="Toggle Theme" id="themeToggle">
-        </header>
+        <div class="header">
+            <h1>TODO</h1>
+            <img src="assets/moon.svg" alt="Toggle Theme" id="theme-toggle">
+        </div>
         <div class="todo-input-container">
-            <div class="todo-item new-todo">
-                <div class="checkbox hover" id="hover"></div>
-                <input type="text" placeholder="Create a new todo..." id="todoInput">
+            <div class="todo-input">
+                <img src="assets/hover_dark.png" class="hover-icon" alt="Hover Icon">
+                <input type="text" placeholder="Create a new todo..." id="todo-input">
             </div>
         </div>
-        <div class="todo-list-container" id="todoList">
-            <!-- Completed and active todo items will be appended here dynamically -->
+        <div class="todo-box" id="todo-box">
+            <!-- Completed Todos will be appended here -->
+            <hr class="separator">
+            <!-- Todo Items will be appended here -->
         </div>
-        <footer>
-            <div class="footer-bar">
-                <span id="itemsLeft">0 items left</span>
-                <div class="filters">
-                    <span id="allFilter" class="filter active">All</span>
-                    <span id="activeFilter" class="filter">Active</span>
-                    <span id="completedFilter" class="filter">Completed</span>
-                    <span id="clearCompleted" class="filter">Clear Completed</span>
-                </div>
+        <div class="footer">
+            <span id="items-left">0 items left</span>
+            <div class="filter">
+                <button id="filter-all" class="filter-btn active">All</button>
+                <button id="filter-active" class="filter-btn">Active</button>
+                <button id="filter-completed" class="filter-btn">Completed</button>
+                <button id="clear-completed" class="filter-btn">Clear Completed</button>
             </div>
-        </footer>
+        </div>
     </div>
-    <script src="todo.js"></script>
-</body>
-</html>

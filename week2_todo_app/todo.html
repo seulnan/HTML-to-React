@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title> 
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./asset/decktop-dark.jpg" class="header-image" alt="Background">
+            <h1 class="title">TODO</h1>
+            <img src="./asset/moon.svg" class="theme-toggle" alt="Toggle Theme" id="themeToggle">
+        </header>
+        <div class="todo-input-container">
+            <div class="todo-item new-todo">
+                <div class="checkbox hover" id="hover"></div>
+                <input type="text" placeholder="Create a new todo..." id="todoInput">
+            </div>
+        </div>
+        <div class="todo-list-container" id="todoList">
+            <!-- Completed and active todo items will be appended here dynamically -->
+        </div>
+        <footer>
+            <div class="footer-bar">
+                <span id="itemsLeft">0 items left</span>
+                <div class="filters">
+                    <span id="allFilter" class="filter active">All</span>
+                    <span id="activeFilter" class="filter">Active</span>
+                    <span id="completedFilter" class="filter">Completed</span>
+                    <span id="clearCompleted" class="filter">Clear Completed</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>

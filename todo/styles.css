@@ -39,7 +39,7 @@ button {
     background: var(--input-bg);
     border-radius: 8px;
     padding: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .todo-checkbox {
     display: flex;
@@ -132,6 +132,7 @@ button {
     align-items: center;
     color: #b0b3c6;
     padding: 15px 0 0 0;
+    font-weight: 400;
 }
 
 .footer .filter {
@@ -141,6 +142,7 @@ button {
     color: #b0b3c6; /* 연한 회색으로 변경 */
     transition: color 0.3s; /* 부드러운 전환 효과 추가 */
     margin: 0 5px; /* 버튼 간의 간격을 조절 */
+    font-weight:700;
 }
 
 .footer .filter:hover {
@@ -157,6 +159,7 @@ button {
     background: none;
     color: #b0b3c6; /* 연한 회색으로 변경 */
     transition: color 0.3s; /* 부드러운 전환 효과 추가 */
+    font-weight:700;
 }
 
 .clear-completed:hover {

@@ -231,3 +231,11 @@ body {
 body.dark-mode{
     background-image: url('black mode background.png'); /* 다크 모드 배경 이미지 */
 }
+
+#drag-drop-info {
+    margin-top: 35px;
+    color: #888; /* 연한 회색 */
+    text-align: center;
+    font-size : 14px;
+    font-weight: 400;
+}

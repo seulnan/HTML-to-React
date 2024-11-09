@@ -64,7 +64,7 @@ function addTodoItem(text, completed = false) {
             <label for="${checkboxId}"></label>
             <span class="todo-text">${text}</span>
         </div>
-        <span class="delete-icon">❌</span>
+        <span class="delete-icon"></span>
     `;
 
   todoList.appendChild(todoItem);

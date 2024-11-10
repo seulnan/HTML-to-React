@@ -220,7 +220,7 @@ body.light-mode {
 }
 
 body {
-    background-image: url('light mode background.png'); /* 기본 배경 이미지 */
+    background-image: url('light mode background.jpg'); /* 기본 배경 이미지 */
     background-size: cover; /* 이미지가 전체 영역을 덮도록 설정 */
     background-position: center; /* 이미지 중앙 정렬 */
     height: 300px; /* 최소 높이 200px */
@@ -229,7 +229,7 @@ body {
 
 /* 다크 모드 */
 body.dark-mode{
-    background-image: url('black mode background.png'); /* 다크 모드 배경 이미지 */
+    background-image: url('black mode background.jpg'); /* 다크 모드 배경 이미지 */
 }
 
 #drag-drop-info {

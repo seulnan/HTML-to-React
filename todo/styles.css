@@ -10,6 +10,15 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
 }
+
+h1{
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 15px;
+}
+
 .footer,
 .header,
 .todo-container,

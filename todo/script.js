@@ -52,6 +52,7 @@ function addTodoItem(text, completed = false) {
     const todoList = document.getElementById('todo-list');
     const todoItem = document.createElement('li');
     todoItem.className = 'todo-item';
+    todoItem.setAttribute('draggable', true); // 드래그 가능하게 설정
     if (completed) {
         todoItem.classList.add('completed');
     }
@@ -133,3 +134,41 @@ function saveTodos() {
     }));
     localStorage.setItem('todos', JSON.stringify(todos));
 }
+
+// 드래그 앤 드롭 기능 추가
+const todoList = document.getElementById('todo-list');
+
+todoList.addEventListener('dragstart', (e) => {
+    e.target.classList.add('dragging');
+});
+
+todoList.addEventListener('dragend', (e) => {
+    e.target.classList.remove('dragging');
+    saveTodos(); // 드래그 후 상태 저장
+});
+
+todoList.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const draggingItem = document.querySelector('.dragging');
+    const items = [...todoList.querySelectorAll('.todo-item:not(.dragging)')];
+    const afterElement = items.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = e.clientY - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+    if (afterElement) {
+        todoList.insertBefore(draggingItem, afterElement);
+    } else {
+        todoList.appendChild(draggingItem);
+    }
+});
+
+// 드래그 앤 드롭 후 상태를 로컬스토리지에 저장하기
+todoList.addEventListener('dragend', () => {
+    saveTodos(); // 드래그가 끝난 후 상태 저장
+});

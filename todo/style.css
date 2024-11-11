@@ -141,6 +141,8 @@ input{
 }
 
 .cancel {
+    width: 16px;
+    height: 16px;
     margin-left: auto;
     display: flex; /* 기본적으로 숨김 */
     cursor: pointer; /* 포인터 커서 */
@@ -223,15 +225,11 @@ body.dark .todo span {
 }
 
 /* 텍스트에 hover했을 때 Cancel 버튼 색상 변경 */
-.todo-text:hover + .cancel path {
-    stroke: #494C6B; /* hover 시 색상 변경 */
+.todo:hover .cancel {
+    stroke: #494C6B; /* hover 시 색상 변경 (원하는 색상으로 설정) */
 }
 
-.cancel:hover {
-    color: #494C6B;
-}
-
-body.dark .cancel:hover {
+body.dark .todo:hover {
     stroke: #5B5E7E; /* Dark 모드 */
 }
 

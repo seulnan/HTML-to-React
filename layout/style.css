@@ -108,7 +108,8 @@ body {
 }
 
 .group-box {
-    width: 350px; /* 그룹 박스 크기 조정 */
+    width:360px; /* 그룹 박스 크기 조정 */
+    height: 234px;
     padding: 30px;
     border-radius: 8px;
     background-color: #512051;

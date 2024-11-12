@@ -1,0 +1,216 @@
+/* CSS for layout preservation and styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #E3E4F1;
+}
+
+.background {
+  width: 100%;
+  background-size : cover;
+  height: 300px;
+  background-image: url('assets/bg-desktop-light.jpg');
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.title {
+  color: #FFF;
+  font-family: "Josefin Sans";
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 15px;
+  position: absolute;
+  top: 71px;
+  display: flex;
+  align-items: center;
+}
+
+.mode-icon {
+  margin-left: 348px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 142px;
+  width: 100%;
+  align-items: center;
+}
+
+.group {
+  margin-bottom: 24px;
+}
+
+.rectangle{
+  width: 540px;
+  height: 64px;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+}
+
+.task-rectangle {
+  width: 515px;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.dark-mode .rectangle, .dark-mode .task-rectangle {
+  background: #333;
+}
+
+.group-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+  color: #494C6B;
+  background: none;
+  padding-left: 24px;
+}
+
+.task-list {
+  margin-bottom: 16px; /* Space between task list and items left + filters */
+}
+
+.filter{
+  justify-content: center;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  transition: background-color 0.3s;
+}
+
+.task:hover {
+  background-color: rgba(211, 211, 211, 0.2);
+}
+
+.task-check {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.task-text {
+  color: #494C6B;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.25px;
+  margin-right: auto;
+  padding-left: 17px;
+}
+
+.task.completed .task-text {
+  text-decoration: line-through;
+  color: #9495A5;
+}
+
+.task-delete {
+  display: none;
+  cursor: pointer;
+}
+
+.task:hover .task-delete {
+  display: inline;
+}
+
+.clear-completed:hover, .filter:hover {
+  color: #3A7CFD;
+}
+
+.task-check:hover {
+  filter: brightness(0.8);
+}
+
+/* Dark mode specific styles */
+.dark-mode .background {
+  background-image: url('assets/bg-desktop-dark.jpg');
+}
+
+.dark-mode .task-text {
+  color: #E3E4F1;
+}
+
+/* Task Info - Items left and Clear Completed */
+.task-info {
+  align-items: center;/* Adds space between task list and filter group */
+}
+
+/* Filter Group - Positioned below the task-info */
+.filter-group {
+  display: flex;/* Adds space between each filter */
+  width: 100%; /* Ensures the filters take full width *//* Adds space between filters and reorder text */
+  color: #9495A5;
+  font-family: "Josefin Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.25px;
+  gap: 19px;
+}
+
+/* Items Left and Clear Completed */
+.items-left{
+  display: flex;
+  font-size: 14px;
+  cursor: pointer;
+  color: #9495A5;
+  justify-content: center;
+  margin-right: auto;
+}
+.clear-completed{
+  display: flex;
+  font-size: 14px;
+  cursor: pointer;
+  color: #9495A5;
+  justify-content: center;
+  margin-left: auto;
+}
+/* Hover effect for clear completed and filter buttons */
+.clear-completed:hover, .filter:hover {
+  color: #3A7CFD;
+}
+
+/* Position the "Drag and drop to reorder list" text */
+.reorder-text {
+  color: #9495A5;
+  text-align: center;
+  font-family: "Josefin Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.194px;
+  margin-top: 30px; /* Adds space from the filter group */
+}
+
+.task-rectangle {
+  position: relative;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+

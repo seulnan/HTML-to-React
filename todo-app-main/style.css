@@ -10,15 +10,15 @@ body {
     flex-direction: column;
 }
 
-.background-dark{
-    display: none;
-    position: absolute;
+#background-image   {
+    position:absolute;
+    background-image: url("images/bg-desktop-light.jpg");
+    background-position: center;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 300px;
     z-index: -1;
-}
-
-.background-light{
-    position: absolute;
-    z-index: -1
 }
 
 .header-container{
@@ -40,22 +40,6 @@ body {
     margin: 0;
 }
 
-.moon{
-    fill: #FFF;
-    width: 25.113px;
-    height: 26px;
-    flex-shrink: 0;
-    margin-top: 11px;
-}
-
-.sun{
-    fill: #FFF;
-    width: 25.113px;
-    height: 26px;
-    flex-shrink: 0;
-    margin-top: 11px;
-    display: none;
-}
 
 .input-container{
     max-width: 540px;
@@ -72,29 +56,25 @@ body {
 }
 
 .oval{
-    fill: #FFF;
-    stroke-width: 1px;
-    stroke: #E3E4F1;
-}
-
-.oval .oval-check .oval-hover{
     width: 24px;
     height: 24px;
-    flex-shrink: 0;
+    fill: #FFF;
 }
 
 
-.input-text{
+
+#input-text{
     color: #9495A5;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.25px;
+    border: none;
+    outline: none;
 }
 
 .input-box{
-    display: inline-flex;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +86,7 @@ body {
     max-width: 540px;
     width: 90%;
     max-height: 439px;
-    min-height: 50px;
+    min-height: 0px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -115,6 +95,35 @@ body {
     background: #FFF;
     box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
     margin-top: 24px;
+}
+
+.bottom-container{
+    max-width: 540px;
+    width: 90%;
+    max-height: 439px;
+    min-height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 16px;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.toggle {
+    background: none;        /* 배경을 없애거나 단색으로 설정 */
+    border: none;            /* 테두리 없애기 */
+    box-shadow: none;        /* 그림자 없애기 */
+    padding: 0;              /* 기본 여백 없애기 */
+    outline: none;           /* 클릭 시 외곽선 없애기 */
+    cursor: pointer;         /* 포인터 변경 */
 }
 
 .interaction-container{
@@ -144,16 +153,7 @@ body {
     letter-spacing: -0.194px;
 }
 
-.bottom-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: auto;
-    margin-bottom: 16px;
-    padding: 0 24px;
-    box-sizing: border-box;
-}
+
 
 .footer{
     margin-top: 49px;
@@ -173,7 +173,6 @@ body {
     flex-shrink: 0;
     align-items: center;
     margin-top: 20px;
-    margin-left: 24px;
 }
 
 .todo-text{
@@ -196,48 +195,43 @@ body {
 
 .cross-line{
     margin-left: auto;
-}
-
-.todo-container .cross-line{
     display: none;
 }
 
-.todo-container:hover .cross-line{
+/* todo-item에 마우스를 올렸을 때만 cross-line 보이기 */
+.todo-item:hover .cross-line {
     display: block;
 }
 
-.todo-container .circle {
-    cursor: pointer;
-    fill: none;
-    stroke: #E3E4F1;
-    transition: fill 0.3s, stroke 0.3s;
+.hover:hover{
+    color: #494C6B;
 }
 
-.all{
+
+.filter-button{
+    border: none;
+    outline: none;
+    background: none;
+    color: #9495A5;
+    font-family: "Josefin Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.194px;
+}
+
+.clear{
+    color: #9495A5;
+    text-align: right;
+    font-family: "Josefin Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.194px;
+}
+
+#all{
     color: #3A7CFD;
 }
-
-.oval-hover,
-.oval-check {
-    display: none;
-}
-
-/* 기본 상태에서 hover 시 oval-hover 표시 */
-.oval-container:hover .oval {
-    display: none;
-}
-.oval-container:hover .oval-hover {
-    display: block;
-}
-
-/* oval-check가 active 상태일 때만 표시 */
-.oval-check.active {
-    display: block;
-}
-
-/* active 상태일 때 oval과 oval-hover 숨기기 */
-.oval-check.active ~ .oval,
-.oval-check.active ~ .oval-hover {
-    display: none;
-}
-

@@ -6,11 +6,8 @@ const todoBox = document.querySelector('.todo-box');
 const itemsLeft = document.getElementById('items-left');
 const clearCompletedButton = document.getElementById('clear-completed');
 const filterButtons = document.querySelectorAll('.filter-btn');
-const addTodoOval = document.querySelector('.oval');
+const TodoOval = document.querySelector('.oval');
 let todos = [];
-
-// Oval 상태를 로컬 스토리지에서 가져오기
-let ovalState = localStorage.getItem('ovalState') || 'light';
 
 // oval SVG
 const lightOvalSVG = `
@@ -43,11 +40,16 @@ const darkOvalSVG = `
         </defs>
     </svg>`;
 
-// Oval 업데이트 함수
-function updateAddTodoOval() {
+// oval 상태를 로컬 스토리지에 저장하는 함수
+function updateTodoOval() {
     const isDark = document.body.classList.contains('dark');
-    addTodoOval.innerHTML = isDark ? darkOvalSVG : lightOvalSVG;
+    TodoOval.innerHTML = isDark ? darkOvalSVG : lightOvalSVG;
+
+    // oval 상태를 로컬 스토리지에 저장
+    const ovalState = isDark ? 'dark' : 'light';
+    localStorage.setItem('ovalState', ovalState);
 }
+
 
 // 테마 전환
 const toggleTheme = () => {
@@ -59,16 +61,16 @@ const toggleTheme = () => {
         : 'url(images/bg-desktop-light.jpg)';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     
-    // oval 상태 업데이트
-    ovalState = isDark ? 'dark' : 'light';
-    localStorage.setItem('ovalState', ovalState);
-    updateAddTodoOval();
+    // oval 상태 업데이트;
+    updateTodoOval();
     updateTodoList();
 };
+
 
 // 초기 로딩 시 테마 설정
 document.addEventListener('DOMContentLoaded', function () {
     const savedTheme = localStorage.getItem('theme');
+    const savedOvalState = localStorage.getItem('ovalState');
 
     // 테마 설정
     if (savedTheme === 'dark') {
@@ -80,6 +82,12 @@ document.addEventListener('DOMContentLoaded', function () {
         themeIcon.src = 'images/icon-moon.svg';
         background.style.backgroundImage = 'url(images/bg-desktop-light.jpg)';
     }
+    console.log(savedTheme);
+
+    // oval 상태 업데이트
+    const isDark = savedTheme === 'dark' || savedOvalState === 'dark';
+    TodoOval.innerHTML = isDark ? darkOvalSVG : lightOvalSVG;
+    console.log(savedOvalState);
 
     // "All" 버튼 기본 활성화
     const allButton = document.querySelector('.filter-btn[data-filter="all"]');
@@ -90,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const savedTodos = JSON.parse(localStorage.getItem('todos'));
     if (savedTodos) {
         todos = savedTodos;
-        updateAddTodoOval();
         updateTodoList();
     }
 });
@@ -110,7 +117,7 @@ newTodoInput.addEventListener('keypress', (e) => {
 function addTodo(text) {
     const todo = {
         text,
-        completed: false,
+        completed: false
     };
     todos.push(todo);
     updateTodoList();
@@ -123,6 +130,7 @@ function updateTodoList() {
     todos.forEach((todo, index) => {
         const todoItem = document.createElement('div');
         todoItem.className = 'todo';
+        
         todoItem.innerHTML = `
             <div class="oval" data-index="${index}">
                 <!-- SVG는 기본적으로 light 모드로 설정 -->
@@ -142,7 +150,7 @@ function updateTodoList() {
                 
                 <!-- dark 모드에서는 이 SVG로 대체됨 -->
                 <svg class="dark-oval" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="11.5" stroke="#393A4B"/>
+                    <circle cx="12" cy="12" r="11.5" fill: "#25273D" stroke="#393A4B"/>
                     <g opacity="0.01">
                         <circle cx="12" cy="12" r="12" fill="url(#paint0_linear_0_323)"/>
                         <path d="M8 12.3041L10.6959 15L16.6959 9" stroke="white"/>
@@ -330,8 +338,6 @@ function saveTodosToLocalStorage() {
 document.addEventListener('DOMContentLoaded', () => {
     const savedFilter = localStorage.getItem('filter');
     if (savedFilter) {
-        filterTodos(savedFilter);
-    } else {
         filterTodos('all'); // 기본적으로 모든 항목을 표시
     }
 });

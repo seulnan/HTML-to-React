@@ -28,7 +28,7 @@ body.dark {
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 183px;
+    top: 83px;
     width: 90%;
     max-width: 600px;
     position: absolute;
@@ -62,13 +62,11 @@ body.dark #background {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: 20px;
 }
 
 .title {
     color: #FFF;
     font-size: 40px;
-    font-weight: 700;
     letter-spacing: 15px;
 }
 
@@ -76,8 +74,6 @@ body.dark #background {
     background: none;
     border: none;
     cursor: pointer;
-    width: 40px; /* 크기를 줄임 */
-    height: 40px;
 }
 
 #theme-icon {
@@ -95,7 +91,7 @@ body.dark #background {
     background: #FFF;
     border-radius: 5px;
     box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 input{
@@ -108,6 +104,7 @@ input{
 }
 
 .oval {
+    margin-top:4px;
     margin-right: 24px;
 }
 
@@ -268,6 +265,10 @@ body.dark .add-todo {
     border-radius: 5px;
     background: #25273D;
     box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
+}
+
+dark-oval:hover circle{
+    stroke: #5DF; /* oval hover 시 테두리 색상 */
 }
 
 body.dark .todo {

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="04_todo_list_241113.css">
+</head>
+<body>
+    <div class="app-container">
+        <img src="assets/images/bg-desktop-light.jpg" alt="Header Background" class="header-bg">
+        <header class="header">
+            <h1>TODO</h1>
+            <button id="toggle-theme">Toggle Theme</button>
+        </header>
+        
+        <div class="todo-input">
+            <input type="text" id="new-todo" placeholder="Create a new todo...">
+        </div>
+        <ul id="todo-list"></ul>
+        
+        <div class="controls">
+            <span id="remaining-count" class="ctrl-button">0 items left</span>
+            <button id="show-all" class="ctrl-button">All</button>
+            <button id="show-active" class="ctrl-button">Active</button>
+            <button id="show-completed" class="ctrl-button">Completed</button>
+            <button id="clear-completed" class="ctrl-button">Clear Completed</button>
+        </div>
+    </div>
+    <script src="04_todo_list_241113.js"></script>
+</body>
+</html>

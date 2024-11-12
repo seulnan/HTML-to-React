@@ -58,7 +58,8 @@ body {
 }
 
 .input-container{
-    width: 540px;
+    max-width: 540px;
+    width: 90%;
     height: 64px;
     margin-top: 40px;
     flex-shrink: 0;
@@ -74,14 +75,14 @@ body {
     fill: #FFF;
     stroke-width: 1px;
     stroke: #E3E4F1;
-    width: 24px;
-    height: 24px;
 }
 
-.circle{
-    fill:"white";
-    stroke:"#E3E4F1";
+.oval .oval-check .oval-hover{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
 }
+
 
 .input-text{
     color: #9495A5;
@@ -102,8 +103,10 @@ body {
 }
 
 .main-container{
-    width: 540px;
-    height: 439px;
+    max-width: 540px;
+    width: 90%;
+    max-height: 439px;
+    min-height: 50px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -190,3 +193,51 @@ body {
     flex-shrink: 0;
     background: #E3E4F1;
 }
+
+.cross-line{
+    margin-left: auto;
+}
+
+.todo-container .cross-line{
+    display: none;
+}
+
+.todo-container:hover .cross-line{
+    display: block;
+}
+
+.todo-container .circle {
+    cursor: pointer;
+    fill: none;
+    stroke: #E3E4F1;
+    transition: fill 0.3s, stroke 0.3s;
+}
+
+.all{
+    color: #3A7CFD;
+}
+
+.oval-hover,
+.oval-check {
+    display: none;
+}
+
+/* 기본 상태에서 hover 시 oval-hover 표시 */
+.oval-container:hover .oval {
+    display: none;
+}
+.oval-container:hover .oval-hover {
+    display: block;
+}
+
+/* oval-check가 active 상태일 때만 표시 */
+.oval-check.active {
+    display: block;
+}
+
+/* active 상태일 때 oval과 oval-hover 숨기기 */
+.oval-check.active ~ .oval,
+.oval-check.active ~ .oval-hover {
+    display: none;
+}
+

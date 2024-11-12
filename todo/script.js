@@ -285,7 +285,12 @@ function filterTodos(filter) {
         
         const oval = todoItem.querySelector('.oval');
         const todoText = todoItem.querySelector('.todo-text');
+        const isDark = document.body.classList.contains('dark');
 
+                if(isDark){
+                    oval.querySelector('circle').setAttribute('stroke', '#393A4B');
+                }
+                
         // 완료된 todo 스타일링
         if (todo.completed) {
             oval.innerHTML = `
@@ -338,6 +343,6 @@ function saveTodosToLocalStorage() {
 document.addEventListener('DOMContentLoaded', () => {
     const savedFilter = localStorage.getItem('filter');
     if (savedFilter) {
-        filterTodos('all'); // 기본적으로 모든 항목을 표시
+        filterTodos(savedFilter);
     }
 });

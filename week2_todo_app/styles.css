@@ -9,6 +9,11 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    background-image: url('./asset/light-background.jpg'); /* 수정된 기본 배경 이미지 */
+    background-size: cover; /* 이미지가 전체 영역을 덮도록 설정 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    height: 100vh; /* 화면 전체 높이 사용 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
 }
 
 h1 {
@@ -227,15 +232,10 @@ body.light-mode {
 }
 
 body {
-    background-image: url('./asset/light-background.jpg'); /* 수정된 기본 배경 이미지 */
-    background-size: cover; /* 이미지가 전체 영역을 덮도록 설정 */
-    background-position: center; /* 이미지 중앙 정렬 */
-    height: 300px; /* 최소 높이 200px */
-    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    /* 중복 제거: 이미 배경 설정됨 */
 }
 
-/* 다크 모드 */
-body.dark-mode {
+.dark-mode body {
     background-image: url('./asset/dark-background.jpg'); /* 수정된 다크 모드 배경 이미지 */
 }
 

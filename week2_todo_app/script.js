@@ -1,5 +1,4 @@
 // 초기 모드를 설정하기
-// 아이콘과 테마를 변수처럼 생각하는 것이 좋다
 const savedTheme = localStorage.getItem('theme');
 const themeIcon = document.getElementById('themeIcon');
 
@@ -30,20 +29,21 @@ themeToggleButton.addEventListener('click', () => {
 window.addEventListener('load', () => {
     const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
     savedTodos.forEach((todo) => addTodoItem(todo.text, todo.completed));
+    reorderTodoList(); // 로드 후 정렬 호출
     updateRemainingCount();
 });
 
 // 새로운 박스에 내용을 추가하는 것
 const todoInputField = document.getElementById('todoInput');
 
-// 엔터 키 감지 작ㅓㅂ
+// 엔터 키 감지
 todoInputField.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') { // 엔터 키가 눌렸을 때
         const todoText = todoInputField.value.trim();
         if (todoText) {
             addTodoItem(todoText, false);
             todoInputField.value = ''; // 입력 필드 초기화
-            saveTodos(); // 로컬스토리지에 저장 -> 이거 진짜 중요한 작업이다
+            saveTodos(); // 로컬스토리지에 저장
         }
     }
 });
@@ -69,6 +69,7 @@ function addTodoItem(text, completed = false) {
     `;
 
     todoList.appendChild(todoItem);
+    reorderTodoList(); // 추가 후 정렬 호출
     updateRemainingCount();
 
     // 체크박스 이벤트: 체크박스 상태가 변경될 때마다 완료 상태와 남은 할일 개수를 업데이트한다
@@ -77,6 +78,7 @@ function addTodoItem(text, completed = false) {
         todoItem.classList.toggle('completed', e.target.checked);
         updateRemainingCount();
         saveTodos(); // 로컬스토리지에 저장
+        reorderTodoList(); // 상태 변경 후 정렬 호출
     });
 
     // 삭제 버튼 이벤트
@@ -173,3 +175,19 @@ todoList.addEventListener('dragover', (e) => {
 todoList.addEventListener('dragend', () => {
     saveTodos(); // 드래그가 끝난 후 상태 저장
 });
+
+// 추가된 함수: 할 일 목록 정렬
+function reorderTodoList() {
+    const todoList = document.getElementById('todoList');
+    const todoItems = Array.from(todoList.children);
+
+    // 'completed' 클래스가 있는 항목을 먼저, 없는 항목을 나중에 정렬
+    todoItems.sort((a, b) => {
+        const aCompleted = a.classList.contains('completed') ? 1 : 0;
+        const bCompleted = b.classList.contains('completed') ? 1 : 0;
+        return bCompleted - aCompleted; // 내림차순: completed가 먼저
+    });
+
+    // 정렬된 순서대로 DOM에 다시 추가
+    todoItems.forEach(item => todoList.appendChild(item));
+}

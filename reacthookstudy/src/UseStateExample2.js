@@ -7,7 +7,7 @@ const heavyWork =()=>{
 }
 
 
-function UseStateEx2(){
+function UseStateExample2(){
 
     const [names, setNames] = useState(()=>{return heavyWork();});
     const [input, setInput] = useState('');
@@ -37,4 +37,4 @@ function UseStateEx2(){
     );
 }
 
-export default UseStateEx2;
+export default UseStateExample2;

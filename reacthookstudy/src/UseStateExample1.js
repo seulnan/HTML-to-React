@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function UseStateEx1(){
+function UseStateExample1(){
  
     const [time, setTime] = useState(1);
 

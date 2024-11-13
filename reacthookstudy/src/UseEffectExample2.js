@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Timer from './component/Timer';
 
 
-function useEffectEx2(){
+function useEffectExample2(){
 
   
     const [showTimer, setShowTimer] = useState(false);
@@ -17,4 +17,4 @@ function useEffectEx2(){
     );
 }
 
-export default useEffectEx2;
+export default useEffectExample2;

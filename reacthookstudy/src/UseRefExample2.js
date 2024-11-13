@@ -1,6 +1,6 @@
 import {useState, useRef} from 'react';
 
-function UseRefEx2(){
+function UseRefExample2(){
 
 
     const [renderer, setRenderer] = useState(0);
@@ -40,4 +40,4 @@ function UseRefEx2(){
     );
 }
 
-export default UseRefEx2;
+export default UseRefExample2;

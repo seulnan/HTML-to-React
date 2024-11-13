@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-function useEffectEx1(){
+function useEffectExample1(){
 
  
  
@@ -43,4 +43,4 @@ function useEffectEx1(){
     );
 }
 
-export default useEffectEx1;
+export default useEffectExample1;

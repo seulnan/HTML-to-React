@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react';
 
-function UseRefEx4(){
+function UseRefExample4(){
 
     //useref 4
     const inputRef = useRef();
@@ -26,4 +26,4 @@ function UseRefEx4(){
     );
 }
 
-export default UseRefEx4;
+export default UseRefExample4;

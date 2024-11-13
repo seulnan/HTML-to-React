@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-function UseRefEx3(){
+function UseRefExample3(){
 
 
     const [count, setCount] = useState(1);
@@ -22,4 +22,4 @@ function UseRefEx3(){
     );
 }
 
-export default UseRefEx3;
+export default UseRefExample3;

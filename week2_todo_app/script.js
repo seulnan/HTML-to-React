@@ -14,15 +14,17 @@ if (savedTheme) {
 const themeToggleButton = document.getElementById('themeToggle');
 
 themeToggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    document.body.classList.toggle('light-mode');
-
-    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-
-    // 아이콘 변경
-    themeIcon.src = currentTheme === 'dark-mode' ? './asset/sunIcon.png' : './asset/moonIcon.png';
-
-    localStorage.setItem('theme', currentTheme);
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        themeIcon.src = './asset/moonIcon.png';
+        localStorage.setItem('theme', 'light-mode');
+    } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        themeIcon.src = './asset/sunIcon.png';
+        localStorage.setItem('theme', 'dark-mode');
+    }
 });
 
 // 저장된 할 일 목록 불러오기
@@ -33,7 +35,7 @@ window.addEventListener('load', () => {
     updateRemainingCount();
 });
 
-// 새로운 박스에 내용을 추가하는 것
+// 새로운 할 일 추가
 const todoInputField = document.getElementById('todoInput');
 
 // 엔터 키 감지
@@ -87,6 +89,9 @@ function addTodoItem(text, completed = false) {
         updateRemainingCount();
         saveTodos(); // 로컬스토리지에 저장
     });
+
+    // 드래그 앤 드롭 이벤트 추가
+    addDragAndDropEvents(todoItem);
 }
 
 // 남은 할일 개수 업데이트 함수
@@ -142,17 +147,23 @@ function saveTodos() {
 const todoList = document.getElementById('todoList');
 
 todoList.addEventListener('dragstart', (e) => {
-    e.target.classList.add('dragging');
+    if (e.target.classList.contains('todo-item')) {
+        e.target.classList.add('dragging');
+    }
 });
 
 todoList.addEventListener('dragend', (e) => {
-    e.target.classList.remove('dragging');
-    saveTodos(); // 드래그 후 상태 저장
+    if (e.target.classList.contains('todo-item')) {
+        e.target.classList.remove('dragging');
+        saveTodos(); // 드래그 후 상태 저장
+    }
 });
 
 todoList.addEventListener('dragover', (e) => {
     e.preventDefault();
     const draggingItem = document.querySelector('.dragging');
+    if (!draggingItem) return;
+
     const items = [...todoList.querySelectorAll('.todo-item:not(.dragging)')];
     const afterElement = items.reduce((closest, child) => {
         const box = child.getBoundingClientRect();
@@ -171,11 +182,6 @@ todoList.addEventListener('dragover', (e) => {
     }
 });
 
-// 드래그 앤 드롭 후 상태를 로컬스토리지에 저장하기
-todoList.addEventListener('dragend', () => {
-    saveTodos(); // 드래그가 끝난 후 상태 저장
-});
-
 // 추가된 함수: 할 일 목록 정렬
 function reorderTodoList() {
     const todoList = document.getElementById('todoList');
@@ -190,4 +196,10 @@ function reorderTodoList() {
 
     // 정렬된 순서대로 DOM에 다시 추가
     todoItems.forEach(item => todoList.appendChild(item));
+}
+
+// 드래그 앤 드롭 이벤트를 항목 추가 시에만 추가
+function addDragAndDropEvents(todoItem) {
+    // 이미 이벤트가 추가되어 있으므로 별도의 처리가 필요하지 않습니다.
+    // 현재 구현에서는 리스트 전체에 이벤트를 위임하고 있습니다.
 }

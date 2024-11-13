@@ -9,7 +9,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
-    background-image: url('./asset/light-background.jpg'); /* 수정된 기본 배경 이미지 */
+    background-image: url('./asset/light-background.jpg'); /* 기본 배경 이미지 */
     background-size: cover; /* 이미지가 전체 영역을 덮도록 설정 */
     background-position: center; /* 이미지 중앙 정렬 */
     height: 100vh; /* 화면 전체 높이 사용 */
@@ -231,12 +231,8 @@ body.light-mode {
     transition: background-color 0.3s; /* 부드러운 전환 효과 */
 }
 
-body {
-    /* 중복 제거: 이미 배경 설정됨 */
-}
-
-.dark-mode body {
-    background-image: url('./asset/dark-background.jpg'); /* 수정된 다크 모드 배경 이미지 */
+body.dark-mode {
+    background-image: url('./asset/dark-background.jpg'); /* 다크 모드 배경 이미지 */
 }
 
 #dragDropInfo {

@@ -130,6 +130,9 @@ function updateTodoList() {
     todos.forEach((todo, index) => {
         const todoItem = document.createElement('div');
         todoItem.className = 'todo';
+
+        todoItem.draggable = true;
+        todoItem.dataset.index = index;
         
         todoItem.innerHTML = `
             <div class="oval" data-index="${index}">
@@ -173,8 +176,6 @@ function updateTodoList() {
         
         const oval = todoItem.querySelector('.oval');
         const todoText = todoItem.querySelector('.todo-text');
-        const lightOval = oval.querySelector('.light-oval');
-        const darkOval = oval.querySelector('.dark-oval');
         const cancelButton = todoItem.querySelector('.cancel');
 
         // dark 모드에 따라 oval SVG 변경
@@ -208,8 +209,14 @@ function updateTodoList() {
         }
 
         // Oval 클릭 시 완료/미완료 상태 변경
-        oval.addEventListener('click', () => toggleComplete(index));
+        todoItem.querySelector('.oval').addEventListener('click', () => toggleComplete(index));
         
+        todoItem.addEventListener('dragstart', handleDragStart);
+        todoItem.addEventListener('dragover', handleDragOver);
+        todoItem.addEventListener('drop', handleDrop);
+
+        todoBox.appendChild(todoItem);
+
         // 텍스트 클릭 시에도 완료/미완료 상태 변경
         todoText.addEventListener('click', () => toggleComplete(index));
         
@@ -230,6 +237,61 @@ function updateTodoList() {
     
     updateItemsLeft();
 }
+
+let draggedItem = null;
+
+// 드래그 시작 시 호출되는 함수
+function handleDragStart(e) {
+    draggedItem = e.target; // 드래그 중인 아이템을 설정
+    e.dataTransfer.effectAllowed = "move"; // 드래그 효과를 "move"로 설정
+    e.dataTransfer.setData("text/html", draggedItem.innerHTML); // 드래그한 아이템의 HTML 내용을 데이터로 저장
+}
+
+// 드래그 중에 호출되는 함수
+function handleDragOver(e) {
+    e.preventDefault(); // 기본 동작 방지
+    e.dataTransfer.dropEffect = "move"; // 드롭 효과를 "move"로 설정
+    const target = e.target.closest('.todo'); // 드롭할 대상 요소 찾기
+    if (target && target !== draggedItem) { // 대상이 드래그 중인 아이템이 아닌 경우
+        target.style.borderTop = "2px solid #3A7CFD"; // 드롭 위치 시각적 표시 추가
+    }
+}
+
+
+// 드롭 시 호출되는 함수
+function handleDrop(e) {
+    e.stopPropagation(); // 이벤트 전파 방지
+    const target = e.target.closest('.todo'); // 드롭된 위치의 요소 찾기
+    if (target && target !== draggedItem) { // 드래그 중인 아이템이 아닌 경우
+        target.style.borderTop = ""; // 드롭 시각적 표시 초기화
+
+        // 드래그 중인 아이템과 타겟 아이템의 인덱스 가져오기
+        const draggedIndex = parseInt(draggedItem.dataset.index, 10);
+        const targetIndex = parseInt(target.dataset.index, 10);
+
+        // todos 배열에서 드래그된 아이템 제거
+        const [movedItem] = todos.splice(draggedIndex, 1);
+
+        // 타겟 아이템의 인덱스 다음 위치에 드래그된 아이템 삽입
+        const insertIndex = targetIndex < draggedIndex ? targetIndex + 1 : targetIndex;
+        todos.splice(insertIndex, 0, movedItem);
+
+        updateTodoList(); // 리스트를 다시 렌더링
+        saveTodosToLocalStorage(); // 변경된 리스트를 로컬 스토리지에 저장
+    }
+}
+
+// 드래그가 떠날 때 호출되는 함수
+function handleDragLeave(e) {
+    const target = e.target.closest('.todo'); // 떠나는 위치의 요소 찾기
+    if (target) target.style.borderTop = ""; // 시각적 표시 제거
+}
+
+// 드래그가 끝났을 때 스타일을 초기화하는 이벤트 리스너
+todoBox.addEventListener('dragend', () => {
+    draggedItem = null; // 드래그 중인 아이템 초기화
+    document.querySelectorAll('.todo').forEach(item => item.style.borderTop = ""); // 모든 아이템의 시각적 표시 초기화
+});
 
 // TODO 삭제 함수
 function deleteTodo(index) {
@@ -287,9 +349,9 @@ function filterTodos(filter) {
         const todoText = todoItem.querySelector('.todo-text');
         const isDark = document.body.classList.contains('dark');
 
-                if(isDark){
-                    oval.querySelector('circle').setAttribute('stroke', '#393A4B');
-                }
+        if(isDark){
+            oval.querySelector('circle').setAttribute('stroke', '#393A4B');
+        }
                 
         // 완료된 todo 스타일링
         if (todo.completed) {

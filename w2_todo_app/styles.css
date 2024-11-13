@@ -9,11 +9,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
-    background-image: url('./asset/light-background.jpg'); /* 기본 배경 이미지 */
-    background-size: cover; /* 이미지가 전체 영역을 덮도록 설정 */
-    background-position: center; /* 이미지 중앙 정렬 */
-    height: 100vh; /* 화면 전체 높이 사용 */
-    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+
+    position: relative;
 }
 
 h1 {
@@ -29,13 +26,15 @@ h1 {
 .todo-list,
 input,
 button {
-    font-family: 'Josefin Sans', sans-serif; /* 각 요소에 글씨체 적용 */
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .todo-app {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    position: relative; /* 배경 이미지 위에 표시되도록 상대 위치 설정 */
+    z-index: 1; /* 배경 이미지보다 위에 표시되도록 설정 */
 }
 .app-header {
     display: flex;
@@ -72,20 +71,20 @@ button {
     transition: background-color 0.3s, border-color 0.3s;
 }
 .checkbox-container input[type="checkbox"]:checked + label {
-    width: 24px; /* 아이콘의 너비 */
-    height: 24px; /* 아이콘의 높이 */
-    background-image: url('./asset/checkbox.png'); /* 수정된 체크박스 이미지 경로 */
-    background-size: cover; /* 이미지 크기 조정 */
+    width: 24px;
+    height: 24px;
+    background-image: url('./asset/checkbox.png');
+    background-size: cover;
     border: 0px;
 }
 
 .checkbox-container:hover label {
-    border-color: #3a7cfd; /* 호버 시 원 주변에 파란색 테두리 */
+    border-color: #3a7cfd;
 }
 
 #todoInput {
     width: 100%;
-    height: 40px; /* 원하는 높이로 설정 */
+    height: 40px;
     font-size: 18px;
     border: none;
     outline: none;
@@ -125,15 +124,15 @@ button {
 .todo-item.completed .todo-text {
     text-decoration: line-through;
     color: var(--text-disabled);
-    margin-left: 10px; /* 체크박스와 텍스트 간의 간격을 추가 */
+    margin-left: 10px;
 }
 .delete-icon {
     display: none;
     cursor: pointer;
-    width: 18px; /* 아이콘의 너비 */
-    height: 18px; /* 아이콘의 높이 */
-    background-image: url('./asset/deleteIcon.png'); /* 수정된 삭제 아이콘 이미지 경로 */
-    background-size: cover; /* 이미지 크기 조정 */
+    width: 18px;
+    height: 18px;
+    background-image: url('./asset/deleteIcon.png');
+    background-size: cover;
 }
 .todo-item:hover .delete-icon {
     display: block;
@@ -151,52 +150,52 @@ button {
     cursor: pointer;
     border: none;
     background: none;
-    color: #b0b3c6; /* 연한 회색으로 변경 */
-    transition: color 0.3s; /* 부드러운 전환 효과 추가 */
-    margin: 0 5px; /* 버튼 간의 간격을 조절 */
+    color: #b0b3c6;
+    transition: color 0.3s;
+    margin: 0 5px;
     font-weight: 700;
 }
 
 .filter-button:hover {
-    color: #000; /* 호버 시 검은색 글씨 */
+    color: #000;
 }
 
 .filter-button.active {
-    color: var(--accent-color); /* 현재 선택된 필터는 파란색 글씨 유지 */
+    color: var(--accent-color);
 }
 
 .clear-completed-button {
     cursor: pointer;
     border: none;
     background: none;
-    color: #b0b3c6; /* 연한 회색으로 변경 */
-    transition: color 0.3s; /* 부드러운 전환 효과 추가 */
+    color: #b0b3c6;
+    transition: color 0.3s;
     font-weight: 700;
 }
 
 .clear-completed-button:hover {
-    color: #000; /* 호버 시 검은색 글씨 */
+    color: #000;
 }
 
 .dark-mode .filter-button,
 .dark-mode .clear-completed-button {
-    background: transparent; /* 기본 배경 투명 */
-    color: #b0b3c6; /* 기본 연한 회색 */
-    border: none; /* 테두리 없음 */
-    cursor: pointer; /* 포인터 커서 */
-    transition: color 0.3s; /* 색상 변화에 부드러운 전환 효과 */
+    background: transparent;
+    color: #b0b3c6; 
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
 .dark-mode .filter-button:hover,
 .dark-mode .clear-completed-button:hover {
-    color: white; /* 호버 시 흰색으로 변경 */
+    color: white;
 }
 
 .dark-mode .filter-button.active {
-    color: blue; /* 선택된 필터 버튼은 파란색 */
+    color: blue;
 }
 
-/* 다크 모드 */
+
 body.dark-mode {
     --bg-color: #161722;
     --text-color: #d9dbe3;
@@ -206,6 +205,7 @@ body.dark-mode {
     --accent-color: #3a7cfd;
     --text-disabled: #777a92;
 }
+
 body.light-mode {
     --bg-color: #fafafa;
     --text-color: #484b6a;
@@ -216,6 +216,25 @@ body.light-mode {
     --text-disabled: #d1d2da;
 }
 
+
+.background-image {
+    width: 1440px;
+    height: 300px;
+    background-image: url('./asset/light-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+body.dark-mode .background-image {
+    background-image: url('./asset/black-background.jpg');
+}
+
 .todo-list-container {
     background: var(--input-bg);
     border-radius: 8px;
@@ -223,21 +242,17 @@ body.light-mode {
 }
 
 .theme-toggle-button {
-    border: none; /* 테두리 제거 */
-    border-radius: 50%; /* 둥근 모양 유지 */
-    padding: 5px; /* 패딩으로 버튼의 크기 조정 */
-    background: none; /* 배경 제거 */
-    cursor: pointer; /* 포인터 커서 */
-    transition: background-color 0.3s; /* 부드러운 전환 효과 */
-}
-
-body.dark-mode {
-    background-image: url('./asset/dark-background.jpg'); /* 다크 모드 배경 이미지 */
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 #dragDropInfo {
     margin-top: 35px;
-    color: #888; /* 연한 회색 */
+    color: #888;
     text-align: center;
     font-size: 14px;
     font-weight: 400;

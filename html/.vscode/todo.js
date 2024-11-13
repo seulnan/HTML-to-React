@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.querySelector('.theme-toggle');
     const lightModeIcon = document.querySelector('.light-mode-icon');
     const darkModeIcon = document.querySelector('.dark-mode-icon');
-    
+
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     let darkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <input type="checkbox" ${task.completed ? 'checked' : ''} data-index=${index} />
                 <span class="${task.completed ? 'task-completed' : ''}">${task.text}</span>
                 <span class="delete-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7.5L12.5 4L14 5.5L10.5 9L14 12.5L12.5 14L9 10.5L5.5 14L4 12.5L7.5 9L4 5.5L5.5 4L9 7.5Z" fill="#e57373"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6777 0.707107L16.9706 0L8.83883 8.13173L0.707107 0L0 0.707107L8.13173 8.83883L0 16.9706L0.707106 17.6777L8.83883 9.54594L16.9706 17.6777L17.6777 16.9706L9.54594 8.83883L17.6777 0.707107Z" fill="#494C6B"/>
                 </svg></span>
             `;
             taskList.appendChild(taskItem);
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('darkMode', JSON.stringify(darkMode));
         document.body.classList.toggle('dark-mode', darkMode);
 
-        // Update SVG icons based on theme
         if (darkMode) {
             lightModeIcon.style.display = 'none';
             darkModeIcon.style.display = 'inline';
@@ -129,5 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lightModeIcon.style.display = 'inline';
         darkModeIcon.style.display = 'none';
     }
+
     updateTaskList();
 });

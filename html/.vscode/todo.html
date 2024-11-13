@@ -9,7 +9,11 @@
 </head>
 <body>
     
-    <div class="background-image"></div>
+    <div class="background-image" style="
+    width: 1440px;
+    height: 300px;
+"></div>
+<div class="container">
     <div class="title-container">
         <h1 class="title">TODO</h1>
         <div class="theme-toggle" onclick="toggleTheme()">
@@ -27,18 +31,25 @@
             </span>
         </div>        
     </div>
+    <input type="text" id="new-task" placeholder="Create a new todo..." />
     <div class="todo-app">
-        <input type="text" id="new-task" placeholder="Create a new todo..." />
         <ul id="task-list"></ul>
         <div class="task-controls">
             <span id="remaining-tasks">0 items left</span>
-            <button id="filter-all" class="filter-btn active">All</button>
-            <button id="filter-active" class="filter-btn">Active</button>
+            <div class="filter">
+            <button id="filter-all" class="filter-btn active"style="
+            margin-right: 15px;
+        ">All</button>
+            <button id="filter-active" class="filter-btn"style="
+            margin-right: 15px;
+        ">Active</button>
             <button id="filter-completed" class="filter-btn">Completed</button>
+            </div>
             <button id="clear-completed">Clear Completed</button>
         </div>
     </div>    
     </div>
+</div>
     <footer class="footer">
         <p>Drag and drop to reorder list </p>
     </footer>

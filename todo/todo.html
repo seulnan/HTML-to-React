@@ -18,7 +18,7 @@
     <div class="group">
       <div class="rectangle">
         <div class="circle-icon dark-mode-icon">
-          <img src="assets/Oval Copy.svg" alt="Add new task icon">
+          <img src="assets/Oval Copy.svg" alt="Add new task icon" class="task-check">
         </div>
         <input id="new-todo" type="text" class="group-input" placeholder="Create a new todo…">
       </div>
@@ -29,11 +29,10 @@
         <div class="task-info filter-group">
           <span class="items-left" id="remaining-count">0 items left</span>
           <span class="filter all active" id="filter-all">All</span>
-          <span class="filter active" id="filter-active">Active</span>
-          <span class="filter completed" id="filter-completed">Completed</span>
+          <span class="filter" id="filter-active">Active</span>
+          <span class="filter" id="filter-completed">Completed</span>
           <span class="clear-completed" id="clear-completed">Clear Completed</span>
         </div>
-        
       </div>
       <div class="reorder-text">Drag and drop to reorder list</div>
     </div>

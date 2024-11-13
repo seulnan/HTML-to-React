@@ -1,4 +1,4 @@
-const newTodoInput = document.getElementById('new-todo');
+const newTodoInput = document.getElementById('new-todo'); 
 const todoList = document.getElementById('todo-list');
 const remainingCount = document.getElementById('remaining-count');
 const modeToggle = document.getElementById('mode-toggle');
@@ -9,25 +9,28 @@ const currentTheme = localStorage.getItem('theme') || 'light';
 document.body.classList.add(`${currentTheme}-mode`);
 modeToggle.src = currentTheme === 'dark' ? 'assets/icon-sun.svg' : 'assets/icon-moon.svg';
 
-function renderTodos() {
-  // Clear the current todo list
-  todoList.innerHTML = '';
+let draggedItem = null;
 
-  // Get the currently active filter
+// Update renderTodos function to include draggable attributes
+function renderTodos() {
+  todoList.innerHTML = '';
+  
   const activeFilter = document.querySelector('.filter-group .active');
   const filter = activeFilter ? activeFilter.id.replace('filter-', '') : 'all';
 
-  // Render todos based on the active filter
   todos.filter(todo => {
     if (filter === 'all') return true;
     if (filter === 'active') return !todo.completed;
     if (filter === 'completed') return todo.completed;
-  }).forEach(todo => {
+  }).forEach((todo, index) => {
     const taskElement = document.createElement('div');
     taskElement.classList.add('task');
     if (todo.completed) taskElement.classList.add('completed');
-
-    // Task content
+    
+    // Set draggable attribute
+    taskElement.setAttribute('draggable', true);
+    taskElement.setAttribute('data-index', index);
+    
     taskElement.innerHTML = `
       <img src="assets/${todo.completed ? 'check.svg' : 'Oval Copy.svg'}" class="task-check">
       <span class="task-text">${todo.text}</span>
@@ -40,27 +43,55 @@ function renderTodos() {
       </div>
     `;
 
-    // Add event listeners
     taskElement.querySelector('.task-check').addEventListener('click', () => toggleTodoComplete(todo.id));
     taskElement.querySelector('.task-delete').addEventListener('click', () => deleteTodoItem(todo.id));
 
-    // Append the task element to the list
+    // Add drag events
+    taskElement.addEventListener('dragstart', dragStart);
+    taskElement.addEventListener('dragover', dragOver);
+    taskElement.addEventListener('drop', dragDrop);
+    taskElement.addEventListener('dragend', dragEnd);
+
     todoList.appendChild(taskElement);
 
-    // Create and append the divider element
     const divider = document.createElement('div');
     divider.classList.add('task-divider');
     todoList.appendChild(divider);
   });
 
-  // Ensure "All" filter is active by default on page load
-  if (!document.querySelector('.filter.active')) {
-    document.getElementById('filter-all').classList.add('active');
-  }
-
   updateRemainingCount();
 }
 
+
+// Drag event handlers
+function dragStart(e) {
+  draggedItem = this;
+  e.dataTransfer.effectAllowed = 'move';
+  setTimeout(() => this.classList.add('invisible'), 0); // Optional styling for dragged item
+}
+
+function dragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+}
+
+function dragDrop(e) {
+  e.preventDefault();
+  
+  const dragIndex = parseInt(draggedItem.getAttribute('data-index'));
+  const dropIndex = parseInt(this.getAttribute('data-index'));
+
+  // Reorder the todos array
+  const movedItem = todos.splice(dragIndex, 1)[0];
+  todos.splice(dropIndex, 0, movedItem);
+
+  saveAndRender(); // Save and re-render the updated order
+}
+
+function dragEnd() {
+  draggedItem.classList.remove('invisible');
+  draggedItem = null;
+}
 
 function addTodo() {
   const text = newTodoInput.value.trim();
@@ -91,7 +122,6 @@ function setFilter(button) {
   renderTodos();
 }
 
-
 function toggleTheme() {
   body.classList.toggle('dark-mode');
   const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
@@ -109,6 +139,7 @@ function saveAndRender() {
   renderTodos();
 }
 
+// Event listeners
 newTodoInput.addEventListener('keypress', e => {
   if (e.key === 'Enter') addTodo();
 });
@@ -116,4 +147,20 @@ modeToggle.addEventListener('click', toggleTheme);
 document.getElementById('clear-completed').addEventListener('click', clearCompletedTodos);
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => setFilter(button)));
 
-renderTodos();
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('filter-all').classList.add('active');
+  renderTodos();
+});
+
+// Function to set filter and toggle active class
+function setFilter(button) {
+  // Remove the 'active' class from all filters
+  document.querySelectorAll('.filter').forEach(btn => btn.classList.remove('active'));
+
+  // Add the 'active' class to the clicked filter
+  button.classList.add('active');
+
+  // Re-render todos based on the selected filter
+  renderTodos();
+}
+

@@ -122,6 +122,22 @@ body {
   margin-right: 10px;
 }
 
+/* For the task check (circle) icon */
+.task-check img {
+  transition: filter 0.3s, background-color 0.3s;
+}
+
+/* Dark mode: Apply a custom filter to change the color of the circle to #393A4B */
+.dark-mode .task-check img {
+  filter: invert(29%) sepia(8%) saturate(747%) hue-rotate(185deg) brightness(67%) contrast(82%);
+}
+
+/* Light mode: No filter applied, keeping the original color of the circle */
+body:not(.dark-mode) .task-check img {
+  filter: none;
+}
+
+
 .task-text {
   color: #494C6B;
   font-family: "Josefin Sans";
@@ -235,11 +251,12 @@ body {
   padding-top: 5px;
 }
 
+/* CSS for the task-check circle in both dark and light mode */
 .task-check {
-  position: relative;
   width: 25px;
   height: 24px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 /* Hide hover icon by default */
@@ -282,6 +299,32 @@ body {
   color: #3A7CFD;
   font-weight: 700;
 }
+/* For the circle icon, change its color based on the mode */
+.circle-icon img {
+  transition: filter 0.3s;
+}
 
+/* Dark mode: Apply a custom filter to color the circle with #393A4B */
+.dark-mode .circle-icon img {
+  filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg) brightness(0.8);
+}
 
+/* Light mode: Apply no filter for a white circle */
+body:not(.dark-mode) .circle-icon img {
+  filter: invert(0); /* Inverted effect gives a white circle */
+}
+
+/* Dark mode: Apply the specific SVG for the task-check circle */
+.dark-mode .task-check img {
+  display: none; /* Hide the original image */
+}
+
+.dark-mode .task-check::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2211.5%22 stroke=%22%23393A4B%22/%3E%3C/svg%3E') no-repeat center center;
+  background-size: contain;
+}
 

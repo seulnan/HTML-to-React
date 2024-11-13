@@ -113,10 +113,6 @@ body {
   transition: background-color 0.3s;
 }
 
-.task:hover {
-  background-color: rgba(211, 211, 211, 0.2);
-}
-
 .task-check {
   cursor: pointer;
   margin-right: 10px;
@@ -169,7 +165,8 @@ body:not(.dark-mode) .task-check img {
 }
 
 .task-check:hover {
-  filter: brightness(0.8);
+  border-radius: 23px;
+  border: 1px solid #5DF;
 }
 
 /* Dark mode specific styles */
@@ -281,11 +278,21 @@ body:not(.dark-mode) .task-check img {
 }
 
 .task-divider {
-  width: 100%;
+  width: 563px;
   height: 1px;
   background: #E3E4F1;
+  margin: 0 -24px; /* Offsets the padding of .task-rectangle */
   flex-shrink: 0;
 }
+
+.dark-mode .task-divider {
+  width: 563px;
+  height: 1px;
+  background: #393A4B;
+  margin: 0 -24px;
+  flex-shrink: 0;
+}
+
 
 /* Default color for all filter buttons */
 .filter {
@@ -304,27 +311,5 @@ body:not(.dark-mode) .task-check img {
   transition: filter 0.3s;
 }
 
-/* Dark mode: Apply a custom filter to color the circle with #393A4B */
-.dark-mode .circle-icon img {
-  filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg) brightness(0.8);
-}
 
-/* Light mode: Apply no filter for a white circle */
-body:not(.dark-mode) .circle-icon img {
-  filter: invert(0); /* Inverted effect gives a white circle */
-}
-
-/* Dark mode: Apply the specific SVG for the task-check circle */
-.dark-mode .task-check img {
-  display: none; /* Hide the original image */
-}
-
-.dark-mode .task-check::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 24px;
-  background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%2211.5%22 stroke=%22%23393A4B%22/%3E%3C/svg%3E') no-repeat center center;
-  background-size: contain;
-}
 

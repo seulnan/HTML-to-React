@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
-const Timer = {props} => {
+const Timer = (props) => { // 소괄호로 변경
     useEffect(() => {
         const timer = setInterval(() => {
             console.log('타이머 돌아가는 중...');
@@ -16,7 +16,7 @@ const Timer = {props} => {
         <div>
             <span>타이머를 시작합니다. 콘솔을 보세요!</span>
         </div>
-    )
+    );
 };
 
 export default Timer;

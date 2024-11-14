@@ -62,7 +62,7 @@ body {
     fill: #FFF;
 }
 
-.oval:hover circle{
+.todo-item .oval:hover circle{
     stroke:#5df;
 }
 

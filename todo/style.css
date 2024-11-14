@@ -73,6 +73,7 @@ body {
 
 .dark-mode .rectangle, .dark-mode .task-rectangle {
   background: #333;
+  box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
 }
 
 .group-input {
@@ -118,21 +119,10 @@ body {
   margin-right: 10px;
 }
 
-/* For the task check (circle) icon */
 .task-check img {
-  transition: filter 0.3s, background-color 0.3s;
+  width: 25px;
+  height: 24px;
 }
-
-/* Dark mode: Apply a custom filter to change the color of the circle to #393A4B */
-.dark-mode .task-check img {
-  filter: invert(29%) sepia(8%) saturate(747%) hue-rotate(185deg) brightness(67%) contrast(82%);
-}
-
-/* Light mode: No filter applied, keeping the original color of the circle */
-body:not(.dark-mode) .task-check img {
-  filter: none;
-}
-
 
 .task-text {
   color: #494C6B;
@@ -166,8 +156,11 @@ body:not(.dark-mode) .task-check img {
 
 .task-check:hover {
   border-radius: 23px;
-  border: 1px solid #5DF;
+  border: 1px solid transparent;
+  background-image: linear-gradient(45deg, #55DDFF 10%, #C058F3 100%);
+  border-image: linear-gradient(45deg, #55DDFF 10%, #C058F3 100%) 1;
 }
+
 
 /* Dark mode specific styles */
 .dark-mode .background {
@@ -306,9 +299,14 @@ body:not(.dark-mode) .task-check img {
   color: #3A7CFD;
   font-weight: 700;
 }
-/* For the circle icon, change its color based on the mode */
-.circle-icon img {
-  transition: filter 0.3s;
+
+.dark-mode .circle-icon img {
+  filter: invert(22%) sepia(15%) saturate(39%) hue-rotate(18deg) brightness(9%) contrast(70%);
+}
+
+/* Dark mode fill color */
+.dark-mode .task-check circle {
+  fill: #393A4B; /* Dark mode checkbox color */
 }
 
 

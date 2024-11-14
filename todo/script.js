@@ -2,6 +2,7 @@ const newTodoInput = document.getElementById('new-todo');
 const todoList = document.getElementById('todo-list');
 const remainingCount = document.getElementById('remaining-count');
 const modeToggle = document.getElementById('mode-toggle');
+const circleIcon = document.getElementById('circle-icon');
 const body = document.body;
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -11,10 +12,9 @@ modeToggle.src = currentTheme === 'dark' ? 'assets/icon-sun.svg' : 'assets/icon-
 
 let draggedItem = null;
 
-// Update renderTodos function to include draggable attributes
 function renderTodos() {
   todoList.innerHTML = '';
-  
+
   const activeFilter = document.querySelector('.filter-group .active');
   const filter = activeFilter ? activeFilter.id.replace('filter-', '') : 'all';
 
@@ -30,15 +30,20 @@ function renderTodos() {
     // Set draggable attribute
     taskElement.setAttribute('draggable', true);
     taskElement.setAttribute('data-index', index);
-    
+
+    // Set the correct image based on the current theme
+    const taskImage = document.createElement('img');
+    taskImage.src = document.body.classList.contains('dark-mode') ? 'assets/Oval Copy Dark.svg' : 'assets/Oval Copy.svg';
+    taskImage.classList.add('task-check');
+
     taskElement.innerHTML = `
-      <img src="assets/${todo.completed ? 'check.svg' : 'Oval Copy.svg'}" class="task-check">
+      ${taskImage.outerHTML}
       <span class="task-text">${todo.text}</span>
       <div class="task-delete-wrapper">
         ${document.body.classList.contains('dark-mode') 
           ? `<svg class="task-delete" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6777 0.707107L16.9706 0L8.83883 8.13173L0.707107 0L0 0.707107L8.13173 8.83883L0 16.9706L0.707106 17.6777L8.83883 9.54594L16.9706 17.6777L17.6777 16.9706L9.54594 8.83883L17.6777 0.707107Z" fill="#FFF"/>
-            </svg>`
+            </svg>` 
           : `<img src="assets/icon-cross.svg" class="task-delete">`}
       </div>
     `;
@@ -61,7 +66,6 @@ function renderTodos() {
 
   updateRemainingCount();
 }
-
 
 // Drag event handlers
 function dragStart(e) {
@@ -102,8 +106,14 @@ function addTodo() {
 }
 
 function toggleTodoComplete(id) {
-  todos = todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo);
-  saveAndRender();
+  todos = todos.map(todo => {
+    if (todo.id === id) {
+      // Toggle completion status
+      todo.completed = !todo.completed;
+    }
+    return todo;
+  });
+  saveAndRender(); // Save and re-render the todos to reflect the change
 }
 
 function deleteTodoItem(id) {
@@ -127,6 +137,9 @@ function toggleTheme() {
   const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
   localStorage.setItem('theme', currentTheme);
   modeToggle.src = currentTheme === 'dark' ? 'assets/icon-sun.svg' : 'assets/icon-moon.svg';
+
+  // Re-render todos to update the task-check images
+  renderTodos();
 }
 
 function updateRemainingCount() {
@@ -163,4 +176,5 @@ function setFilter(button) {
   // Re-render todos based on the selected filter
   renderTodos();
 }
+
 

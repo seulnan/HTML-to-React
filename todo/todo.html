@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode"> <!-- Apply the dark-mode class here -->
   <div class="background"></div>
   
   <div class="container">
@@ -20,8 +20,11 @@
     <div class="group">
       <div class="rectangle">
         <div class="circle-icon dark-mode-icon">
-          <img src="assets/Oval Copy.svg" alt="Add new task icon" class="task-check">
-        </div>
+          <!-- SVG for checkbox, initially set to light mode color -->
+          <svg id="circle-icon" class="task-check" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+            <circle cx="12.5" cy="12.5" r="12" stroke="none" fill="#FFF"/>
+          </svg>
+        </div>              
         <input id="new-todo" type="text" class="group-input" placeholder="Create a new todo…">
       </div>
     </div>

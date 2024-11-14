@@ -19,12 +19,12 @@ let ovalState = localStorage.getItem('ovalState') || 'light';
 
 // 기본, hover, 완료 상태 SVG
 const lightOvalSVG = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="11.5" fill="white" stroke="#E3E4F1"/>
     </svg>`;
 
 const darkOvalSVG = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="11.5" stroke="#393A4B"/>
     </svg>`;
 
@@ -361,3 +361,4 @@ filterButtons.forEach(button => {
         filterTodos(button.dataset.filter);
     });
 });
+

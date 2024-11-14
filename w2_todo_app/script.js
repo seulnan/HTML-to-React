@@ -1,3 +1,4 @@
+// 테마 관련 코드 (변경 없음)
 const savedTheme = localStorage.getItem('theme');
 const themeIcon = document.getElementById('themeIcon');
 
@@ -8,7 +9,6 @@ if (savedTheme) {
     document.body.classList.add('light-mode');
     themeIcon.src = './asset/moonIcon.png';
 }
-
 
 const themeToggleButton = document.getElementById('themeToggle');
 
@@ -26,7 +26,7 @@ themeToggleButton.addEventListener('click', () => {
     }
 });
 
-
+// 페이지 로드 시 저장된 Todo 불러오기
 window.addEventListener('load', () => {
     const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
     savedTodos.forEach((todo) => addTodoItem(todo.text, todo.completed));
@@ -34,22 +34,37 @@ window.addEventListener('load', () => {
     updateRemainingCount();
 });
 
-
+// Todo 입력 처리
 const todoInputField = document.getElementById('todoInput');
+const todoForm = document.getElementById('todoForm'); // 폼에 반드시 id="todoForm"을 설정하세요.
 
-
-todoInputField.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
+if (todoForm) {
+    // 폼이 있는 경우 'submit' 이벤트 사용
+    todoForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // 폼 제출 기본 동작 방지
         const todoText = todoInputField.value.trim();
         if (todoText) {
             addTodoItem(todoText, false);
             todoInputField.value = '';
             saveTodos();
         }
-    }
-});
+    });
+} else {
+    // 폼이 없는 경우 기존 'keydown' 이벤트 사용
+    todoInputField.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // 기본 동작 방지
+            const todoText = todoInputField.value.trim();
+            if (todoText) {
+                addTodoItem(todoText, false);
+                todoInputField.value = '';
+                saveTodos();
+            }
+        }
+    });
+}
 
-
+// Todo 항목 추가 함수 수정
 function addTodoItem(text, completed = false) {
     const todoList = document.getElementById('todoList');
     const todoItem = document.createElement('li');
@@ -59,22 +74,41 @@ function addTodoItem(text, completed = false) {
         todoItem.classList.add('completed');
     }
 
+    // 체크박스 컨테이너 생성
+    const checkboxContainer = document.createElement('div');
+    checkboxContainer.className = 'checkbox-container';
+
     const checkboxId = `checkbox-${Math.random().toString(36).substr(2, 9)}`;
-    todoItem.innerHTML = `
-        <div class="checkbox-container">
-            <input type="checkbox" id="${checkboxId}" ${completed ? 'checked' : ''}>
-            <label for="${checkboxId}"></label>
-            <span class="todo-text">${text}</span>
-        </div>
-        <span class="delete-icon"></span>
-    `;
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = checkboxId;
+    if (completed) {
+        checkbox.checked = true;
+    }
+
+    const label = document.createElement('label');
+    label.htmlFor = checkboxId;
+
+    const todoTextSpan = document.createElement('span');
+    todoTextSpan.className = 'todo-text';
+    todoTextSpan.textContent = text;
+
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(label);
+    checkboxContainer.appendChild(todoTextSpan);
+
+    // 삭제 아이콘 생성
+    const deleteIcon = document.createElement('span');
+    deleteIcon.className = 'delete-icon';
+
+    todoItem.appendChild(checkboxContainer);
+    todoItem.appendChild(deleteIcon);
 
     todoList.appendChild(todoItem);
     reorderTodoList();
     updateRemainingCount();
 
-
-    const checkbox = todoItem.querySelector(`#${checkboxId}`);
+    // 체크박스 이벤트
     checkbox.addEventListener('change', (e) => {
         todoItem.classList.toggle('completed', e.target.checked);
         updateRemainingCount();
@@ -82,24 +116,23 @@ function addTodoItem(text, completed = false) {
         reorderTodoList();
     });
 
-
-    todoItem.querySelector('.delete-icon').addEventListener('click', () => {
+    // 삭제 아이콘 이벤트
+    deleteIcon.addEventListener('click', () => {
         todoItem.remove();
         updateRemainingCount();
         saveTodos();
     });
 
-
     addDragAndDropEvents(todoItem);
 }
 
-
+// 남은 항목 수 업데이트
 function updateRemainingCount() {
     const remainingTasks = document.querySelectorAll('.todo-item:not(.completed)').length;
     document.getElementById('remainingCount').textContent = `${remainingTasks} items left`;
 }
 
-
+// 필터 버튼 이벤트
 document.querySelectorAll('.filter-button').forEach((button) => {
     button.addEventListener('click', () => {
         document.querySelectorAll('.filter-button').forEach((btn) => btn.classList.remove('active'));
@@ -110,6 +143,7 @@ document.querySelectorAll('.filter-button').forEach((button) => {
     });
 });
 
+// 필터링 함수
 function filterTodos(filter) {
     const todoItems = document.querySelectorAll('.todo-item');
     todoItems.forEach((item) => {
@@ -126,14 +160,14 @@ function filterTodos(filter) {
     });
 }
 
-
+// 완료된 항목 삭제
 document.getElementById('clearCompleted').addEventListener('click', () => {
     document.querySelectorAll('.todo-item.completed').forEach((item) => item.remove());
     updateRemainingCount();
     saveTodos();
 });
 
-
+// Todo 저장 함수
 function saveTodos() {
     const todos = Array.from(document.querySelectorAll('.todo-item')).map((item) => ({
         text: item.querySelector('.todo-text').innerText,
@@ -142,7 +176,7 @@ function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-
+// 드래그 앤 드롭 이벤트
 const todoList = document.getElementById('todoList');
 
 todoList.addEventListener('dragstart', (e) => {
@@ -181,11 +215,10 @@ todoList.addEventListener('dragover', (e) => {
     }
 });
 
-
+// Todo 리스트 재정렬 함수
 function reorderTodoList() {
     const todoList = document.getElementById('todoList');
     const todoItems = Array.from(todoList.children);
-
 
     todoItems.sort((a, b) => {
         const aCompleted = a.classList.contains('completed') ? 1 : 0;
@@ -193,11 +226,11 @@ function reorderTodoList() {
         return bCompleted - aCompleted;
     });
 
-
     todoItems.forEach(item => todoList.appendChild(item));
 }
 
-
 function addDragAndDropEvents(todoItem) {
-    
+    // 이미 dragstart, dragend, dragover 이벤트가 todoList에 설정되어 있으므로
+    // 개별 아이템에 추가 이벤트는 필요하지 않습니다.
+    // 필요 시 추가 기능을 여기에 구현할 수 있습니다.
 }

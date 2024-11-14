@@ -2,7 +2,6 @@ const newTodoInput = document.getElementById('new-todo');
 const todoList = document.getElementById('todo-list');
 const remainingCount = document.getElementById('remaining-count');
 const modeToggle = document.getElementById('mode-toggle');
-const circleIcon = document.getElementById('circle-icon');
 const body = document.body;
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -11,7 +10,7 @@ document.body.classList.add(`${currentTheme}-mode`);
 modeToggle.src = currentTheme === 'dark' ? 'assets/icon-sun.svg' : 'assets/icon-moon.svg';
 
 let draggedItem = null;
-
+// Update renderTodos function to include draggable attributes
 function renderTodos() {
   todoList.innerHTML = '';
 
@@ -27,14 +26,19 @@ function renderTodos() {
     taskElement.classList.add('task');
     if (todo.completed) taskElement.classList.add('completed');
     
-    // Set draggable attribute
     taskElement.setAttribute('draggable', true);
     taskElement.setAttribute('data-index', index);
 
-    // Set the correct image based on the current theme
+    // Set image based on the completion state and theme
     const taskImage = document.createElement('img');
-    taskImage.src = document.body.classList.contains('dark-mode') ? 'assets/Oval Copy Dark.svg' : 'assets/Oval Copy.svg';
+    taskImage.src = todo.completed ? 'assets/check.svg' 
+      : (document.body.classList.contains('dark-mode') 
+          ? 'assets/Oval Copy Dark.svg' 
+          : 'assets/Oval Copy.svg');
     taskImage.classList.add('task-check');
+
+    // Toggle completion on image click
+    taskImage.addEventListener('click', () => toggleTodoComplete(todo.id));
 
     taskElement.innerHTML = `
       ${taskImage.outerHTML}
@@ -47,11 +51,9 @@ function renderTodos() {
           : `<img src="assets/icon-cross.svg" class="task-delete">`}
       </div>
     `;
-
     taskElement.querySelector('.task-check').addEventListener('click', () => toggleTodoComplete(todo.id));
     taskElement.querySelector('.task-delete').addEventListener('click', () => deleteTodoItem(todo.id));
 
-    // Add drag events
     taskElement.addEventListener('dragstart', dragStart);
     taskElement.addEventListener('dragover', dragOver);
     taskElement.addEventListener('drop', dragDrop);
@@ -67,36 +69,31 @@ function renderTodos() {
   updateRemainingCount();
 }
 
+
 // Drag event handlers
 function dragStart(e) {
   draggedItem = this;
   e.dataTransfer.effectAllowed = 'move';
   setTimeout(() => this.classList.add('invisible'), 0); // Optional styling for dragged item
 }
-
 function dragOver(e) {
   e.preventDefault();
   e.dataTransfer.dropEffect = 'move';
 }
-
 function dragDrop(e) {
   e.preventDefault();
   
   const dragIndex = parseInt(draggedItem.getAttribute('data-index'));
   const dropIndex = parseInt(this.getAttribute('data-index'));
-
   // Reorder the todos array
   const movedItem = todos.splice(dragIndex, 1)[0];
   todos.splice(dropIndex, 0, movedItem);
-
   saveAndRender(); // Save and re-render the updated order
 }
-
 function dragEnd() {
   draggedItem.classList.remove('invisible');
   draggedItem = null;
 }
-
 function addTodo() {
   const text = newTodoInput.value.trim();
   if (text === '') return;
@@ -108,13 +105,17 @@ function addTodo() {
 function toggleTodoComplete(id) {
   todos = todos.map(todo => {
     if (todo.id === id) {
-      // Toggle completion status
-      todo.completed = !todo.completed;
+      const updatedTodo = { ...todo, completed: !todo.completed };
+      return updatedTodo;
     }
     return todo;
   });
-  saveAndRender(); // Save and re-render the todos to reflect the change
+
+  // Save updated todos to localStorage and re-render the todo list
+  localStorage.setItem('todos', JSON.stringify(todos));
+  renderTodos();
 }
+
 
 function deleteTodoItem(id) {
   todos = todos.filter(todo => todo.id !== id);
@@ -142,6 +143,7 @@ function toggleTheme() {
   renderTodos();
 }
 
+
 function updateRemainingCount() {
   const uncompletedCount = todos.filter(todo => !todo.completed).length;
   remainingCount.textContent = `${uncompletedCount} items left`;
@@ -152,7 +154,7 @@ function saveAndRender() {
   renderTodos();
 }
 
-// Event listeners
+// Event listeners for other parts of the code
 newTodoInput.addEventListener('keypress', e => {
   if (e.key === 'Enter') addTodo();
 });
@@ -164,17 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('filter-all').classList.add('active');
   renderTodos();
 });
-
 // Function to set filter and toggle active class
 function setFilter(button) {
   // Remove the 'active' class from all filters
   document.querySelectorAll('.filter').forEach(btn => btn.classList.remove('active'));
-
   // Add the 'active' class to the clicked filter
   button.classList.add('active');
-
   // Re-render todos based on the selected filter
   renderTodos();
 }
-
-

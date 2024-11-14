@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    updateAddTodoOval();
 
     const allButton = document.getElementById('all');
     allButton.classList.add('active');

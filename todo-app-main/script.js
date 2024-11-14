@@ -14,6 +14,8 @@ const bottomContainer = document.querySelector('.bottom-container'); // 하단 �
 
 let todos = [];
 
+let draggedIndex = null;
+
 // Oval 상태 로컬 스토리지에서 가져오기
 let ovalState = localStorage.getItem('ovalState') || 'light';
 
@@ -166,6 +168,31 @@ function addTodo(text) {
     saveTodosToLocalStorage();
 }
 
+function handleDragStart(event) {
+    draggedIndex = event.target.getAttribute('data-index');
+    event.dataTransfer.effectAllowed = "move";
+}
+
+function handleDragOver(event) {
+    event.preventDefault();  // 드롭을 허용하기 위해 필요
+    event.dataTransfer.dropEffect = "move";
+}
+
+function handleDrop(event) {
+    event.preventDefault();
+    const targetIndex = event.target.closest('.todo-item').getAttribute('data-index');
+
+    // todos 배열을 드래그한 항목과 드롭한 대상의 위치에 맞게 재정렬
+    if (draggedIndex !== null && targetIndex !== null && draggedIndex !== targetIndex) {
+        const movedItem = todos.splice(draggedIndex, 1)[0];
+        todos.splice(targetIndex, 0, movedItem);
+
+        updateTodoList();
+        saveTodosToLocalStorage();
+    }
+    draggedIndex = null;
+}
+
 // updateTodoList 함수에서 새로 생성되는 항목의 색상 설정
 function updateTodoList() {
     mainContainer.innerHTML = ''; // 기존 목록 초기화
@@ -174,6 +201,10 @@ function updateTodoList() {
     todos.forEach((todo, index) => {
         const todoItem = document.createElement('div');
         todoItem.className = 'todo-item';
+        todoItem.draggable = true;
+        todoItem.setAttribute('data-index', index);
+
+        
         todoItem.innerHTML = `
             <div class="oval" data-index="${index}">
                 ${todo.completed ? clickedOval : isDark ? darkOvalSVG : lightOvalSVG}
@@ -210,7 +241,7 @@ function updateTodoList() {
 }
 
 
-// 할 일 목록 업데이트 함수에서 새로 생성되는 항목의 색상 설정
+// 할 일 목록 업데이트 함수 (드래그 앤 드롭 통합)
 function updateTodoList() {
     mainContainer.innerHTML = ''; // 기존 목록 초기화
     const isDark = document.body.classList.contains('dark');
@@ -218,9 +249,12 @@ function updateTodoList() {
     todos.forEach((todo, index) => {
         const todoItem = document.createElement('div');
         todoItem.className = 'todo-item';
+        todoItem.draggable = true; // 드래그 가능하도록 설정
+        todoItem.setAttribute('data-index', index);
+
         todoItem.innerHTML = `
             <div class="oval" data-index="${index}">
-                ${isDark ? darkOvalSVG : lightOvalSVG}
+                ${todo.completed ? clickedOval : isDark ? darkOvalSVG : lightOvalSVG}
             </div>
             <span class="todo-text" data-index="${index}" style="color: ${isDark ? '#C8CBE7' : '#494C6B'};">
                 ${todo.text}
@@ -239,14 +273,15 @@ function updateTodoList() {
         // 완료된 할 일 텍스트 스타일 적용
         if (todo.completed) {
             todoText.style.textDecoration = 'line-through';
-            todoText.style.color = isDark ? '#C8CBE7' : '#9495A5';
+            todoText.style.color = isDark ? '#4D5067' : '#9495A5';
             oval.innerHTML = clickedOval;
         }
 
-        
+        // 드래그 앤 드롭 이벤트 추가
+        todoItem.addEventListener('dragstart', handleDragStart);
+        todoItem.addEventListener('dragover', handleDragOver);
+        todoItem.addEventListener('drop', handleDrop);
 
-        
-        // 완료/미완료 상태 토글 및 삭제 이벤트 추가
         oval.addEventListener('click', () => toggleComplete(index));
         todoText.addEventListener('click', () => toggleComplete(index));
         cancelButton.addEventListener('click', (e) => {
@@ -254,10 +289,8 @@ function updateTodoList() {
             deleteTodo(index);
         });
 
-        // 할 일 아이템과 line 추가
         mainContainer.appendChild(todoItem);
 
-        // line 요소 생성 후 추가
         const line = document.createElement('div');
         line.className = 'line';
         line.style.background = isDark ? '#393A4B' : '#E3E4F1';
@@ -361,4 +394,3 @@ filterButtons.forEach(button => {
         filterTodos(button.dataset.filter);
     });
 });
-

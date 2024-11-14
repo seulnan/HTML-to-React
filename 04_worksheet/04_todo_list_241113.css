@@ -160,6 +160,10 @@ button:hover{
     border-color: transparent; /* hover 시 테두리 제거 */
 }
 
+body.dark-mode .todo-item input[type="checkbox"]:hover {
+    background-image: url("assets/images/icon-check-border-dark.svg");
+}
+
 /* 체크된 상태: icon-check.svg 이미지로 변경 */
 .todo-item input[type="checkbox"]:checked {
     background-image: url("assets/images/icon-check.svg");

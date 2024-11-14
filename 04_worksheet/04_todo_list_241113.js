@@ -7,11 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const showActiveButton = document.getElementById("show-active");
     const showCompletedButton = document.getElementById("show-completed");
     const clearCompletedButton = document.getElementById("clear-completed");
+    const themeIcon = document.getElementById("theme-icon");
 
     let todos = JSON.parse(localStorage.getItem("todos")) || [];
-    let darkMode = localStorage.getItem("darkMode") === "true";
+    let darkMode = JSON.parse(localStorage.getItem("darkMode")) || false;
+
+    // 페이지 로드 시 모드에 맞는 클래스 추가
     document.body.classList.toggle("dark-mode", darkMode);
     document.body.classList.toggle("light-mode", !darkMode);
+
+    // 초기 아이콘 및 배경 설정
+    const headerBg = document.querySelector(".header-bg");
+    headerBg.src = darkMode ? "assets/images/bg-desktop-dark.jpg" : "assets/images/bg-desktop-light.jpg";
+    themeIcon.src = darkMode ? "assets/images/icon-sun.svg" : "assets/images/icon-moon.svg";
 
     function renderTodos(filter = "all") {
         todoList.innerHTML = "";
@@ -35,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
             checkbox.addEventListener("change", () => toggleTodoCompletion(index));
 
             const deleteButton = document.createElement("span");
-            deleteButton.innerText = "x";
             deleteButton.className = "delete-btn";
             deleteButton.addEventListener("click", () => deleteTodo(index));
 
@@ -81,11 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
         darkMode = !darkMode;
         document.body.classList.toggle("dark-mode", darkMode);
         document.body.classList.toggle("light-mode", !darkMode);
-        localStorage.setItem("darkMode", darkMode);
         
-        // 이미지 경로가 모드에 따라 바뀌도록 설정
-        const headerBg = document.querySelector(".header-bg");
+        // 이미지와 아이콘을 모드에 따라 변경
         headerBg.src = darkMode ? "assets/images/bg-desktop-dark.jpg" : "assets/images/bg-desktop-light.jpg";
+        themeIcon.src = darkMode ? "assets/images/icon-sun.svg" : "assets/images/icon-moon.svg";
+
+        // 변경된 모드 상태를 로컬스토리지에 저장
+        localStorage.setItem("darkMode", darkMode);
     }
 
     function saveAndRender() {
@@ -93,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTodos();
     }
 
+    // 이벤트 리스너 설정
     newTodoInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") addTodo();
     });
@@ -103,5 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showCompletedButton.addEventListener("click", () => renderTodos("completed"));
     clearCompletedButton.addEventListener("click", clearCompletedTodos);
 
+    // 초기 렌더링
     renderTodos();
 });

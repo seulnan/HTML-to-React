@@ -1,25 +1,38 @@
 :root {
-    --light-bg: #ffffff;
-    --dark-bg: #333333;
-    --light-text: #000000;
-    --dark-text: #ffffff;
-    --primary-color: #3a3a3a;
-    --hover-color: #555555;
+    --light-bg: #FAFAFA;
+    --dark-bg: #171823;
+    --light-text: #494C6B;
+    --dark-text: #C8CBE7;
+    --item-bg-light: #ffffff;
+    --item-bg-dark: #25273D;
+}
+
+.josefin-sans-normal {
+    font-family: "Josefin Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 body {
     margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .app-container {
     width: 1440px;
     height: 800px;
-    background-color: #FAFAFA;
+    background-color: var(--light-bg);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
+    transition: background-color 0.3s;
+}
+
+body.dark-mode .app-container {
+    background-color: var(--dark-bg); /* 다크모드 배경 */
 }
 
 .header-bg {
@@ -34,6 +47,18 @@ body {
 
 .header, .todo-input, .todo-item, .controls {
     z-index: 3;
+}
+
+
+.todo-item, .controls {
+    background-color: var(--item-bg-light); /* 기본 라이트모드 배경 */
+    transition: background-color 0.3s;
+}
+
+
+body.dark-mode .todo-item, 
+body.dark-mode .controls {
+    background-color: var(--item-bg-dark); /* 다크모드 배경 */
 }
 
 /* 라이트모드 이미지 */
@@ -75,25 +100,127 @@ h1 {
     color: #ffffff;
 }
 
+/* theme-icon 배경 요소 제거 필요 */
 button, .todo-item {
     cursor: pointer;
     transition: background-color 0.3s;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 0;
+    font-size: 18px;
+    background-color: var(--hover-color);
 }
 
-button:hover, .todo-item:hover {
+button:hover{
     background-color: var(--hover-color);
+}
+
+.todo-item .delete-btn {
+    display: none; /* 기본적으로 숨김 */
+    width: 18px;
+    height: 18px;
+    background-image: url("assets/images/icon-cross.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.todo-item:hover .delete-btn {
+    display: inline-block; /* 마우스를 올렸을 때만 표시 */
+}
+
+/* 기본 체크박스 스타일 */
+.todo-item input[type="checkbox"] {
+    appearance: none; /* 기본 체크박스 스타일 제거 */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* 원형으로 설정 */
+    cursor: pointer;
+    margin-right: 24px; /* 오른쪽 여백 */
+    background-color: transparent;
+    transition: background-image 0.3s, border-color 0.3s;
+}
+
+/* 기본 상태: 테두리 색상 설정 */
+.todo-item input[type="checkbox"] {
+    border: 2px solid #ccc;
+}
+
+/* hover 상태: icon-check-border.svg 이미지로 변경 */
+.todo-item input[type="checkbox"]:hover {
+    background-image: url("assets/images/icon-check-border.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent; /* hover 시 테두리 제거 */
+}
+
+/* 체크된 상태: icon-check.svg 이미지로 변경 */
+.todo-item input[type="checkbox"]:checked {
+    background-image: url("assets/images/icon-check.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent; /* 체크 시 테두리 제거 */
 }
 
 
 
 .todo-input {
+    width: 516px;
+    height: 64px;
+    flex-shrink: 0;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background:  var(--item-bg-light);
+    transition: background-color 0.3s;
+    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+    padding: 0 10px 0 14px;
+}
+body.dark-mode .todo-input{
+    background-color: var(--item-bg-dark); /* 다크모드 배경 */
+}
+
+.circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color:  var(--item-bg-light);
+    transition: background-color 0.3s;
+    margin-right: 24px;
+    border: #ccc 2px solid;
+}
+
+body.dark-mode .todo-input .circle{
+    background-color: var(--item-bg-dark); /* 다크모드 배경 */
 }
 
 .todo-input input {
-    width: 516px;
+    width: 468px;
     height: 64px;
-    padding: 0 10px;
+    padding: 0;
+    border-radius: 5px;
+    background-color: var(--item-bg-light); /* 라이트모드 배경 */
+    transition: background-color 0.3s;
+    border: 0;
+    font-family: 'Josefin Sans', sans-serif; /* 폰트 적용 */
+    color: var(--light-text); /* 텍스트 색상 */
+    font-size: 16px; /* 텍스트 크기 */
+}
+
+body.dark-mode .todo-input input {
+    background-color: var(--item-bg-dark); /* 다크모드 배경 */
+    color: var(--dark-text); /* 다크모드 텍스트 색상 */
+}
+
+.todo-input input::placeholder {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #A9A9A9; /* 원하는 색상으로 변경 */
+    font-size: 16px; /* 필요한 경우 폰트 크기 조정 */
+    opacity: 1; /* 투명도 설정 */
 }
 
 #todo-list {
@@ -117,6 +244,12 @@ button:hover, .todo-item:hover {
 
 .todo-item .todo-text {
     flex-grow: 1;
+    color: var(--light-text);
+    text-align: left;
+}
+
+body.dark-mode .todo-item .todo-text {
+    color: var(--dark-text);
 }
 
 .todo-item.completed .todo-text {
@@ -132,6 +265,10 @@ button:hover, .todo-item:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.ctrl-button {
+    padding: 0;
 }
 
 /*  다크모드 수정 필요 + 버튼 수정 필요 + 폰트 적용 필요  */

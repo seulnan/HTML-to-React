@@ -166,7 +166,7 @@ function addTodo(text) {
     saveTodosToLocalStorage();
 }
 
-// 할 일 목록 업데이트 함수에서 새로 생성되는 항목의 색상 설정
+// updateTodoList 함수에서 새로 생성되는 항목의 색상 설정
 function updateTodoList() {
     mainContainer.innerHTML = ''; // 기존 목록 초기화
     const isDark = document.body.classList.contains('dark');
@@ -187,29 +187,18 @@ function updateTodoList() {
                 </svg>
             </div>
         `;
-
+        
         const oval = todoItem.querySelector('.oval');
         const todoText = todoItem.querySelector('.todo-text');
-
+        
         if (todo.completed) {
             todoText.style.textDecoration = 'line-through';
             todoText.style.color = isDark ? '#4D5067' : '#9495A5';
+            oval.innerHTML = clickedOval;
         }
 
-        // 이벤트 리스너 설정
         oval.addEventListener('click', () => toggleComplete(index));
-
-        oval.addEventListener('mouseenter', () => {
-            if (!todo.completed) {
-                oval.innerHTML = hoverOval;
-            }
-        });
-
-        oval.addEventListener('mouseleave', () => {
-            if (!todo.completed) {
-                oval.innerHTML = isDark ? darkOvalSVG : lightOvalSVG;
-            }
-        });
+        todoText.addEventListener('click', () => toggleComplete(index));
 
         mainContainer.appendChild(todoItem);
 
@@ -320,7 +309,7 @@ function filterTodos(filter) {
         todoItem.className = 'todo-item';
         todoItem.innerHTML = `
             <div class="oval" data-index="${index}">
-                ${isDark ? darkOvalSVG : lightOvalSVG}
+                ${todo.completed ? clickedOval : isDark ? darkOvalSVG : lightOvalSVG}
             </div>
             <span class="todo-text" data-index="${index}" style="color: ${isDark ? '#C8CBE7' : '#494C6B'};">
                 ${todo.text}
@@ -332,22 +321,20 @@ function filterTodos(filter) {
 
         if (todo.completed) {
             todoText.style.textDecoration = 'line-through';
-            todoText.style.color = isDark ? '#4D5067' : '#9495A5'; // 밤 모드일 때 완료된 텍스트 색상
+            todoText.style.color = isDark ? '#4D5067' : '#9495A5';
         }
 
-        // 완료/미완료 상태 토글 및 삭제 이벤트 추가
         oval.addEventListener('click', () => toggleComplete(index));
         todoText.addEventListener('click', () => toggleComplete(index));
 
-        // 할 일 아이템과 line 추가
         mainContainer.appendChild(todoItem);
 
-        // line 요소 생성 후 추가
         const line = document.createElement('div');
         line.className = 'line';
         line.style.background = isDark ? '#393A4B' : '#E3E4F1';
         mainContainer.appendChild(line);
     });
+
     updateItemsLeft();
 }
 
@@ -364,4 +351,13 @@ function saveTodosToLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+// 필터 버튼 스타일 설정
 
+// 필터 버튼 이벤트
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        filterTodos(button.dataset.filter);
+    });
+});

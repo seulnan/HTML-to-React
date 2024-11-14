@@ -24,4 +24,4 @@ function useState1() {
     );
 }
 
-export default App;
+export default useState1;

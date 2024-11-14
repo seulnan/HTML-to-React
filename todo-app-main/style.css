@@ -232,6 +232,6 @@ body {
     letter-spacing: -0.194px;
 }
 
-#all{
+.filter-button.active {
     color: #3A7CFD;
 }

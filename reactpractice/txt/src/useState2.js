@@ -5,7 +5,7 @@ const heavyWork = () => {
   return ['리액트', '멘토링'];
 };
 
-function App() {
+function useState2() {
   const[names, setNames]=useState(()=>{
     return heavyWork();
   });
@@ -33,4 +33,4 @@ function App() {
   )
 }
 
-export default App;
+export default useState2;

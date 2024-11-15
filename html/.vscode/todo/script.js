@@ -12,8 +12,8 @@ const inputContainer = document.querySelector('.input-container'); // 입력 컨
 const bottomContainer = document.querySelector('.bottom-container'); // 하단 컨테이너
 
 
-let todos = [];
-
+// let todos = [];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 let draggedIndex = null;
 
 // Oval 상태 로컬 스토리지에서 가져오기
@@ -164,9 +164,10 @@ newTodoInput.addEventListener('keypress', (e) => {
 // 할 일 추가 함수
 function addTodo(text) {
     const todo = { text, completed: false };
-    todos.push(todo);
+    todos.push(todos);
     updateTodoList();
     saveTodosToLocalStorage();
+    localStorage.setItem('todos', JSON.stringify(todos));
 }
 
 function handleDragStart(event) {
@@ -393,5 +394,24 @@ filterButtons.forEach(button => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         filterTodos(button.dataset.filter);
+    });
+});
+
+function applyDarkModeShadow() {
+    if (document.body.classList.contains('dark')) {
+    mainContainer.style.boxShadow = '0px 35px 50px -15px rgba(0, 0, 0, 0.50)';
+    bottomContainer.style.boxShadow = '0px 35px 50px -15px rgba(0, 0, 0, 0.50)';
+    } else {
+    mainContainer.style.boxShadow = '0px 35px 50px -15px rgba(194, 195, 214, 0.50)';
+    bottomContainer.style.boxShadow = '0px 35px 50px -15px rgba(194, 195, 214, 0.50)';
+    }
+}
+
+  clear.bottom.filter-button(button => {
+    clear.bottom.filter-button.addEventListener('mouseover', () => {
+        clear.bottom.filter-button.classList.add('active');
+    });
+    clear.bottom.filter-button.addEventListener('mouseout', () => {
+        clear.bottom.filter-button.classList.remove('active');
     });
 });

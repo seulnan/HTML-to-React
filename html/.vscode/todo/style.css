@@ -234,7 +234,7 @@ body {
     letter-spacing: -0.194px;
 }
 
-.filter-button: hover {
+/* .filter-button:hover {
     color: #E3E4F1;
     text-align: right;
     font-family: "Josefin Sans";
@@ -243,8 +243,44 @@ body {
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.194px;
-}
+} */
 
 .filter-button.active{
     color: #3A7CFD;
+    font-weight: 700;
+
 }
+/* dark-shadow 클래스를 다크 모드 전용으로 box-shadow를 적용하는 용도로 추가 */
+.dark-shadow {
+    box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Dark mode 시 main-container와 bottom-container의 box-shadow */
+body.dark .main-container,
+body.dark .bottom-container {
+    box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
+}
+
+/* clear bottom filter-button의 hover 스타일 */
+.clear.bottom.filter-button:hover {
+    color: #494C6B;
+    font-weight: 400;
+
+}
+.clear.bottom.filter-button {
+    color: #9495A5;
+    font-weight: 400;
+
+}
+
+body.dark.clear.bottom.filter-button {
+    color: #5B5E7E;
+    font-weight: 400;
+
+}
+body.dark.clear:hover {
+    color: #E3E4F1;
+    font-weight: 400;
+
+} 

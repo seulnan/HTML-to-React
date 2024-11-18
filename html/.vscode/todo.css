@@ -1,0 +1,277 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh; /* 화면의 최소 높이를 설정하여 스크롤이 가능하게 함 */
+    background: #FAFAFA;
+    display: flex;
+    flex-direction: column; /* 세로로 정렬 */
+    justify-content: flex-start; /* 내용이 화면 위에 정렬되도록 */
+    align-items: center;
+    overflow: auto; /* 전체 페이지가 스크롤 되도록 설정 */
+}
+
+/* 배경 이미지 */
+.background-image {
+    position: absolute;
+    top: 0;
+    background: url('assets/light.jpg') lightgray no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+    z-index: -1;
+}
+
+/* task */
+.todo-app {
+    width: 540px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+    margin-top: 24px;
+    margin-bottom : 49px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* 내용에 맞게 높이를 자동으로 조정 */
+    max-height: calc(100vh - 80px); /* 최대 높이를 화면 높이에 맞게 설정 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능 */
+}
+
+.container {
+    margin: 0;
+    margin-top: 50px;
+    padding: 0;
+    width: 540px;
+    justify-content: space-between;
+}
+
+/* 제목과 테마 토글을 같은 줄에 배치하기 위해 .title-container 생성 */
+.title-container {
+    flex-direction: row;
+    width: 541px;
+    height: 48px;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0; /* 패딩 제거 */
+    display: flex;
+    flex-shrink: 0;
+    margin-bottom: 40px;
+}
+
+.title {
+    color: #FFF;
+    font-family: "Josefin Sans";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 15px;
+}
+
+/* theme toggle 버튼을 title의 오른쪽에 24px 간격으로 배치 */
+.theme-toggle {
+    width: 25.113px;
+    height: 26px;
+    flex-shrink: 0;
+    top : 11px;
+    fill: #FFF;
+}
+
+#new-task {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid hsl(30, 54%, 90%);
+    border-radius: 8px;
+    margin-top: 1rem;
+    color: #393A4B;
+    font-family: "Josefin Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.25px;
+}
+
+/* Container for the tasks */
+#taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust the space between tasks */
+    padding: 10px;
+    max-height: none; /* Ensure that the height expands based on content */
+    overflow: visible; /* Allow the container to grow */
+    margin-top: 1rem; /* task 항목 위에 여백 추가 */
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #E3E4F1;
+    font-size: 18px;
+}
+
+.task-completed {
+    text-decoration: line-through;
+    color: #D1D2DA;
+    font-family: "Josefin Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.25px;
+}
+
+.task-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left : 24px;
+    margin-bottom : 20px;
+    margin-right : 24px;
+    margin-top: 16px;
+}
+
+#remaining-tasks {
+    color: #9495A5;
+    font-family: "Josefin Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.194px;
+}
+
+.filter-btn {
+    color: #9495A5;
+    font-family: "Josefin Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.194px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    color: #3A7CFD;
+    font-weight: bold;
+}
+
+.filter-btn:hover {
+    color: #3A7CFD;
+}
+
+#clear-completed {
+    color: #9495A5;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#clear-completed:hover {
+    color: #3A7CFD;
+}
+
+.filter {
+    width : 166px;
+    justify-content: space-between;
+}
+
+/* 하단 텍스트 */
+.footer {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    margin-top: 24px;
+    padding: 20px;
+    background-color: #FAFAFA;
+    width: 100%;
+}
+
+/* Dark Mode */
+
+/* 전체 배경 */
+body.dark-mode { 
+    background: #171823;
+}
+
+body.dark-mode .background-image {
+    background: url('assets/dark.jpg') lightgray no-repeat;
+}
+
+/* create a new todo .. box */
+body.dark-mode #new-task { 
+    border-radius: 5px;
+    background: #25273D;
+    box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
+    border:0px;
+    color: #C8CBE7;
+}
+
+/* task 박스 */
+body.dark-mode .todo-app { 
+    border-radius: 5px;
+    background: #25273D;
+    box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
+}
+
+body.dark-mode .task {
+    color: #C8CBE7;
+    font-family: "Josefin Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.25px;
+    border-bottom: 1px solid #393A4B;
+}
+
+/* Hover Effects */
+.task:hover .delete-icon {
+    display: inline;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* 삭제 아이콘 숨기기.hover 안되었을 때 */
+.delete-icon {
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+input {
+    margin-right: 24px;
+}
+
+input:hover {
+    flex-shrink: 0;
+}
+
+.custom-checkbox {
+    appearance: none;
+    width: 24px; 
+    height: 24px;
+    background-image: url('assets/circle1.png'); /* 기본 이미지 */
+    background-size: cover;
+    cursor: pointer;
+}
+
+.custom-checkbox:hover {
+    background-image: url('assets/circle2.png'); /* 호버 이미지 */
+}
+
+.custom-checkbox:checked {
+    background-image: url('assets/circle3.png'); /* 클릭(체크됨) 이미지 */
+}

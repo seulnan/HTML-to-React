@@ -333,52 +333,69 @@ filterButtons.forEach(button => {
 
 // 필터링 함수에서 완료된 항목 스타일 수정
 function filterTodos(filter) {
-    mainContainer.innerHTML = '';
-    const isDark = document.body.classList.contains('dark');
-    const filteredTodos = filter === 'all' ? todos :
-        todos.filter(todo => filter === 'active' ? !todo.completed : todo.completed);
-    
+    mainContainer.innerHTML = ''; // 기존 목록 초기화
+
+    const filteredTodos = filter === 'all' 
+        ? todos 
+        : todos.filter(todo => filter === 'active' ? !todo.completed : todo.completed);
+
+    // 필터링된 항목으로 목록 재구성
     filteredTodos.forEach((todo, index) => {
         const todoItem = document.createElement('div');
         todoItem.className = 'todo-item';
+        todoItem.setAttribute('data-index', index); // 재정렬된 인덱스 적용
         todoItem.innerHTML = `
             <div class="oval" data-index="${index}">
-                ${todo.completed ? clickedOval : isDark ? darkOvalSVG : lightOvalSVG}
+                ${todo.completed ? clickedOval : (document.body.classList.contains('dark') ? darkOvalSVG : lightOvalSVG)}
             </div>
-            <span class="todo-text" data-index="${index}" style="color: ${isDark ? '#C8CBE7' : '#494C6B'};">
+            <span class="todo-text" data-index="${index}">
                 ${todo.text}
             </span>
         `;
-        
+
         const oval = todoItem.querySelector('.oval');
         const todoText = todoItem.querySelector('.todo-text');
 
+        // 완료 상태 스타일 적용
         if (todo.completed) {
             todoText.style.textDecoration = 'line-through';
-            todoText.style.color = isDark ? '#4D5067' : '#9495A5';
+            todoText.style.color = document.body.classList.contains('dark') ? '#4D5067' : '#9495A5';
         }
 
+        // 이벤트 핸들러 추가
         oval.addEventListener('click', () => toggleComplete(index));
         todoText.addEventListener('click', () => toggleComplete(index));
 
         mainContainer.appendChild(todoItem);
 
+        // 라인 추가
         const line = document.createElement('div');
         line.className = 'line';
-        line.style.background = isDark ? '#393A4B' : '#E3E4F1';
+        line.style.background = document.body.classList.contains('dark') ? '#393A4B' : '#E3E4F1';
         mainContainer.appendChild(line);
     });
 
-    updateItemsLeft();
+    updateItemsLeft(); // 남은 항목 수 갱신
 }
+
 
 
 // 완료된 할 일 삭제
 clearCompletedButton.addEventListener('click', () => {
-    todos = todos.filter(todo => !todo.completed);
-    updateTodoList();
-    saveTodosToLocalStorage();
+    console.log("Before Clear:", todos); // Clear 전 todos 배열 확인
+    todos = todos.filter(todo => !todo.completed); // 완료된 항목 제거
+    console.log("After Clear:", todos); // Clear 후 todos 배열 확인
+
+    saveTodosToLocalStorage(); // 로컬 스토리지 저장
+
+    // 현재 활성화된 필터에 따라 목록 재구성
+    const activeFilter = document.querySelector('.filter-button.active').dataset.filter;
+    updateTodoList(); // 전체 목록 먼저 업데이트
+    filterTodos(activeFilter); // 활성화된 필터 조건에 따라 표시
 });
+
+
+
 
 // 로컬 스토리지 저장
 function saveTodosToLocalStorage() {

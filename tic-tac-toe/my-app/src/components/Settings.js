@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './Settings.css'; // CSS 파일 임포트
+import myImage from '../assets/image/Menu_ox.png';
 
 const Settings = ({ setMode, setPlayerSymbol }) => {
   const [symbol, setSymbol] = useState('X'); // 기본값은 'X'
@@ -10,15 +12,43 @@ const Settings = ({ setMode, setPlayerSymbol }) => {
 
   return (
     <div>
-      <h2>게임 모드 선택</h2>
-      <button onClick={() => handleStartGame('playerVsPlayer')}>사람 vs 사람</button>
-      <button onClick={() => handleStartGame('cpuVsPlayer')}>CPU vs 사람</button>
+      <div class="icon-container">
+        <img src= {myImage} alt="Icon" class="icon" />
+    </div>
+    <div className="settings-container">
       
-      <h3>기호 선택</h3>
-      <button onClick={() => setSymbol('X')}>X</button>
-      <button onClick={() => setSymbol('O')}>O</button>
-      
-      <p>선택한 기호: {symbol}</p>
+      <div className="symbol-selection">
+      <p className="selected-symbol">PICK PLAYER 1’S MARK</p>
+        <div className="symbol-toggle-container">
+          <button
+            onClick={() => setSymbol('X')} 
+            className={`toggle-symbol-button ${symbol === 'X' ? 'active' : ''}`}
+          >
+            X
+          </button>
+          <button 
+            onClick={() => setSymbol('O')} 
+            className={`toggle-symbol-button ${symbol === 'O' ? 'active' : ''}`}
+          >
+            O
+          </button>
+        </div>
+        <p className="selected-symbol">REMEMBER : X GOES FIRST</p>
+      </div>
+
+      <button 
+        onClick={() => handleStartGame('cpuVsPlayer')} 
+        className="game-button cpu-button"
+      >
+        NEW GAME (VS CPU)
+      </button>
+      <button 
+        onClick={() => handleStartGame('playerVsPlayer')} 
+        className="game-button player-button"
+      >
+        NEW GAME (VS PLAYER)
+      </button>
+    </div>
     </div>
   );
 };

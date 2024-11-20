@@ -103,48 +103,48 @@ const Game = ({ mode, playerSymbol, onExit }) => {
   };
 
   return (
+  <div>
+    <Status winner={winner} xIsNext={xIsNext} isDraw={board.every((square) => square !== null)} />
+    <Board squares={board} onClick={handleClick} />
+    <button onClick={resetGame}>게임 재시작</button>
+
     <div>
-      <Status winner={winner} xIsNext={xIsNext} isDraw={board.every((square) => square !== null)} />
-      <Board squares={board} onClick={handleClick} />
-      <button onClick={resetGame}>게임 재시작</button>
-  
-      <div>
-        <h3>승리 횟수</h3>
-        {mode === 'playerVsPlayer' ? (
-          <>
-            <p>P1 ({playerSymbol}): {player1Wins}</p>
-            <p>P2 ({playerSymbol === 'X' ? 'O' : 'X'}): {player2Wins}</p>
-          </>
-        ) : (
-          <>
-            <p>P1 ({playerSymbol}): {player1Wins}</p>
-            <p>CPU ({cpuSymbol}): {cpuWins}</p>
-          </>
-        )}
-        <p>비긴 횟수: {draws}</p>
-      </div>
-  
-      {showResultModal && (
-        <Modal
-          winner={winner}
-          winningSymbol={winningSymbol}
-          onClose={closeResultModal}
-          onExit={onExit} // 모달에서만 "나가기" 버튼 표시
-          mode={mode}
-          buttonOrder="exitFirst" // 버튼 순서 변경을 위한 prop 추가
-        />
+      <h3>승리 횟수</h3>
+      {mode === 'playerVsPlayer' ? (
+        <>
+          <p>P1 ({playerSymbol}): {player1Wins}</p>
+          <p>P2 ({playerSymbol === 'X' ? 'O' : 'X'}): {player2Wins}</p>
+        </>
+      ) : (
+        <>
+          <p>P1 ({playerSymbol}): {player1Wins}</p>
+          <p>CPU ({cpuSymbol}): {cpuWins}</p>
+        </>
       )}
-  
-      {showRestartModal && (
-        <RestartModal
-          onRestart={handleRestart}
-          onCancel={onExit} // cancel 시 onExit 호출
-          buttonOrder="exitFirst" // 버튼 순서 변경을 위한 prop 추가
-        />
-      )}
+      <p>비긴 횟수: {draws}</p>
     </div>
-  );
-  
+
+    {showResultModal && (
+      <Modal
+        winner={winner}
+        winningSymbol={winningSymbol}
+        onClose={closeResultModal}
+        onExit={onExit} // 모달에서만 "나가기" 버튼 표시
+        mode={mode}
+        buttonOrder="exitFirst" // 버튼 순서 변경을 위한 prop 추가
+      />
+    )}
+
+    {showRestartModal && (
+      <RestartModal
+        onRestart={handleRestart}
+        onCancel={onExit} // cancel 시 onExit 호출
+        buttonOrder="exitFirst" // 버튼 순서 변경을 위한 prop 추가
+      />
+    )}
+  </div>
+);
+
 };
 
 const getCPUMove = (board) => {

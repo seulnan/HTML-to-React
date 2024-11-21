@@ -54,7 +54,7 @@ function StartPage({ startGame }) {
             borderRadius: '8px',
             display: 'flex',
             justifyContent: 'center',
-            gap: '10px',
+            gap: '0px',
             alignItems: 'center',
             margin: '20px 0',
           }}

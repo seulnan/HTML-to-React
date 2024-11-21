@@ -4,33 +4,8 @@ import hoverCircle from '../assets/hover_Circle.svg';
 import playCross from '../assets/Play_Cross.svg';
 import playCircle from '../assets/Play_Circle.svg';
 
-function Board({ currentTurn, setCurrentTurn, onGameEnd, gameMode, playerSymbol, computerSymbol }) {
-  const [board, setBoard] = useState(Array(9).fill(null));
+function Board({ board, setBoard, currentTurn, setCurrentTurn, onGameEnd, gameMode, playerSymbol, computerSymbol }) {
   const [hoverIndex, setHoverIndex] = useState(null);
-
-  // 불필요한 handleComputerTurn 호출 제거
-useEffect(() => {
-  if (gameMode === 'COMPUTER' && currentTurn === computerSymbol) {
-    // 기존 handleComputerTurn 호출 제거
-    const availableIndices = board
-      .map((cell, index) => (cell === null ? index : null))
-      .filter((val) => val !== null);
-    if (availableIndices.length === 0) return;
-
-    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-    const newBoard = [...board];
-    newBoard[randomIndex] = computerSymbol;
-    setBoard(newBoard);
-
-    const winner = checkWinner(newBoard);
-    if (winner) {
-      onGameEnd(winner);
-    } else {
-      setCurrentTurn(playerSymbol);
-    }
-  }
-}, [currentTurn, board, gameMode, computerSymbol, onGameEnd, playerSymbol]);
-
 
   const checkWinner = (board) => {
     const winPatterns = [
@@ -46,6 +21,33 @@ useEffect(() => {
     }
     return board.includes(null) ? null : 'DRAW';
   };
+
+  // 컴퓨터의 턴을 처리
+  useEffect(() => {
+    if (gameMode === 'COMPUTER' && currentTurn === computerSymbol) {
+      const winner = checkWinner(board);
+      if (winner) return; // 이미 승자가 있으면 컴퓨터 동작 차단
+
+      const availableIndices = board
+        .map((cell, index) => (cell === null ? index : null))
+        .filter((val) => val !== null);
+
+      if (availableIndices.length === 0) return;
+
+      // 랜덤으로 빈 칸 선택
+      const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+      const newBoard = [...board];
+      newBoard[randomIndex] = computerSymbol;
+      setBoard(newBoard);
+
+      const newWinner = checkWinner(newBoard);
+      if (newWinner) {
+        onGameEnd(newWinner); // 한 번만 호출되도록 보장
+      } else {
+        setCurrentTurn(playerSymbol); // 턴을 사용자에게 넘김
+      }
+    }
+  }, [currentTurn, board, gameMode, computerSymbol, playerSymbol, setBoard, onGameEnd, setCurrentTurn]);
 
   const handleClick = (index) => {
     if (board[index] || (gameMode === 'COMPUTER' && currentTurn === computerSymbol)) return;
@@ -89,7 +91,7 @@ useEffect(() => {
           style={{
             width: '140px',
             height: '140px',
-            backgroundColor: cell ? '#1A2A33' : '#1F3641', // 기본 배경색
+            backgroundColor: cell ? '#1A2A33' : '#1F3641',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -98,18 +100,15 @@ useEffect(() => {
               : hoverIndex === index
               ? `url(${currentTurn === 'X' ? hoverCross : hoverCircle})`
               : '',
-            backgroundSize: '50%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             cursor: cell ? 'not-allowed' : 'pointer',
-            borderRadius: '15px', // 모서리를 둥글게
-            background: 'var(--Semi-Dark-Navy, #1F3641)', // 배경색 설정
-            boxShadow: '0px -8px 0px 0px #10212A inset', // 내부 그림자
+            borderRadius: '15px',
           }}
         ></div>
       ))}
     </div>
-  );  
+  );
 }
 
 export default Board;

@@ -3,6 +3,7 @@ import Board from './Board';
 import Modal from './Modal';
 import logo from '../assets/logo.svg';
 import resetIcon from '../assets/Reset.svg';
+import hoverResetIcon from '../assets/hover_Reset.svg'; // hover 상태 이미지 추가
 import Cross from '../assets/Cross.svg';
 import Circle from '../assets/Circle.svg';
 
@@ -12,6 +13,7 @@ function GamePage({ gameMode, playerSymbol }) {
   const [scores, setScores] = useState({ X: 0, TIES: 0, O: 0 }); // X, O, 무승부 점수
   const [gameResult, setGameResult] = useState(null); // 게임 결과
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태
+  const [isHoveringReset, setIsHoveringReset] = useState(false); // 새로고침 hover 상태
 
   const computerSymbol = playerSymbol === 'X' ? 'O' : 'X'; // 컴퓨터의 기호
 
@@ -122,13 +124,16 @@ function GamePage({ gameMode, playerSymbol }) {
         </div>
         {/* 새로고침 버튼 */}
         <img
-          src={resetIcon}
+          src={isHoveringReset ? hoverResetIcon : resetIcon} // hover 상태에 따라 이미지 변경
           alt="새로고침"
+          onMouseEnter={() => setIsHoveringReset(true)} // hover 상태 true
+          onMouseLeave={() => setIsHoveringReset(false)} // hover 상태 false
           onClick={resetBoard}
           style={{
             width: '40px',
             height: '40px',
             cursor: 'pointer',
+            transition: 'opacity 0.3s', // 부드러운 전환 효과
           }}
         />
       </div>

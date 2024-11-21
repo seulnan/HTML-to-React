@@ -61,7 +61,7 @@ function Modal({ isOpen, onClose, onNextRound, result, gameMode, winner, playerS
           <h2
             style={{
               color: '#FFFFFF',
-              fontSize: '24px',
+              fontSize: '16px',
               fontWeight: 'bold',
               margin: '0 0 20px 0',
             }}
@@ -73,7 +73,7 @@ function Modal({ isOpen, onClose, onNextRound, result, gameMode, winner, playerS
         {/* 중앙 텍스트 */}
         <h1
           style={{
-            fontSize: '32px',
+            fontSize: '40px',
             fontWeight: 'bold',
             margin: 0,
             ...getCenterTextStyle(),
@@ -87,7 +87,7 @@ function Modal({ isOpen, onClose, onNextRound, result, gameMode, winner, playerS
           style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginTop: '40px',
+            marginTop: '31px',
             gap: '20px',
           }}
         >

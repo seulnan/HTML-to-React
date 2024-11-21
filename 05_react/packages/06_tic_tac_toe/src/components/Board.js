@@ -73,7 +73,13 @@ useEffect(() => {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 140px)', gap: '10px' }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 140px)',
+        gap: '10px',
+      }}
+    >
       {board.map((cell, index) => (
         <div
           key={index}
@@ -83,7 +89,7 @@ useEffect(() => {
           style={{
             width: '140px',
             height: '140px',
-            backgroundColor: cell ? '#1A2A33' : '#1F3641',
+            backgroundColor: cell ? '#1A2A33' : '#1F3641', // 기본 배경색
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -92,16 +98,18 @@ useEffect(() => {
               : hoverIndex === index
               ? `url(${currentTurn === 'X' ? hoverCross : hoverCircle})`
               : '',
-            backgroundSize: '100%',
+            backgroundSize: '50%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             cursor: cell ? 'not-allowed' : 'pointer',
-            borderRadius: '8px',
+            borderRadius: '15px', // 모서리를 둥글게
+            background: 'var(--Semi-Dark-Navy, #1F3641)', // 배경색 설정
+            boxShadow: '0px -8px 0px 0px #10212A inset', // 내부 그림자
           }}
         ></div>
       ))}
     </div>
-  );
+  );  
 }
 
 export default Board;

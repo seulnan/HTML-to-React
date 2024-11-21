@@ -104,6 +104,7 @@ function Board({ board, setBoard, currentTurn, setCurrentTurn, onGameEnd, gameMo
             backgroundRepeat: 'no-repeat',
             cursor: cell ? 'not-allowed' : 'pointer',
             borderRadius: '15px',
+            boxShadow: cell ? 'none' : '0px -8px 0px 0px #10212A inset',
           }}
         ></div>
       ))}

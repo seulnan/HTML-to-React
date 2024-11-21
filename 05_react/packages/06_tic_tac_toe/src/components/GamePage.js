@@ -261,6 +261,9 @@ function GamePage({ gameMode, playerSymbol }) {
         result={gameResult}
         onClose={quitGame}
         onNextRound={handleNextRound}
+        gameMode={gameMode}
+        winner={gameResult === 'DRAW' ? null : gameResult}
+        playerSymbol={playerSymbol}
       />
     </div>
   );

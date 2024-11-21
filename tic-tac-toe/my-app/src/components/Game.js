@@ -7,6 +7,7 @@ import logoImage from '../assets/image/Menu_ox.png';
 import xImage from '../assets/image/icon_x.png';
 import oImage from '../assets/image/icon_o.png';
 import refreshImage from '../assets/image/restart_main.png';
+import refreshHoverImage from '../assets/image/restart_hover.png'; // hover 시 사용할 이미지
 
 const Game = ({ mode, playerSymbol, onExit }) => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -22,9 +23,16 @@ const Game = ({ mode, playerSymbol, onExit }) => {
   const [draws, setDraws] = useState(0);
 
   const cpuSymbol = playerSymbol === 'X' ? 'O' : 'X';
-  const currentTurnImage = playerSymbol === 'O' 
-    ? (xIsNext ? oImage : xImage)
-    : (xIsNext ? xImage : oImage);
+  const currentTurnImage =
+    playerSymbol === 'O'
+      ? xIsNext
+        ? oImage
+        : xImage
+      : xIsNext
+      ? xImage
+      : oImage;
+
+  const [isHovered, setIsHovered] = useState(false); // hover 상태 추적
 
   useEffect(() => {
     if (mode === 'cpuVsPlayer' && !xIsNext && !winner) {
@@ -58,7 +66,6 @@ const Game = ({ mode, playerSymbol, onExit }) => {
 
     const gameWinner = calculateWinner(newBoard);
     if (gameWinner) {
-      console.log('Winner detected:', gameWinner);
       setWinner(
         xIsNext
           ? mode === 'playerVsPlayer'
@@ -71,38 +78,20 @@ const Game = ({ mode, playerSymbol, onExit }) => {
       setWinningSymbol(currentSymbol);
 
       if (xIsNext) {
-        console.log('Player 1 wins');
-        setPlayer1Wins((prevWins) => {
-          const newWins = prevWins + 1;
-          console.log('Player 1 Score:', newWins);
-          return newWins;  // Player 1 wins
-        });
+        setPlayer1Wins((prevWins) => prevWins + 1);
       } else {
-        console.log('Player 2 wins');
         if (mode === 'playerVsPlayer') {
-          setPlayer2Wins((prevWins) => {
-            const newWins = prevWins + 1;
-            console.log('Player 2 Score:', newWins);
-            return newWins;  // Player 2 wins
-          });
+          setPlayer2Wins((prevWins) => prevWins + 1);
         } else {
-          setCpuWins((prevWins) => {
-            const newWins = prevWins + 1;
-            console.log('CPU Score:', newWins);
-            return newWins;  // CPU wins (if applicable)
-          });
+          setCpuWins((prevWins) => prevWins + 1);
         }
       }
-      setShowResultModal(true);  // 승리 시 모달 표시
+      setShowResultModal(true); // 승리 시 모달 표시
     } else if (newBoard.every((square) => square !== null)) {
-      setDraws((prevDraws) => {
-        const newDraws = prevDraws + 1;
-        console.log('Draws Score:', newDraws);
-        return newDraws;
-      });
+      setDraws((prevDraws) => prevDraws + 1);
       resetGame(); // 바로 재시작
     } else {
-      setXIsNext(!xIsNext);  // 턴 변경
+      setXIsNext(!xIsNext); // 턴 변경
     }
   };
 
@@ -161,30 +150,49 @@ const Game = ({ mode, playerSymbol, onExit }) => {
       <div className="header">
         <img src={logoImage} alt="Logo" className="logo" />
         <img src={currentTurnImage} alt="Current Turn" className="current-turn" />
-        <button className="button-refresh-button" onClick={handleRestart}> 
-          <img src={refreshImage} alt="Restart" />
-        </button> 
+        <button
+          className="button-refresh-button"
+          onClick={handleRestart}
+          onMouseEnter={() => setIsHovered(true)} // 마우스 hover 시
+          onMouseLeave={() => setIsHovered(false)} // 마우스 leave 시
+          style={{
+            backgroundImage: `url(${isHovered ? refreshHoverImage : refreshImage})`,
+            backgroundSize: 'cover',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'background-image 0.3s ease', // 배경 이미지 변경 시 부드러운 전환 효과
+          }}
+        />
       </div>
 
-      <Status winner={winner} xIsNext={xIsNext} isDraw={board.every((square) => square !== null)} />
+      <Status
+        winner={winner}
+        xIsNext={xIsNext}
+        isDraw={board.every((square) => square !== null)}
+      />
       <Board squares={board} onClick={handleClick} />
 
       <div className="score-board">
-        {/* 왼쪽 점수판 */}
         <div className="score-box" style={{ backgroundColor: '#31C3BD' }}>
-          <h3>{mode === 'cpuVsPlayer' ? `${playerSymbol === 'X' ? `${playerSymbol} (YOU)` : `${cpuSymbol} (CPU)`}` : `${playerSymbol === 'X' ? `${playerSymbol} (P1)` : `${cpuSymbol} (P2)`}`}</h3>
+          <h3>
+            {mode === 'cpuVsPlayer'
+              ? `${playerSymbol === 'X' ? `${playerSymbol} (YOU)` : `${cpuSymbol} (CPU)`}`
+              : `${playerSymbol === 'X' ? `${playerSymbol} (P1)` : `${cpuSymbol} (P2)`}`}
+          </h3>
           <p>{mode === 'cpuVsPlayer'? `${playerSymbol === 'X' ? player1Wins : cpuWins}`:`${playerSymbol === 'X' ? player1Wins : player2Wins}`}</p>
         </div>
-        
-        {/* 가운데 ties */}
+
         <div className="score-box" style={{ backgroundColor: '#A8BFC9' }}>
           <h3>TIES</h3>
           <p>{draws}</p>
         </div>
-        
-        {/* 오른쪽 점수판 */}
+
         <div className="score-box" style={{ backgroundColor: '#F2B137' }}>
-          <h3>{mode === 'cpuVsPlayer' ? `${playerSymbol === 'X' ? `${cpuSymbol} (CPU)` : `${playerSymbol} (YOU)`}` : `${playerSymbol === 'X' ? `${cpuSymbol} (P2)` : `${playerSymbol} (P1)`}`}</h3>
+          <h3>
+            {mode === 'cpuVsPlayer'
+              ? `${playerSymbol === 'X' ? `${cpuSymbol} (CPU)` : `${playerSymbol} (YOU)`}`
+              : `${playerSymbol === 'X' ? `${cpuSymbol} (P2)` : `${playerSymbol} (P1)`}`}
+          </h3>
           <p>{mode === 'cpuVsPlayer'? `${playerSymbol === 'X' ? cpuWins : player1Wins}`:`${playerSymbol === 'X' ? player2Wins : player1Wins}`}</p>
         </div>
       </div>
@@ -194,17 +202,17 @@ const Game = ({ mode, playerSymbol, onExit }) => {
           winner={winner}
           winningSymbol={winningSymbol}
           onClose={closeResultModal}
-          onExit={onExit} // 모달에서만 "나가기" 버튼 표시
+          onExit={onExit}
           mode={mode}
-          buttonOrder="exitFirst" // 버튼 순서 변경을 위한 prop 추가
+          buttonOrder="exitFirst"
         />
       )}
 
       {showRestartModal && (
         <RestartModal
           onRestart={handleRestart}
-          onCancel={onExit} // cancel 시 onExit 호출
-          buttonOrder="exitFirst" // 버튼 순서 변경을 위한 prop 추가
+          onCancel={onExit}
+          buttonOrder="exitFirst"
         />
       )}
     </div>

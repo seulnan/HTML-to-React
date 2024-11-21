@@ -18,27 +18,40 @@
   justify-content: center;
   cursor: pointer;
 }
-.button-refresh-button{
-  padding:0;
-  width:40px;
-  height: 40px;
-  background-color: #1A2A33;
-  display: flex;
-}
-.button-refresh-button:hover{
-  background-color: #1A2A33;
-}
-
-.square img {
-  width: 80px;
-  height: 80px;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  height: 50px; /* .header의 높이를 설정 */
+}
+
+.button-refresh-button {
+  margin:0;
+  border-radius: 10px;
+  padding: 0;
+  width: 52px;
+  height: 52px;
+  background-color: #1A2A33;
+  display: flex;
+  justify-content: center; /* 버튼 안의 이미지가 중앙에 오도록 설정 */
+  align-items: center;
+}
+
+.button-refresh-button:hover {
+  background-color: #1A2A33;
+}
+
+.symbol {
+  width: 60px;
+  height: 60px;
+}
+
+.hover-symbol {
+  position: absolute;
+  width: 140px;  /* Increase the size of the hover image */
+  height: 140px; /* Increase the size of the hover image */
+  opacity: 0.5;  /* Slight transparency to show that it's a hover effect */
+  transition: width 0.3s ease, height 0.3s ease; /* Smooth size transition */
 }
 
 .turn-box {

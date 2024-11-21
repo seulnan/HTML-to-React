@@ -121,13 +121,16 @@ function StartPage({ startGame }) {
         <button
           onClick={() => handleGameStart('COMPUTER')}
           style={{
-            padding: '20px 128px',
+            padding: '20px 132px',
             fontSize: '20px',
             color: '#1A2A33',
             backgroundColor: '#31C3BD',
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
+            fontFamily: 'Outfit, sans-serif', // 폰트 적용
+            fontWeight: '700', // 두께
+            fontStyle: 'normal', // 스타일
           }}
         >
           NEW GAME (VS CPU)
@@ -143,6 +146,9 @@ function StartPage({ startGame }) {
             border: 'none',
             borderRadius: '8px',
             cursor: 'pointer',
+            fontFamily: 'Outfit, sans-serif', // 폰트 적용
+            fontWeight: '700', // 두께
+            fontStyle: 'normal', // 스타일
           }}
         >
           NEW GAME (VS PLAYER)

@@ -156,11 +156,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
           onMouseEnter={() => setIsHovered(true)} // 마우스 hover 시
           onMouseLeave={() => setIsHovered(false)} // 마우스 leave 시
           style={{
-            backgroundImage: `url(${isHovered ? refreshHoverImage : refreshImage})`,
-            backgroundSize: 'cover',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'background-image 0.3s ease', // 배경 이미지 변경 시 부드러운 전환 효과
+            backgroundImage: `url(${isHovered ? refreshHoverImage : refreshImage})`
           }}
         />
       </div>

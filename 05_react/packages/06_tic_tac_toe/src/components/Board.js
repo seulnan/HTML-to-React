@@ -73,7 +73,7 @@ useEffect(() => {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 100px)', gap: '10px' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 140px)', gap: '10px' }}>
       {board.map((cell, index) => (
         <div
           key={index}
@@ -81,8 +81,8 @@ useEffect(() => {
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
           style={{
-            width: '100px',
-            height: '100px',
+            width: '140px',
+            height: '140px',
             backgroundColor: cell ? '#1A2A33' : '#1F3641',
             display: 'flex',
             justifyContent: 'center',

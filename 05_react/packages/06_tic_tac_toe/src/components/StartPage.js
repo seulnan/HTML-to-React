@@ -36,7 +36,7 @@ function StartPage({ startGame }) {
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '20px',
+          padding: '24px 20px',
           boxSizing: 'border-box',
           marginBottom: '40px',
         }}
@@ -54,7 +54,7 @@ function StartPage({ startGame }) {
             borderRadius: '8px',
             display: 'flex',
             justifyContent: 'center',
-            gap: '20px',
+            gap: '10px',
             alignItems: 'center',
             margin: '20px 0',
           }}
@@ -75,6 +75,7 @@ function StartPage({ startGame }) {
               justifyContent: 'center',
               alignItems: 'center',
               transition: 'background-color 0.3s',
+              padding: '0px',
             }}
           >
             <img
@@ -97,6 +98,7 @@ function StartPage({ startGame }) {
               justifyContent: 'center',
               alignItems: 'center',
               transition: 'background-color 0.3s',
+              padding: '0px',
             }}
           >
             <img src={OButton} alt="O" style={{ width: '198px', height: '54px'}} />
@@ -119,7 +121,7 @@ function StartPage({ startGame }) {
         <button
           onClick={() => handleGameStart('COMPUTER')}
           style={{
-            padding: '20px 40px',
+            padding: '20px 128px',
             fontSize: '20px',
             color: '#1A2A33',
             backgroundColor: '#31C3BD',

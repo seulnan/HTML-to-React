@@ -1,15 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import hoverCross from '../assets/hover_Cross.svg';
+import hoverCircle from '../assets/hover_Circle.svg';
+import playCross from '../assets/Play_Cross.svg';
+import playCircle from '../assets/Play_Circle.svg';
 
 function Board({ currentTurn, setCurrentTurn, onGameEnd, gameMode, playerSymbol, computerSymbol }) {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [hoverIndex, setHoverIndex] = useState(null);
-  const [isComputerTurn, setIsComputerTurn] = useState(false);
 
-  useEffect(() => {
-    if (gameMode === 'COMPUTER' && currentTurn === computerSymbol && !isComputerTurn) {
-      handleComputerTurn(board);
+  // 불필요한 handleComputerTurn 호출 제거
+useEffect(() => {
+  if (gameMode === 'COMPUTER' && currentTurn === computerSymbol) {
+    // 기존 handleComputerTurn 호출 제거
+    const availableIndices = board
+      .map((cell, index) => (cell === null ? index : null))
+      .filter((val) => val !== null);
+    if (availableIndices.length === 0) return;
+
+    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+    const newBoard = [...board];
+    newBoard[randomIndex] = computerSymbol;
+    setBoard(newBoard);
+
+    const winner = checkWinner(newBoard);
+    if (winner) {
+      onGameEnd(winner);
+    } else {
+      setCurrentTurn(playerSymbol);
     }
-  }, [currentTurn, board, gameMode, computerSymbol, playerSymbol, isComputerTurn]);
+  }
+}, [currentTurn, board, gameMode, computerSymbol, onGameEnd, playerSymbol]);
+
 
   const checkWinner = (board) => {
     const winPatterns = [
@@ -35,32 +56,14 @@ function Board({ currentTurn, setCurrentTurn, onGameEnd, gameMode, playerSymbol,
 
     const winner = checkWinner(newBoard);
     if (winner) {
-        if (onGameEnd) onGameEnd(winner); // onGameEnd가 정의되지 않았을 경우를 대비
-    } else {
-        setCurrentTurn((prev) => (prev === 'X' ? 'O' : 'X'));
-    }
-};
-
-  const handleComputerTurn = (board) => {
-    const availableIndices = board.map((cell, index) => (cell === null ? index : null)).filter((val) => val !== null);
-    if (availableIndices.length === 0) return;
-
-    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-    const newBoard = [...board];
-    newBoard[randomIndex] = computerSymbol;
-    setBoard(newBoard);
-
-    const winner = checkWinner(newBoard);
-    if (winner) {
       onGameEnd(winner);
     } else {
-      setCurrentTurn(playerSymbol);
+      setCurrentTurn((prev) => (prev === 'X' ? 'O' : 'X'));
     }
-    setIsComputerTurn(false); // 컴퓨터 턴이 끝나면 플레이어 턴으로 변경
   };
 
   const handleMouseEnter = (index) => {
-    if (!board[index] && (gameMode === 'PLAYER' || currentTurn === playerSymbol || currentTurn === 'X')) {
+    if (!board[index]) {
       setHoverIndex(index);
     }
   };
@@ -80,29 +83,22 @@ function Board({ currentTurn, setCurrentTurn, onGameEnd, gameMode, playerSymbol,
           style={{
             width: '100px',
             height: '100px',
+            backgroundColor: cell ? '#1A2A33' : '#1F3641',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            fontSize: '24px',
-            border: '1px solid black',
-            position: 'relative',
-            backgroundColor: cell ? '#f0f0f0' : '',
+            backgroundImage: cell
+              ? `url(${cell === 'X' ? playCross : playCircle})`
+              : hoverIndex === index
+              ? `url(${currentTurn === 'X' ? hoverCross : hoverCircle})`
+              : '',
+            backgroundSize: '100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
             cursor: cell ? 'not-allowed' : 'pointer',
+            borderRadius: '8px',
           }}
-        >
-          {cell}
-          {hoverIndex === index && !cell && (
-            <span
-              style={{
-                position: 'absolute',
-                fontSize: '24px',
-                color: 'rgba(0, 0, 0, 0.5)',
-              }}
-            >
-              {currentTurn}
-            </span>
-          )}
-        </div>
+        ></div>
       ))}
     </div>
   );

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import logo from '../assets/logo.svg';
+import BasicCross from '../assets/Basic_Cross.svg'; 
+import XButtonHover from '../assets/X_button_hover.svg';
+import OButton from '../assets/O_button.svg';
 
 function StartPage({ startGame }) {
   const [symbol, setSymbol] = useState('X'); // 기본 선택은 X
+  const [isXHovered, setIsXHovered] = useState(false); // X 버튼 hover 상태
 
   const handleGameStart = (mode) => {
     startGame(mode, symbol); // 선택된 심볼과 함께 게임 시작
@@ -18,47 +23,91 @@ function StartPage({ startGame }) {
         backgroundColor: '#1A2A33', // 배경색 설정
       }}
     >
-      <h1 style={{ color: '#fff', fontSize: '36px', marginBottom: '40px' }}>
-        틱택토 게임
-      </h1>
-      {/* O/X 선택 버튼 */}
+      {/* 로고 */}
+      <img src={logo} alt="틱택토 로고" style={{ marginBottom: '40px' }} />
+      {/* 선택 박스 */}
       <div
         style={{
+          width: '460px',
+          height: '205px',
+          backgroundColor: '#1F3641',
+          borderRadius: '10px',
           display: 'flex',
-          justifyContent: 'center',
-          gap: '20px',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '20px',
+          boxSizing: 'border-box',
           marginBottom: '40px',
         }}
       >
-        <button
-          onClick={() => setSymbol('X')}
+        {/* 상단 텍스트 */}
+        <p style={{ color: '#A8BFC9', fontSize: '16px', margin: '0' }}>
+          PICK PLAYER 1’S MARK
+        </p>
+        {/* O와 X 선택 박스 */}
+        <div
           style={{
-            padding: '10px 20px',
-            fontSize: '20px',
-            backgroundColor: symbol === 'X' ? '#31C3BD' : '#A8BFC9',
-            color: '#1A2A33',
-            border: 'none',
+            width: '412px',
+            height: '72px',
+            backgroundColor: '#1A2A33',
             borderRadius: '8px',
-            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '20px',
+            alignItems: 'center',
+            margin: '20px 0',
           }}
         >
-          X
-        </button>
-        <button
-          onClick={() => setSymbol('O')}
-          style={{
-            padding: '10px 20px',
-            fontSize: '20px',
-            backgroundColor: symbol === 'O' ? '#F2B137' : '#A8BFC9',
-            color: '#1A2A33',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-          }}
-        >
-          O
-        </button>
+          {/* X 버튼 */}
+          <button
+            onClick={() => setSymbol('X')}
+            onMouseEnter={() => setIsXHovered(true)}
+            onMouseLeave={() => setIsXHovered(false)}
+            style={{
+              width: 'auto',
+              height: 'auto',
+              backgroundColor: symbol === 'X' ? '#A8BFC9' : 'transparent',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              transition: 'background-color 0.3s',
+            }}
+          >
+            <img
+              src={isXHovered ? XButtonHover : BasicCross}
+              alt="X"
+              style={{ width: '198px', height: '54px'}}
+            />
+          </button>
+          {/* O 버튼 */}
+          <button
+            onClick={() => setSymbol('O')}
+            style={{
+              width: 'auto',
+              height: 'auto',
+              backgroundColor: symbol === 'O' ? '#A8BFC9' : 'transparent',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              transition: 'background-color 0.3s',
+            }}
+          >
+            <img src={OButton} alt="O" style={{ width: '198px', height: '54px'}} />
+          </button>
+        </div>
+        {/* 하단 텍스트 */}
+        <p style={{ color: '#A8BFC9', fontSize: '14px', margin: '0' }}>
+          REMEMBER : X GOES FIRST
+        </p>
       </div>
+      {/* 게임 시작 버튼 */}
       <div
         style={{
           display: 'flex',

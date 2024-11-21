@@ -11,19 +11,16 @@ function GamePage({ gameMode, playerSymbol }) {
 
   const computerSymbol = playerSymbol === 'X' ? 'O' : 'X'; // 컴퓨터의 기호
 
-  // 로컬 스토리지에서 점수 가져오기
   useEffect(() => {
     const storedScores = JSON.parse(localStorage.getItem('ticTacToeScores')) || { X: 0, TIES: 0, O: 0 };
     setScores(storedScores);
   }, []);
 
-  // 점수 변경 시 로컬 스토리지 업데이트
   useEffect(() => {
     localStorage.setItem('ticTacToeScores', JSON.stringify(scores));
   }, [scores]);
 
   const handleGameEnd = (result) => {
-    // 게임 결과에 따라 점수 업데이트
     if (result === 'DRAW') {
       setScores((prev) => ({ ...prev, TIES: prev.TIES + 1 }));
     } else {
@@ -36,44 +33,60 @@ function GamePage({ gameMode, playerSymbol }) {
     setIsModalOpen(true); // 모달 열기
   };
 
-  // 게임판 초기화 함수 (공통 기능)
   const resetBoard = () => {
-    setBoard([...Array(9).fill(null)]); // 게임판 상태를 빈 상태로 강제 초기화
-    setCurrentTurn('X'); // 첫 번째 턴을 항상 'X'로 설정
-  };
-
-  // 새로고침 버튼 기능
-  const handleRefresh = () => {
-    resetBoard(); // 게임판 초기화
-    setGameResult(null); // 게임 결과 초기화
+    setBoard(Array(9).fill(null)); // 게임판 초기화
+    setCurrentTurn('X'); // 첫 번째 턴으로 초기화
+    setGameResult(null); // 결과 초기화
     setIsModalOpen(false); // 모달 닫기
   };
 
-  // NEXT ROUND 버튼 기능
   const handleNextRound = () => {
-    handleRefresh(); // 게임판 초기화와 동일한 동작
+    resetBoard();
   };
 
   const quitGame = () => {
-    // 로컬 스토리지 및 상태 초기화
     localStorage.removeItem('ticTacToeScores');
-    window.location.reload(); // 게임 시작 페이지로 이동
+    window.location.reload();
   };
 
-  // 점수판 라벨 설정
   const scoreLabel = gameMode === 'PLAYER'
     ? { left: 'X (P1)', center: 'TIES', right: 'O (P2)' }
     : { left: playerSymbol === 'X' ? 'X (YOU)' : 'O (YOU)', center: 'TIES', right: computerSymbol === 'X' ? 'X (CPU)' : 'O (CPU)' };
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <h2>{currentTurn} Turn</h2>
-        <button onClick={handleRefresh}>새로고침</button>
-      </div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#1A2A33',
+        padding: '20px',
+        position: 'relative',
+      }}
+    >
+      {/* 새로고침 버튼 */}
+      <button
+        onClick={resetBoard}
+        style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          padding: '10px 20px',
+          fontSize: '16px',
+          backgroundColor: '#F2B137',
+          color: '#1A2A33',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+        }}
+      >
+        새로고침
+      </button>
       <Board
-        board={board} // 게임판 상태 전달
-        setBoard={setBoard} // 상태 변경 함수 전달
+        board={board}
+        setBoard={setBoard}
         currentTurn={currentTurn}
         setCurrentTurn={setCurrentTurn}
         onGameEnd={handleGameEnd}
@@ -81,27 +94,125 @@ function GamePage({ gameMode, playerSymbol }) {
         playerSymbol={playerSymbol}
         computerSymbol={computerSymbol}
       />
-      {/* 점수판 */}
-      <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
-        <div>
-          <h3>{scoreLabel.left}</h3>
-          <p>{scores.X}</p>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          marginTop: '20px',
+          gap: '10px', // 박스 간 간격 추가
+        }}
+      >
+        {/* X 정보 박스 */}
+        <div
+          style={{
+            width: '140px',
+            height: '72px',
+            backgroundColor: '#31C3BD',
+            borderRadius: '8px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '14px',
+              color: '#1A2A33',
+              margin: '0',
+              fontWeight: 'bold',
+            }}
+          >
+            {scoreLabel.left}
+          </p>
+          <p
+            style={{
+              fontSize: '24px',
+              color: '#1A2A33',
+              margin: '0',
+              fontWeight: 'bold',
+            }}
+          >
+            {scores.X}
+          </p>
         </div>
-        <div>
-          <h3>{scoreLabel.center}</h3>
-          <p>{scores.TIES}</p>
+
+        {/* TIES 정보 박스 */}
+        <div
+          style={{
+            width: '140px',
+            height: '72px',
+            backgroundColor: '#A8BFC9',
+            borderRadius: '8px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '14px',
+              color: '#1A2A33',
+              margin: '0',
+              fontWeight: 'bold',
+            }}
+          >
+            TIES
+          </p>
+          <p
+            style={{
+              fontSize: '24px',
+              color: '#1A2A33',
+              margin: '0',
+              fontWeight: 'bold',
+            }}
+          >
+            {scores.TIES}
+          </p>
         </div>
-        <div>
-          <h3>{scoreLabel.right}</h3>
-          <p>{scores.O}</p>
+
+        {/* O 정보 박스 */}
+        <div
+          style={{
+            width: '140px',
+            height: '72px',
+            backgroundColor: '#F2B137',
+            borderRadius: '8px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '14px',
+              color: '#1A2A33',
+              margin: '0',
+              fontWeight: 'bold',
+            }}
+          >
+            {scoreLabel.right}
+          </p>
+          <p
+            style={{
+              fontSize: '24px',
+              color: '#1A2A33',
+              margin: '0',
+              fontWeight: 'bold',
+            }}
+          >
+            {scores.O}
+          </p>
         </div>
       </div>
-      {/* 모달 */}
+
       <Modal
         isOpen={isModalOpen}
         result={gameResult}
         onClose={quitGame}
-        onNextRound={handleNextRound} // NEXT ROUND 시 호출
+        onNextRound={handleNextRound}
       />
     </div>
   );

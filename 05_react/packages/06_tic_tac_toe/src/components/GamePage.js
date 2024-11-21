@@ -3,8 +3,8 @@ import Board from './Board';
 import Modal from './Modal';
 import logo from '../assets/logo.svg';
 import resetIcon from '../assets/Reset.svg';
-import BasicCross from '../assets/Cross.svg';
-import BasicCircle from '../assets/Circle.svg';
+import Cross from '../assets/Cross.svg';
+import Circle from '../assets/Circle.svg';
 
 function GamePage({ gameMode, playerSymbol }) {
   const [board, setBoard] = useState(Array(9).fill(null)); // 초기화된 게임판 상태
@@ -66,65 +66,71 @@ function GamePage({ gameMode, playerSymbol }) {
         height: '100vh',
         backgroundColor: '#1A2A33',
         padding: '20px',
-        position: 'relative',
       }}
     >
-      {/* 로고 */}
-      <img
-        src={logo}
-        alt="틱택토 로고"
-        style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
-          width: '40px',
-          height: '40px',
-        }}
-      />
-      {/* 새로고침 버튼 */}
-      <img
-        src={resetIcon}
-        alt="새로고침"
-        onClick={resetBoard}
-        style={{
-          marginBottom: '20px',
-          width: '40px',
-          height: '40px',
-          cursor: 'pointer',
-        }}
-      />
-      {/* 턴 표시 박스 */}
+      {/* 로고와 턴 표시 및 새로고침 버튼 */}
       <div
         style={{
-          width: '140px',
-          height: '52px',
-          backgroundColor: '#1F3641',
           display: 'flex',
-          justifyContent: 'center',
           alignItems: 'center',
-          borderRadius: '8px',
-          flexShrink: 0,
-          marginBottom: '20px',
+          justifyContent: 'space-between',
+          width: '440px',
+          maxWidth: '480px',
+          margin: '139px 0 20px',
         }}
       >
+        {/* 로고 */}
         <img
-          src={currentTurn === 'X' ? BasicCross : BasicCircle}
-          alt={`${currentTurn} TURN`}
+          src={logo}
+          alt="틱택토 로고"
           style={{
-            width: '24px',
-            height: '24px',
-            marginRight: '8px',
+            width: '40px',
+            height: '40px',
           }}
         />
-        <span
+        {/* 턴 표시 박스 */}
+        <div
           style={{
-            fontSize: '18px',
-            color: '#A8BFC9',
-            fontWeight: 'bold',
+            width: '140px',
+            height: '52px',
+            backgroundColor: '#1F3641',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '8px',
+            flexShrink: 0,
           }}
         >
-          TURN
-        </span>
+          <img
+            src={currentTurn === 'X' ? Cross : Circle}
+            alt={`${currentTurn} TURN`}
+            style={{
+              width: '24px',
+              height: '24px',
+              marginRight: '8px',
+            }}
+          />
+          <span
+            style={{
+              fontSize: '18px',
+              color: '#A8BFC9',
+              fontWeight: 'bold',
+            }}
+          >
+            TURN
+          </span>
+        </div>
+        {/* 새로고침 버튼 */}
+        <img
+          src={resetIcon}
+          alt="새로고침"
+          onClick={resetBoard}
+          style={{
+            width: '40px',
+            height: '40px',
+            cursor: 'pointer',
+          }}
+        />
       </div>
       {/* 게임 보드 */}
       <Board

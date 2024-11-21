@@ -66,7 +66,6 @@ body, html {
   border-radius: 10px;
   width: 198px; /* 버튼 너비 설정 */
   height: 54px; /* 버튼 높이 설정 */
-  flex-shrink: 0; /* 버튼 크기 축소 방지 */
   color: #A8BFC9;
   border: none;
   flex: 1; /* 버튼이 반반으로 나뉘도록 설정 */
@@ -86,7 +85,7 @@ body, html {
 }
 
 .toggle-symbol-button:hover {
-  background-color: #1A2A33; /* 호버 시 연한 회색 */
+  background-color: #A8BFC90D; /* 호버 시 연한 회색 */
   color: #A8BFC9;
 }
 

@@ -8,6 +8,8 @@ import xImage from '../assets/image/icon_x.png';
 import oImage from '../assets/image/icon_o.png';
 import refreshImage from '../assets/image/restart_main.png';
 import refreshHoverImage from '../assets/image/restart_hover.png'; // hover 시 사용할 이미지
+import o_turn from '../assets/image/o_turn.png';
+import x_turn from '../assets/image/x_turn.png';
 
 const Game = ({ mode, playerSymbol, onExit }) => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -26,11 +28,11 @@ const Game = ({ mode, playerSymbol, onExit }) => {
   const currentTurnImage =
     playerSymbol === 'O'
       ? xIsNext
-        ? oImage
-        : xImage
+        ? o_turn
+        : x_turn
       : xIsNext
-      ? xImage
-      : oImage;
+      ? x_turn
+      : o_turn;
 
   const [isHovered, setIsHovered] = useState(false); // hover 상태 추적
 
@@ -89,7 +91,8 @@ const Game = ({ mode, playerSymbol, onExit }) => {
       setShowResultModal(true); // 승리 시 모달 표시
     } else if (newBoard.every((square) => square !== null)) {
       setDraws((prevDraws) => prevDraws + 1);
-      resetGame(); // 바로 재시작
+      setWinner(null); // 승자는 없음
+      setShowResultModal(true);
     } else {
       setXIsNext(!xIsNext); // 턴 변경
     }
@@ -166,7 +169,12 @@ const Game = ({ mode, playerSymbol, onExit }) => {
         xIsNext={xIsNext}
         isDraw={board.every((square) => square !== null)}
       />
-      <Board squares={board} onClick={handleClick} />
+      <Board
+        squares={board}
+        onClick={handleClick}
+        currentPlayer={playerSymbol === 'X' ? (xIsNext ? 'X' : 'O') : (xIsNext ? 'O' : 'X')}
+      />
+
 
       <div className="score-board">
         <div className="score-box" style={{ backgroundColor: '#31C3BD' }}>

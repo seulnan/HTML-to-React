@@ -1,33 +1,131 @@
+button {
+  border: none; /* 기본 테두리 제거 */
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8); /* 어두운 반투명 배경 */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background-color: white;
+  width: 100%; /* 가로 전체 */
+  height: 266px; /* 고정 높이 */
+  background: var(--Semi-Dark-Navy, #1F3641); /* 배경색 */
+  border-radius: 10px; /* 둥근 모서리 */
+  display: flex;
+  flex-direction: column; /* 내부 요소를 세로로 정렬 */
+  justify-content: space-evenly; /* 요소 간 균등 간격 */
+  align-items: center;
   padding: 20px;
-  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* 살짝 입체감 */
+}
+
+.winner-subtext {
+  color: var(--Silver, #A8BFC9);
   text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Outfit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.winner-symbol-container {
+  display: flex;
+  align-items: center; /* 이미지와 텍스트를 수평 중앙 정렬 */
+  justify-content: center; /* 이미지와 텍스트를 수평 중앙 정렬 */
+}
+
+.winner-title-text-O, .winner-title-text-X {
+  font-family: Outfit;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-left: 24px; /* 이미지와 텍스트 간격을 24px로 설정 */
+}
+
+.winner-title-text-O {
+  color: var(--Light-Yellow, #F2B137);
+}
+
+.winner-title-text-X {
+  color: var(--Light-Blue, #31C3BD);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* 버튼들을 가로로 중앙 정렬 */
+  gap: 10px; /* 버튼 사이에 간격을 추가 */
+  margin-top: 20px;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  width: 146px;
+  height: 52px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
-  background-color: #007BFF; /* 버튼 배경색 */
-  color: white; /* 버튼 글자색 */
-  border: none; /* 테두리 없애기 */
-  border-radius: 5px; /* 둥근 모서리 */
+}
+.restart{
+  width: 146px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--Light-Yellow, #F2B137);
+  box-shadow: 0px -8px 0px 0px #CC8B13 inset;
+  font-size: 16px;
+  font-family: Outfit;
 }
 
-.button:hover {
-  background-color: #0056b3; /* 마우스 오버 시 색상 변경 */
+button.cancel {
+  width: 76px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--Silver, #A8BFC9);
+  box-shadow: 0px -4px 0px 0px #6B8997 inset;
+  font-size: 16px;
+  font-family: Outfit;
+}
+
+button.cancel:hover {
+  background: var(--silver-hover, #DBE8ED);
+  box-shadow: 0px -4px 0px 0px #6B8997 inset;
+}
+.cancel-rm{
+  width: 139px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--Silver, #A8BFC9);
+  box-shadow: 0px -4px 0px 0px #6B8997 inset;
+  font-size: 16px;
+  font-family: Outfit;  
+}
+
+.cancel-rm:hover{
+  background: var(--silver-hover, #DBE8ED);
+  box-shadow: 0px -4px 0px 0px #6B8997 inset;
+}
+
+button.next {
+  width: 146px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--Light-Yellow, #F2B137);
+  box-shadow: 0px -8px 0px 0px #CC8B13 inset;
+}
+
+button.next:hover {
+  background: var(--light-yellow-hover, #FFC860);
+  box-shadow: 0px -8px 0px 0px #CC8B13 inset;
 }

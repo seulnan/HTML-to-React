@@ -17,11 +17,26 @@ body, html {
     margin-bottom: 40px; /* settings-container와의 간격 조정 */
 }
 
+.restart-text{
+  color: var(--Silver, #A8BFC9);
+text-align: center;
+font-feature-settings: 'liga' off, 'clig' off;
+
+/* Heading (Large) */
+font-family: Outfit;
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+}
+
 .selected-symbol{
   color: var(--Silver, #A8BFC9);
   text-align: center;
   font-feature-settings: 'liga' off, 'clig' off;
-  
+  margin: 20px;
   /* Heading (Extra Small) */
   font-size: 16px;
   font-style: normal;
@@ -73,6 +88,8 @@ body, html {
   margin: 9px; /* 버튼 사이 여백 조정 */
   cursor: pointer;
   transition: background-color 0.3s; /* 부드러운 전환 효과 추가 */
+  font-size : 30px;
+  font-weight: 20;
 }
 
 .toggle-symbol-button.active {

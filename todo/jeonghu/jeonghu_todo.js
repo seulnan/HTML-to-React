@@ -75,10 +75,10 @@ const toggleTheme = () => {
     const isDark = document.body.classList.contains('dark');
     
     // 아이콘과 배경 이미지 변경
-    themeIcon.src = isDark ? 'images/icon-sun.svg' : 'images/icon-moon.svg';
+    themeIcon.src = isDark ? '../assets/icon-sun.svg' : '../assets/icon-moon.svg';
     background.style.backgroundImage = isDark
-        ? 'url(images/bg-desktop-dark.jpg)'
-        : 'url(images/bg-desktop-light.jpg)';
+        ? 'url(../assets/bg-desktop-dark.jpg)'
+        : 'url(../assets/bg-desktop-light.jpg)';
     
     // 낮/밤 모드에 따른 배경색 변경
     document.body.style.background = isDark ? '#171823' : '#FAFAFA';
@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (isDark) {
         document.body.classList.add('dark');
-        themeIcon.src = 'images/icon-sun.svg';
-        background.style.backgroundImage = 'url(images/bg-desktop-dark.jpg)';
+        themeIcon.src = '../assets/icon-sun.svg';
+        background.style.backgroundImage = 'url(../assets/bg-desktop-dark.jpg)';
         document.body.style.background = '#171823';
         const containerBgColor = '#25273D';
         inputContainer.style.background = containerBgColor;
@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
         bottomContainer.style.background = containerBgColor;
     } else {
         document.body.classList.remove('dark');
-        themeIcon.src = 'images/icon-moon.svg';
-        background.style.backgroundImage = 'url(images/bg-desktop-light.jpg)';
+        themeIcon.src = '../assets/icon-moon.svg';
+        background.style.backgroundImage = 'url(../assets/bg-desktop-light.jpg)';
         document.body.style.background = '#FAFAFA';
         const containerBgColor = '#FFFFFF';
         inputContainer.style.background = containerBgColor;

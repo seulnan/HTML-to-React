@@ -88,8 +88,7 @@ text-transform: uppercase;
   margin: 9px; /* 버튼 사이 여백 조정 */
   cursor: pointer;
   transition: background-color 0.3s; /* 부드러운 전환 효과 추가 */
-  font-size : 30px;
-  font-weight: 20;
+  font-size : 31px;
 }
 
 .toggle-symbol-button.active {

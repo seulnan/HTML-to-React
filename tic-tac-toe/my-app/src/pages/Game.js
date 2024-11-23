@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Board from './Board';
-import Status from './Status';
-import Modal from './Modal'; // First modal component
-import RestartModal from './RestartModal'; // Second modal component
+import Board from '../components/Board';
+import Modal from '../components/Modal'; // First modal component
+import RestartModal from '../components/RestartModal'; // Second modal component
 import logoImage from '../assets/image/Menu_ox.png';
 import xImage from '../assets/image/icon_x.png';
 import oImage from '../assets/image/icon_o.png';
@@ -164,11 +163,6 @@ const Game = ({ mode, playerSymbol, onExit }) => {
         />
       </div>
 
-      <Status
-        winner={winner}
-        xIsNext={xIsNext}
-        isDraw={board.every((square) => square !== null)}
-      />
       <Board
         squares={board}
         onClick={handleClick}

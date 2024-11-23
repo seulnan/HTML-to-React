@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Game from './components/Game';
-import Settings from './components/Settings.js';
+import Game from './pages/Game';
+import Settings from './pages/Settings.js';
 import './styles.css'; // 스타일 파일 임포트
 
 function App() {

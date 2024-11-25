@@ -1,9 +1,6 @@
 /node_modules
-/.yarn
-
 
 node_modules/
-.yarn/
 
 __MACOSX/
 _tic-tac-toe/

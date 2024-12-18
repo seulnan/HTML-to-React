@@ -82,7 +82,17 @@ button {
   height: 52px;
   border-radius: 10px;
   background: var(--Light-Yellow, #F2B137);
-  box-shadow: 0px -8px 0px 0px #CC8B13 inset;
+  box-shadow: 0px -4px 0px 0px #CC8B13 inset;
+  font-size: 16px;
+  font-family: Outfit;
+}
+
+.restart:hover{
+  width: 146px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--Light-Yellow, #FFC860);
+  box-shadow: 0px -4px 0px 0px #CC8B13 inset;
   font-size: 16px;
   font-family: Outfit;
 }
@@ -122,10 +132,10 @@ button.next {
   height: 52px;
   border-radius: 10px;
   background: var(--Light-Yellow, #F2B137);
-  box-shadow: 0px -8px 0px 0px #CC8B13 inset;
+  box-shadow: 0px -4px 0px 0px #CC8B13 inset;
 }
 
 button.next:hover {
   background: var(--light-yellow-hover, #FFC860);
-  box-shadow: 0px -8px 0px 0px #CC8B13 inset;
+  box-shadow: 0px -4px 0px 0px #CC8B13 inset;
 }

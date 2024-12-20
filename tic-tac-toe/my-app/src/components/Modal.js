@@ -4,57 +4,52 @@ import XImage from '../assets/image/icon_x.png';
 import '../Modal.css'; // 모달 스타일을 위한 CSS 파일 임포트
 
 const Modal = ({ winner, winningSymbol, onClose, onExit, mode }) => {
-  const getWinner = () => {
-    if (mode === 'cpuVsPlayer') {
-      return winner === 'CPU' ? 'You Lose!' : 'You Win!';
-    }
-    else if (winner === null){
-      return null;
-    }
-    else {
-      return `${winner} Wins!`; // Player 1 또는 Player 2와 기호 표시
-    }
-  };
-
-  const getWinnersymbol = () => {
+  // 승자 메시지를 반환하는 함수
+  const getWinnerMessage = () => {
     if (winner === null) {
-      return "ROUND TIED";
+      return null; // 무승부일 때 상단 메시지를 표시하지 않음
     }
 
-    return winningSymbol; // Player 1 또는 Player 2의 심볼
+    if (mode === 'cpuVsPlayer') {
+      return winner === 'CPU' ? 'OH NO, YOU LOST…' : 'You Win!';
+    }
+
+    return `${winner} Wins!`; // Player 1 또는 Player 2와 기호 표시
   };
 
-  const getWinnersymbolimg = () => {
-    if (getWinnersymbol() === 'X') {
-      return XImage; // X 심볼 이미지 반환
-    } else if (getWinnersymbol() === 'O') {
-      return OImage; // O 심볼 이미지 반환
-    } // 타이일 경우 이미지 없음
+  // 승리한 심볼 이미지를 반환하는 함수
+  const getWinnerSymbolImage = () => {
+    if (winningSymbol === 'X') {
+      return XImage;
+    } else if (winningSymbol === 'O') {
+      return OImage;
+    }
+    return null;
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        {winner ===null}:
-          <span className="winner-subtext">{getWinner()}</span> {/* 승자 메시지 표시 */}
+        {/* 상단 메시지: 승자가 있을 때만 표시 */}
+        {getWinnerMessage() && <span className="winner-subtext">{getWinnerMessage()}</span>}
 
         <div className="winner-symbol-container">
           {winner === null ? (
-            <span className="restart-text">ROUND TIED</span> // 비겼을 때 메시지 표시
+            <span className="restart-text">ROUND TIED</span> // 무승부일 때 하단에만 표시
           ) : (
             <>
-              <img src={getWinnersymbolimg()} alt="Winner Symbol" />
-              <span className={getWinnersymbol() === 'X' ? 'winner-title-text-X' : 'winner-title-text-O'}>
+              <img src={getWinnerSymbolImage()} alt="Winner Symbol" />
+              <span className={winningSymbol === 'X' ? 'winner-title-text-X' : 'winner-title-text-O'}>
                 TAKES THE ROUND
               </span>
             </>
           )}
         </div>
 
-        {/* 버튼 컨테이너 추가하여 버튼들을 가로로 나열 */}
+        {/* 버튼 컨테이너 */}
         <div className="button-container">
-          <button className="cancel" onClick={onExit}>QUIT</button> {/* 나가기 버튼 */}
-          <button className="next" onClick={onClose}>NEXT ROUND</button> {/* 다음 라운드 버튼 */}
+          <button className="cancel" onClick={onExit}>QUIT</button>
+          <button className="next" onClick={onClose}>NEXT ROUND</button>
         </div>
       </div>
     </div>

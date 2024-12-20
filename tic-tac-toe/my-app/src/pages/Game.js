@@ -17,6 +17,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
   const [showRestartModal, setShowRestartModal] = useState(false);
   const [winner, setWinner] = useState(null);
   const [winningSymbol, setWinningSymbol] = useState(null);
+  const [winningLine, setWinningLine] = useState(null);
 
   const [player1Wins, setPlayer1Wins] = useState(0);
   const [player2Wins, setPlayer2Wins] = useState(0);
@@ -44,10 +45,11 @@ const Game = ({ mode, playerSymbol, onExit }) => {
       newBoard[cpuMove] = cpuSymbol;
       setBoard(newBoard);
 
-      const cpuWinner = calculateWinner(newBoard);
+      const { winner: cpuWinner, winningLine: line } = calculateWinner(newBoard);
       if (cpuWinner) {
         setWinner('CPU');
         setWinningSymbol(cpuSymbol);
+        setWinningLine(line);
         setCpuWins((prevCpuWins) => prevCpuWins + 1);
         setShowResultModal(true);
       } else if (newBoard.every((square) => square !== null)) {
@@ -70,7 +72,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     newBoard[index] = currentSymbol;
     setBoard(newBoard);
 
-    const gameWinner = calculateWinner(newBoard);
+    const { winner: gameWinner, winningLine: line } = calculateWinner(newBoard);
     if (gameWinner) {
       setWinner(
         xIsNext
@@ -82,6 +84,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
           : 'CPU'
       );
       setWinningSymbol(currentSymbol);
+      setWinningLine(line);
 
       if (xIsNext) {
         setPlayer1Wins((prevWins) => prevWins + 1);
@@ -111,6 +114,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     setShowRestartModal(false);
     setWinner(null);
     setWinningSymbol(null);
+    setWinningLine(null);
   };
 
   const closeResultModal = () => {
@@ -146,10 +150,10 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        return { winner: squares[a], winningLine: lines[i] };
       }
     }
-    return null;
+    return { winner: null, winningLine: null };
   };
 
   return (
@@ -172,6 +176,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
         squares={board}
         onClick={handleClick}
         currentPlayer={playerSymbol === 'X' ? (xIsNext ? 'X' : 'O') : (xIsNext ? 'O' : 'X')}
+        winningLine={winningLine}
       />
 
       <div className="score-board">

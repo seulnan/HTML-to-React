@@ -26,18 +26,21 @@ function GamePage({ gameMode, playerSymbol }) {
     localStorage.setItem('ticTacToeScores', JSON.stringify(scores));
   }, [scores]);
 
-  const handleGameEnd = (result) => {
-    if (result === 'DRAW') {
+  const handleGameEnd = (winner) => {
+    if (winner === 'DRAW') {
       setScores((prev) => ({ ...prev, TIES: prev.TIES + 1 }));
-    } else {
-      setScores((prev) => ({
-        ...prev,
-        [result]: prev[result] + 1,
-      }));
+    } else if (winner === playerSymbol) {
+      // 플레이어가 이겼을 때
+      setScores((prev) => ({ ...prev, [playerSymbol]: prev[playerSymbol] + 1 }));
+    } else if (winner === computerSymbol) {
+      // 컴퓨터가 이겼을 때
+      setScores((prev) => ({ ...prev, [computerSymbol]: prev[computerSymbol] + 1 }));
     }
-    setGameResult(result); // 결과 저장
-    setIsModalOpen(true); // 모달 열기
+  
+    setGameResult(winner);
+    setIsModalOpen(true);
   };
+  
 
   const resetBoard = () => {
     setBoard(Array(9).fill(null)); // 게임판 초기화
@@ -56,8 +59,13 @@ function GamePage({ gameMode, playerSymbol }) {
   };
 
   const scoreLabel = gameMode === 'PLAYER'
+  ? playerSymbol === 'X'
     ? { left: 'X (P1)', center: 'TIES', right: 'O (P2)' }
-    : { left: playerSymbol === 'X' ? 'X (YOU)' : 'O (YOU)', center: 'TIES', right: computerSymbol === 'X' ? 'X (CPU)' : 'O (CPU)' };
+    : { left: 'X (P2)', center: 'TIES', right: 'O (P1)' } // P1이 O를 선택한 경우
+  : playerSymbol === 'X'
+  ? { left: 'X (YOU)', center: 'TIES', right: 'O (CPU)' }
+  : { left: 'X (CPU)', center: 'TIES', right: 'O (YOU)' };
+
 
   return (
     <div
@@ -150,111 +158,21 @@ function GamePage({ gameMode, playerSymbol }) {
       />
       {/* 점수판 */}
       <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px', gap: '10px' }}>
-        {/* X 정보 박스 */}
-        <div
-          style={{
-            width: '140px',
-            height: '72px',
-            backgroundColor: '#31C3BD',
-            borderRadius: '8px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '14px',
-              color: '#1A2A33',
-              margin: '0',
-              fontWeight: 'bold',
-            }}
-          >
-            {scoreLabel.left}
-          </p>
-          <p
-            style={{
-              fontSize: '24px',
-              color: '#1A2A33',
-              margin: '0',
-              fontWeight: 'bold',
-            }}
-          >
-            {scores.X}
-          </p>
+        <div style={{ width: '140px', height: '72px', backgroundColor: '#31C3BD', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <p style={{ fontSize: '14px', color: '#1A2A33', margin: '0', fontWeight: 'bold' }}>{scoreLabel.left}</p>
+          <p style={{ fontSize: '24px', color: '#1A2A33', margin: '0', fontWeight: 'bold' }}>{scores.X}</p>
         </div>
-
-        {/* TIES 정보 박스 */}
-        <div
-          style={{
-            width: '140px',
-            height: '72px',
-            backgroundColor: '#A8BFC9',
-            borderRadius: '8px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '14px',
-              color: '#1A2A33',
-              margin: '0',
-              fontWeight: 'bold',
-            }}
-          >
-            TIES
-          </p>
-          <p
-            style={{
-              fontSize: '24px',
-              color: '#1A2A33',
-              margin: '0',
-              fontWeight: 'bold',
-            }}
-          >
-            {scores.TIES}
-          </p>
+        <div style={{ width: '140px', height: '72px', backgroundColor: '#A8BFC9', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <p style={{ fontSize: '14px', color: '#1A2A33', margin: '0', fontWeight: 'bold' }}>TIES</p>
+          <p style={{ fontSize: '24px', color: '#1A2A33', margin: '0', fontWeight: 'bold' }}>{scores.TIES}</p>
         </div>
-
-        {/* O 정보 박스 */}
-        <div
-          style={{
-            width: '140px',
-            height: '72px',
-            backgroundColor: '#F2B137',
-            borderRadius: '8px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <p
-            style={{
-              fontSize: '14px',
-              color: '#1A2A33',
-              margin: '0',
-              fontWeight: 'bold',
-            }}
-          >
-            {scoreLabel.right}
-          </p>
-          <p
-            style={{
-              fontSize: '24px',
-              color: '#1A2A33',
-              margin: '0',
-              fontWeight: 'bold',
-            }}
-          >
-            {scores.O}
-          </p>
+        <div style={{ width: '140px', height: '72px', backgroundColor: '#F2B137', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <p style={{ fontSize: '14px', color: '#1A2A33', margin: '0', fontWeight: 'bold' }}>{scoreLabel.right}</p>
+          <p style={{ fontSize: '24px', color: '#1A2A33', margin: '0', fontWeight: 'bold' }}>{scores.O}</p>
         </div>
       </div>
+
+
 
       <Modal
         isOpen={isModalOpen}

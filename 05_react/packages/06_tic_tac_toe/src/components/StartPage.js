@@ -102,33 +102,47 @@ function StartPage({ startGame }) {
           </button>
 
           {/* O 버튼 */}
-<button
-  onClick={toggleOButton}
-  style={{
-    width: 'auto',
-    height: 'auto',
-    backgroundColor: 'transparent',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '0px',
-    transition: 'background-color 0.3s',
-  }}
->
-  <img
-    src={OButton}
-    alt="O"
-    style={{
-      width: '198px',
-      height: '54px',
-      filter: isOReversed ? 'invert(100%) hue-rotate(180deg)' : 'none',
-      transition: 'filter 0.3s',
-    }}
-  />
-</button>
+          <button
+            onClick={toggleOButton}
+            style={{
+              width: 'auto',
+              height: 'auto',
+              backgroundColor: 'transparent',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '0px',
+              transition: 'background-color 0.3s',
+            }}
+          >
+            <svg
+              width="198"
+              height="54"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 198 54"
+              style={{
+                backgroundColor: isOReversed ? '#A8BFC9' : '#1A2A33', // 배경색
+                borderRadius: '10px',
+                transition: 'background-color 0.3s',
+              }}
+            >
+            <circle
+              cx="99" // 중심 x좌표
+              cy="27" // 중심 y좌표
+              r="19"  // 반지름
+              fill={isOReversed ? '#1A2A33' : '#A8BFC9'} // 동그라미 색상
+            />
+            <circle
+                cx="99" // 중심 x좌표
+                cy="27" // 중심 y좌표
+                r="8"  // 내부 원 반지름
+                fill={isOReversed ? '#A8BFC9' : '#1A2A33'} // 내부 원 색상
+              />
+            </svg>
+        </button>
 
         </div>
         {/* 하단 텍스트 */}

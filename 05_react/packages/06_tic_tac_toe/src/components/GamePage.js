@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Board from './Board';
-import Modal from './Modal';
+import { Modal, RestartModal } from './Modal';
 import logo from '../assets/logo.svg';
 import resetIcon from '../assets/Reset.svg';
 import hoverResetIcon from '../assets/hover_Reset.svg'; // hover 상태 이미지 추가
@@ -14,6 +14,7 @@ function GamePage({ gameMode, playerSymbol }) {
   const [gameResult, setGameResult] = useState(null); // 게임 결과
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태
   const [isHoveringReset, setIsHoveringReset] = useState(false); // 새로고침 hover 상태
+  const [isRestartModalOpen, setIsRestartModalOpen] = useState(false); // Restart Modal 상태
 
   const computerSymbol = playerSymbol === 'X' ? 'O' : 'X'; // 컴퓨터의 기호
 
@@ -36,11 +37,10 @@ function GamePage({ gameMode, playerSymbol }) {
       // 컴퓨터가 이겼을 때
       setScores((prev) => ({ ...prev, [computerSymbol]: prev[computerSymbol] + 1 }));
     }
-  
+
     setGameResult(winner);
     setIsModalOpen(true);
   };
-  
 
   const resetBoard = () => {
     setBoard(Array(9).fill(null)); // 게임판 초기화
@@ -50,7 +50,17 @@ function GamePage({ gameMode, playerSymbol }) {
   };
 
   const handleNextRound = () => {
-    resetBoard();
+    setIsRestartModalOpen(true); // Restart Modal 열기
+  };
+
+  const handleRestartGame = () => {
+    resetBoard(); // 보드 초기화
+    setIsRestartModalOpen(false); // Restart Modal 닫기
+  };
+
+  const handleCancelRestart = () => {
+    quitGame(); // 기존 QUIT 동작
+    setIsRestartModalOpen(false); // Restart Modal 닫기
   };
 
   const quitGame = () => {
@@ -59,13 +69,12 @@ function GamePage({ gameMode, playerSymbol }) {
   };
 
   const scoreLabel = gameMode === 'PLAYER'
-  ? playerSymbol === 'X'
-    ? { left: 'X (P1)', center: 'TIES', right: 'O (P2)' }
-    : { left: 'X (P2)', center: 'TIES', right: 'O (P1)' } // P1이 O를 선택한 경우
-  : playerSymbol === 'X'
-  ? { left: 'X (YOU)', center: 'TIES', right: 'O (CPU)' }
-  : { left: 'X (CPU)', center: 'TIES', right: 'O (YOU)' };
-
+    ? playerSymbol === 'X'
+      ? { left: 'X (P1)', center: 'TIES', right: 'O (P2)' }
+      : { left: 'X (P2)', center: 'TIES', right: 'O (P1)' } // P1이 O를 선택한 경우
+    : playerSymbol === 'X'
+      ? { left: 'X (YOU)', center: 'TIES', right: 'O (CPU)' }
+      : { left: 'X (CPU)', center: 'TIES', right: 'O (YOU)' };
 
   return (
     <div
@@ -172,8 +181,7 @@ function GamePage({ gameMode, playerSymbol }) {
         </div>
       </div>
 
-
-
+      {/* 모달 */}
       <Modal
         isOpen={isModalOpen}
         result={gameResult}
@@ -182,6 +190,13 @@ function GamePage({ gameMode, playerSymbol }) {
         gameMode={gameMode}
         winner={gameResult === 'DRAW' ? null : gameResult}
         playerSymbol={playerSymbol}
+      />
+
+      {/* 새로운 Restart Modal */}
+      <RestartModal
+        isOpen={isRestartModalOpen}
+        onCancel={handleCancelRestart}
+        onRestart={handleRestartGame}
       />
     </div>
   );

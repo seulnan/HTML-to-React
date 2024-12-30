@@ -134,4 +134,95 @@ function Modal({ isOpen, onClose, onNextRound, result, gameMode, winner, playerS
   );
 }
 
-export default Modal;
+function RestartModal({ isOpen, onCancel, onRestart }) {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1000,
+      }}
+    >
+      <div
+        style={{
+          width: '1440px',
+          height: '266px',
+          backgroundColor: '#1F3641',
+          borderRadius: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+        }}
+      >
+        <h1
+          style={{
+            fontSize: '40px',
+            fontWeight: 'bold',
+            color: '#A8BFC9',
+            marginTop: '20px',
+            marginBottom: '31px',
+          }}
+        >
+          RESTART GAME?
+        </h1>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: '20px',
+          }}
+        >
+          <button
+            onClick={onCancel}
+            style={{
+              width: '139px',
+              height: '52px',
+              backgroundColor: '#A8BFC9',
+              color: '#1A2A33',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#6B8997')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#A8BFC9')}
+          >
+            NO, CANCEL
+          </button>
+          <button
+            onClick={onRestart}
+            style={{
+              width: '151px',
+              height: '52px',
+              backgroundColor: '#F2B137',
+              color: '#1A2A33',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#CC8B13')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#F2B137')}
+          >
+            YES, RESTART
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export { Modal, RestartModal };

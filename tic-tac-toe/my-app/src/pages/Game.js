@@ -1,13 +1,13 @@
 <<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import Board from '../components/Board';
-import Modal from '../components/Modal'; // First modal component
-import RestartModal from '../components/RestartModal'; // Second modal component
+import Modal from '../components/Modal';
+import RestartModal from '../components/RestartModal';
 import logoImage from '../assets/image/Menu_ox.png';
 import xImage from '../assets/image/icon_x.png';
 import oImage from '../assets/image/icon_o.png';
 import refreshImage from '../assets/image/restart_main.png';
-import refreshHoverImage from '../assets/image/restart_hover.png'; // hover 시 사용할 이미지
+import refreshHoverImage from '../assets/image/restart_hover.png';
 import o_turn from '../assets/image/o_turn.png';
 import x_turn from '../assets/image/x_turn.png';
 
@@ -18,6 +18,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
   const [showRestartModal, setShowRestartModal] = useState(false);
   const [winner, setWinner] = useState(null);
   const [winningSymbol, setWinningSymbol] = useState(null);
+  const [winningLine, setWinningLine] = useState(null);
 
   const [player1Wins, setPlayer1Wins] = useState(0);
   const [player2Wins, setPlayer2Wins] = useState(0);
@@ -34,29 +35,35 @@ const Game = ({ mode, playerSymbol, onExit }) => {
       ? x_turn
       : o_turn;
 
-  const [isHovered, setIsHovered] = useState(false); // hover 상태 추적
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (mode === 'cpuVsPlayer' && !xIsNext && !winner) {
       const cpuMove = getCPUMove(board);
+      if (cpuMove === null) return;
+
       const newBoard = board.slice();
       newBoard[cpuMove] = cpuSymbol;
       setBoard(newBoard);
 
-      const cpuWinner = calculateWinner(newBoard);
+      const { winner: cpuWinner, winningLine: line } = calculateWinner(newBoard);
       if (cpuWinner) {
         setWinner('CPU');
         setWinningSymbol(cpuSymbol);
+        setWinningLine(line);
         setCpuWins((prevCpuWins) => prevCpuWins + 1);
         setShowResultModal(true);
       } else if (newBoard.every((square) => square !== null)) {
-        setDraws((prevDraws) => prevDraws + 1);
-        resetGame(); // 바로 재시작
+        if (!showResultModal) {
+          setDraws((prevDraws) => prevDraws + 1);
+          setWinner(null);
+          setShowResultModal(true);
+        }
       } else {
         setXIsNext(true);
       }
     }
-  }, [board, cpuSymbol, mode, winner, xIsNext]);
+  }, [board, cpuSymbol, mode, winner, xIsNext, showResultModal]);
 
   const handleClick = (index) => {
     if (winner || board[index]) return;
@@ -66,7 +73,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     newBoard[index] = currentSymbol;
     setBoard(newBoard);
 
-    const gameWinner = calculateWinner(newBoard);
+    const { winner: gameWinner, winningLine: line } = calculateWinner(newBoard);
     if (gameWinner) {
       setWinner(
         xIsNext
@@ -78,6 +85,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
           : 'CPU'
       );
       setWinningSymbol(currentSymbol);
+      setWinningLine(line);
 
       if (xIsNext) {
         setPlayer1Wins((prevWins) => prevWins + 1);
@@ -88,13 +96,15 @@ const Game = ({ mode, playerSymbol, onExit }) => {
           setCpuWins((prevWins) => prevWins + 1);
         }
       }
-      setShowResultModal(true); // 승리 시 모달 표시
-    } else if (newBoard.every((square) => square !== null)) {
-      setDraws((prevDraws) => prevDraws + 1);
-      setWinner(null); // 승자는 없음
       setShowResultModal(true);
+    } else if (newBoard.every((square) => square !== null)) {
+      if (!showResultModal) {
+        setDraws((prevDraws) => prevDraws + 1);
+        setWinner(null);
+        setShowResultModal(true);
+      }
     } else {
-      setXIsNext(!xIsNext); // 턴 변경
+      setXIsNext(!xIsNext);
     }
   };
 
@@ -105,15 +115,12 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     setShowRestartModal(false);
     setWinner(null);
     setWinningSymbol(null);
+    setWinningLine(null);
   };
 
   const closeResultModal = () => {
     setShowResultModal(false);
-    if (!winner) {
-      resetGame();
-    } else {
-      setTimeout(() => setShowRestartModal(true), 300);
-    }
+    setShowRestartModal(true);
   };
 
   const handleRestart = () => {
@@ -125,7 +132,9 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     const availableMoves = board
       .map((square, index) => (square === null ? index : null))
       .filter((index) => index !== null);
-    return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    return availableMoves.length > 0
+      ? availableMoves[Math.floor(Math.random() * availableMoves.length)]
+      : null;
   };
 
   const calculateWinner = (squares) => {
@@ -142,10 +151,10 @@ const Game = ({ mode, playerSymbol, onExit }) => {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        return { winner: squares[a], winningLine: lines[i] };
       }
     }
-    return null;
+    return { winner: null, winningLine: null };
   };
 
   return (
@@ -156,8 +165,8 @@ const Game = ({ mode, playerSymbol, onExit }) => {
         <button
           className="button-refresh-button"
           onClick={handleRestart}
-          onMouseEnter={() => setIsHovered(true)} // 마우스 hover 시
-          onMouseLeave={() => setIsHovered(false)} // 마우스 leave 시
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           style={{
             backgroundImage: `url(${isHovered ? refreshHoverImage : refreshImage})`
           }}
@@ -168,8 +177,8 @@ const Game = ({ mode, playerSymbol, onExit }) => {
         squares={board}
         onClick={handleClick}
         currentPlayer={playerSymbol === 'X' ? (xIsNext ? 'X' : 'O') : (xIsNext ? 'O' : 'X')}
+        winningLine={winningLine}
       />
-
 
       <div className="score-board">
         <div className="score-box" style={{ backgroundColor: '#31C3BD' }}>
@@ -178,7 +187,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
               ? `${playerSymbol === 'X' ? `${playerSymbol} (YOU)` : `${cpuSymbol} (CPU)`}`
               : `${playerSymbol === 'X' ? `${playerSymbol} (P1)` : `${cpuSymbol} (P2)`}`}
           </h3>
-          <p>{mode === 'cpuVsPlayer'? `${playerSymbol === 'X' ? player1Wins : cpuWins}`:`${playerSymbol === 'X' ? player1Wins : player2Wins}`}</p>
+          <p>{mode === 'cpuVsPlayer' ? `${playerSymbol === 'X' ? player1Wins : cpuWins}` : `${playerSymbol === 'X' ? player1Wins : player2Wins}`}</p>
         </div>
 
         <div className="score-box" style={{ backgroundColor: '#A8BFC9' }}>
@@ -192,7 +201,7 @@ const Game = ({ mode, playerSymbol, onExit }) => {
               ? `${playerSymbol === 'X' ? `${cpuSymbol} (CPU)` : `${playerSymbol} (YOU)`}`
               : `${playerSymbol === 'X' ? `${cpuSymbol} (P2)` : `${playerSymbol} (P1)`}`}
           </h3>
-          <p>{mode === 'cpuVsPlayer'? `${playerSymbol === 'X' ? cpuWins : player1Wins}`:`${playerSymbol === 'X' ? player2Wins : player1Wins}`}</p>
+          <p>{mode === 'cpuVsPlayer' ? `${playerSymbol === 'X' ? cpuWins : player1Wins}` : `${playerSymbol === 'X' ? player2Wins : player1Wins}`}</p>
         </div>
       </div>
 

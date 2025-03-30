@@ -1,0 +1,168 @@
+
+body{
+    display: flex;
+    width: 1440px;
+    padding: var(--spacing-1600, 128px) var(--spacing-600, 48px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-100, 8px);
+    background: var(--color-stone-100, #F3E5D7);
+}
+
+.card{
+    display: flex;
+    width: 800px;
+    padding: var(--spacing-500, 40px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-500, 40px);
+    flex-shrink: 0;
+    border-radius: var(--spacing-300, 24px);
+    background: var(--color-white, #FFF);
+}
+
+.img{
+    height: 300px;
+    align-self: stretch;
+    border-radius: var(--spacing-150, 12px);
+    background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+}
+
+.text-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-400, 32px);
+    align-self: stretch;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-300, 24px);
+    align-self: stretch;
+}
+
+.main_title{
+    color: var(--color-stone-900, #312E2C);
+
+    font-family: "Young Serif";
+    font-size: var(--font-size-desktop-text-preset-1, 40px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 40px */
+}
+
+.sub_title{
+    color: var(--color-stone-600, #5F564D);
+    font-family: Outfit;
+    font-size: var(--font-size-desktop-text-preset-4, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+
+.preparation{
+    display: flex;
+    padding: var(--spacing-300, 24px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-200, 16px);
+    align-self: stretch;
+    border-radius: var(--spacing-150, 12px);
+    background: var(--color-rose-50, #FFF7FB);    
+}
+
+.preparation_title{
+    color: var(--color-rose-800, #7A284E);
+    font-family: Outfit;
+    font-size: var(--font-size-desktop-text-preset-3, 20px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; /* 20px */
+}
+
+.preparation_sub_title{
+    display: flex;
+    padding-left: var(--spacing-100, 8px);
+    align-items: center;
+    gap: var(--spacing-200, 16px);
+    align-self: stretch;
+}
+
+.frame265{
+    display: flex;
+    padding-left: var(--spacing-100, 8px);
+    align-items: center;
+    gap: var(--spacing-200, 16px);
+    align-self: stretch;    
+}
+.iin_title{
+    color: var(--color-brown-800, #854632);
+
+    /* Desktop/text-preset-2 */
+    font-family: "Young Serif";
+    font-size: var(--font-size-desktop-text-preset-2, 28px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 28px */          
+}
+
+.ingredients{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-300, 24px);
+    align-self: stretch;
+}
+
+.instructions{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-200, 24px);
+    align-self: stretch;
+}
+
+.nutrition{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-300, 24px);
+    align-self: stretch;
+}
+
+hr{
+    width: 800px;
+    height: 1px;
+}
+
+.nutrition-table {
+    width: 100%; /* 전체 너비 */
+    border-collapse: collapse; /* 테두리 겹치기 방지 */
+    margin-top: 16px; /* 위쪽 여백 */
+}
+
+.nutrition-row {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 정렬 */
+    padding: 8px 16px; /* 상하 8px, 좌우 16px 패딩 */
+    border-bottom: 1px solid #D1D1D1; /* 하단 테두리 */
+}
+
+.nutrition-row:last-child {
+    border-bottom: none; /* 마지막 행의 하단 테두리 제거 */
+}
+
+.nutrition-label {
+    color: #5F564D; /* 라벨 색상 */
+    font-weight: 500; /* 보통 두께 */
+}
+
+.nutrition-value {
+    color: #854632; /* 값 색상 */
+    font-weight: 700; /* 두껍게 */
+}
+        
+

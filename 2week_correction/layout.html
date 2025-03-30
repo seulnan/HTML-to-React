@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout page</title>
+    <style>
+        body {
+            width: 1440px;
+            height: 800px;
+            background-color: #FFF;
+            font-family: 'League Spartan', sans-serif;
+            position: relative;
+            overflow: hidden; /* 가상 요소가 밖으로 나가지 않도록 설정 */
+        }
+        .header {
+            position: absolute;
+            top: 118px;
+            left: 165px;
+            width: 445px;
+            height: 154px;
+            color: #512051;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 48px;
+        }
+        .sub-header {
+            position: absolute;
+            top: 288px;
+            left: 165px;
+            width: 445px;
+            color: #927B91;
+            font-size: 19px;
+            font-weight: 500;
+            line-height: 25px;
+        }
+        .box {
+            position: absolute;
+            width: 445px;
+            height: 56px;
+            background-color: #F7F2F7;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .box img {
+            position: absolute;
+            top: 20px;
+            left: 32px;
+        }
+        .box-text {
+            position: absolute;
+            top: 20px;
+            left: 181px;
+            color: #512051;
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .large-box {
+            position: absolute;
+            width: 350px;
+            height: 234px;
+            background-color: #512051;
+            border-radius: 8px;
+            display: inline-block;
+            margin-right: 20px; /* 박스 간격 */
+        }
+        .large-box img {
+            width: 40px; /* 이미지 크기 조정 */
+            height: 40px; /* 이미지 크기 조정 */
+            border-radius: 50%; /* 둥글게 만들기 */
+            position: absolute;
+            top: 32px; /* 위쪽 32px */
+            left: 32px; /* 왼쪽 32px */
+        }
+        .name {
+            position: absolute;
+            color: #FFF;
+            font-size: 17px;
+            font-weight: 700;
+            top: 32px; /* 이미지와 같은 높이로 조정 */
+            left: 95px; /* 이미지 오른쪽으로 이동 */
+        }
+        .comment {
+            position: absolute;
+            color: #EE69A4; /* 글자 색상 수정 */
+            font-size: 17px;
+            font-weight: 400;
+            top: 60px; /* 이미지 아래로 조정 */
+            left: 95px; /* 이미지 오른쪽으로 이동 */
+        }
+        .text {
+            position: absolute;
+            color: #FFF;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 22px;
+            top: 111px; /* 텍스트 위치 */
+            left: 32px; /* 좌측 여백 */
+            right: 32px;
+        }
+        /* 배경 이미지 */
+        .background1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 584px; /* 배경 크기 설정 */
+            height: 362px; /* 배경 크기 설정 */
+            z-index: -1; /* 배경으로 설정 */
+            background-image: url('background1.png'); /* 배경 이미지 경로 */
+            background-size: cover; /* 전체 배경에 맞추기 */
+            background-repeat: no-repeat;
+        }
+        .background2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 1085px; /* 배경 크기 설정 */
+            height: 673px; /* 배경 크기 설정 */
+            z-index: -1; /* 배경으로 설정 */
+            background-image: url('background2.png'); /* 배경 이미지 경로 */
+            background-size: cover; /* 전체 배경에 맞추기 */
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="background1"></div>
+    <div class="background2"></div>
+
+    <div class="header">10,000+ of our users love our products.</div>
+    <div class="sub-header">We only provide great products combined with excellent customer service. See what our satisfied customers are saying about our services.</div>
+
+    <div class="box" style="top: 118px; left: 610px;">
+        <img src="star.png" alt="star">
+        <div class="box-text">Rated 5 Stars in Reviews</div>
+    </div>
+    <div class="box" style="top: 180px; left: 610px;">
+        <img src="star.png" alt="star">
+        <div class="box-text">Rated 5 Stars in Reviews</div>
+    </div>
+    <div class="box" style="top: 242px; left: 610px;">
+        <img src="star.png" alt="star">
+        <div class="box-text">Rated 5 Stars in Reviews</div>
+    </div>
+
+    <div class="large-box" style="top: 434px; left: 165px;">
+        <img src="colton.jpg" alt="Colton">
+        <div class="name">Colton</div>
+        <div class="comment">Verified Buyer</div>
+        <div class="text">“ We needed the same printed design as the one we had ordered a week prior. Not only did they find the original order, but we also received it in time. Excellent! ”</div>
+    </div>
+    <div class="large-box" style="top: 434px; left: 545px;">
+        <img src="irene.jpg" alt="Irene">
+        <div class="name">Irene</div>
+        <div class="comment">Verified Buyer</div>
+        <div class="text">“ Customer service is always excellent and very quick turn around. Completely delighted with the simplicity of the purchase and the speed of delivery.”</div>
+    </div>
+    <div class="large-box" style="top: 434px; left: 925px;">
+        <img src="anne.jpg" alt="Anne">
+        <div class="name">Anne</div>
+        <div class="comment">Verified Buyer</div>
+        <div class="text">“ Put an order with this company and can only praise them for the very high standard. Will definitely use them again and recommend them to everyone! ”</div>
+    </div>
+</body>
+</html>
